@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# R / RStudio
+.Rhistory
+.RData
+.Rproj.user/
+
+# Raw and processed data (never commit)
+data_raw/
+data_processed/
+results/
+
+# Logs and temp files
+*.log
+*.tmp
+

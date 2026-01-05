@@ -1,0 +1,1 @@
+# Module-trait correlation placeholder

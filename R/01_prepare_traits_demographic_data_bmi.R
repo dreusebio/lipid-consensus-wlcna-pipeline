@@ -1,0 +1,288 @@
+# 01_prepare_traits_demographic_data_bmi.R
+source("R/00_setup_packages.R")
+
+#=====================================================================================
+#
+#  Code chunk 1a- Load your trait file. Convert variables to numeric for WGCNA prep
+#
+#=====================================================================================
+# Load your data
+ID_Updated_Combined_Traits_apo <- read_csv("Identified_lipids_used_in_metaboanalyst_to_normalize/traits_taken_box_03_19_25/growell_curated_deid_george.csv")
+
+#decided to remove prefix for GROW so that I can see numbers better
+ID_Updated_Combined_Traits_apo$User_ID <- gsub("GROW-00+", "", ID_Updated_Combined_Traits_apo$User_ID)
+
+
+colnames(ID_Updated_Combined_Traits_apo)
+
+base_sleep <- c("covid_sleep_base", "covid_sleep_less_base", "covid_sleep_more_base","covid_wakeup_base",                   
+                "covid_15_base",  "covid_7_base",   "covid_rested_base")
+wk_36_sleep <- c("covid_sleep_wk36", "covid_sleep_less_wk36", "covid_sleep_more_wk36", 
+                 "covid_wakeup_wk36", "covid_15_wk36", "covid_7_wk36", "covid_rested_wk36" )
+mth6_sleep <- c("covid_sleep_mth6", "covid_sleep_less_mth6", "covid_sleep_more_mth6",                 
+                "covid_wakeup_mth6", "covid_15_mth6" ,"covid_7_mth6", "covid_rested_mth6")
+
+# Reverse scoring
+ID_Updated_Combined_Traits_apo[, base_sleep[1:5]] <- !ID_Updated_Combined_Traits_apo[, base_sleep[1:5]]
+ID_Updated_Combined_Traits_apo[, wk_36_sleep[1:5]] <- !ID_Updated_Combined_Traits_apo[, wk_36_sleep[1:5]]
+ID_Updated_Combined_Traits_apo[, mth6_sleep[1:5]] <- !ID_Updated_Combined_Traits_apo[, mth6_sleep[1:5]]
+# Compute total score
+ID_Updated_Combined_Traits_apo$sleep_base <- rowSums(ID_Updated_Combined_Traits_apo[, base_sleep])
+ID_Updated_Combined_Traits_apo$sleep_wk36 <- rowSums(ID_Updated_Combined_Traits_apo[, wk_36_sleep])
+ID_Updated_Combined_Traits_apo$sleep_mth6 <- rowSums(ID_Updated_Combined_Traits_apo[, mth6_sleep])
+
+# Set rownames
+ID_Updated_Combined_Traits_apo <- as.data.frame(ID_Updated_Combined_Traits_apo)
+rownames(ID_Updated_Combined_Traits_apo) <- ID_Updated_Combined_Traits_apo$User_ID
+
+# Convert logical variables to factors with levels 0 for FALSE and 1 for TRUE, and labels "FALSE" and "TRUE"
+logical_vars <- sapply(ID_Updated_Combined_Traits_apo, is.logical)
+ID_Updated_Combined_Traits_apo[, logical_vars] <- lapply(ID_Updated_Combined_Traits_apo[, logical_vars], function(x) factor(x, levels = c(FALSE, TRUE), labels = c("0", "1")))
+
+
+# Convert specific character variables to factors and set levels
+ID_Updated_Combined_Traits_apo$group <- factor(ID_Updated_Combined_Traits_apo$group, levels = c("Control", "Intervention"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$race_eth_new <- factor(ID_Updated_Combined_Traits_apo$race_eth_new, levels = c("Multi-racial/Other", "Hispanic", "Asian",  "Black", "White"), labels = c(0, 1, 2, 3, 4))
+#ID_Updated_Combined_Traits_apo$enroll_hispanic_v2_base <- factor(ID_Updated_Combined_Traits_apo$enroll_hispanic_v2_base, levels = c("Hispanic or Latino", "Not Hispanic or Latino"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$pregtype_conception_base <- factor(ID_Updated_Combined_Traits_apo$pregtype_conception_base, levels = c("Medical Help", "Naturally"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$pregtype_planned_base <- factor(ID_Updated_Combined_Traits_apo$pregtype_planned_base, levels = c("No", "Yes"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$moth_marit_stat_base <- factor(ID_Updated_Combined_Traits_apo$moth_marit_stat_base, levels = c("Divorced", "Married", "Separated", "Single"), labels = c(0, 1, 2, 3))
+ID_Updated_Combined_Traits_apo$mother_s_education_base <- factor(ID_Updated_Combined_Traits_apo$mother_s_education_base, levels = c("High School", "Post-Baccalaureate", "Some College"), labels = c(0, 1, 2))
+ID_Updated_Combined_Traits_apo$father_s_race_base <- factor(ID_Updated_Combined_Traits_apo$father_s_race_base, levels = c("Asian/South Pacific", "Black or African American", "Other", "White"), labels = c(0, 1, 2, 3))
+ID_Updated_Combined_Traits_apo$father_s_hispanic_base <- factor(ID_Updated_Combined_Traits_apo$father_s_hispanic_base, levels = c("Hispanic or Latino", "Not Hispanic or Latino"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$father_s_education_base <- factor(ID_Updated_Combined_Traits_apo$father_s_education_base, levels = c("High School", "Post-Baccalaureate", "Some College"), labels = c(0, 1, 2))
+ID_Updated_Combined_Traits_apo$second_hand_rules_base <- factor(ID_Updated_Combined_Traits_apo$second_hand_rules_base, levels = c("Allowed anywhere", "Allowed in some places or at sometimes", "Not allowed anywhere"), labels = c(0, 1, 2))
+ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_base <- factor(ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_base, levels = c("Not at all willing", "Somewhat willing", "Uncertain", "Very willing"), labels = c(0, 1, 2, 3))
+ID_Updated_Combined_Traits_apo$covid_test_yes_base <- factor(ID_Updated_Combined_Traits_apo$covid_test_yes_base, levels = c("No", "Yes"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_wk26 <- factor(ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_wk26, levels = c("Somewhat willing", "Uncertain", "Very willing"), labels = c(0, 1, 2))
+ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_wk36 <- factor(ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_wk36, levels = c("Not at all willing", "Somewhat unwilling", "Somewhat willing", "Uncertain", "Very willing"), labels = c(0, 1, 2, 3, 4))
+ID_Updated_Combined_Traits_apo$infant_gender_mth3 <- factor(ID_Updated_Combined_Traits_apo$infant_gender_mth3, levels = c("Female", "Male"), labels = c(0, 1))
+ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_mth3 <- factor(ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_mth3, levels = c("Somewhat unwilling", "Somewhat willing", "Uncertain", "Very willing"), labels = c(0, 1, 2, 3))
+ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_mth6 <- factor(ID_Updated_Combined_Traits_apo$how_willing_are_you_to_mak_mth6, levels = c("Somewhat unwilling", "Somewhat willing", "Uncertain", "Very willing"), labels = c(0, 1, 2, 3))
+ID_Updated_Combined_Traits_apo$covid_test_yes_mth6 <- factor(ID_Updated_Combined_Traits_apo$covid_test_yes_mth6, levels = c("I don't know", "No", "Yes"), labels = c(NA, 0, 1))
+ID_Updated_Combined_Traits_apo$covid_test_yes_wk36 <- factor(ID_Updated_Combined_Traits_apo$covid_test_yes_wk36, levels = c("I don't know", "No", "Yes"), labels = c(NA, 0, 1))
+
+colnames(ID_Updated_Combined_Traits_apo)
+# Remove specified variables 
+remove_vars <- c( "apo_diagnosis", "enroll_race_v2_demo", "enroll_race_v2_base", "enroll_hispanic_v2_base", "enroll_hispanic_v2_demo", "enroll_hispanic_sub_v2_demo", 
+                  "enroll_gender_base", "adh_base", "number_of_therapeutic_abor_92de80_base", "postpart_visit_remote", 
+                  "number_of_ectopic_pregnanc_4b2a0e_base", "pregtype_assistance_base", "num_spontaneous_abortions_base", 
+                  "feeding_plan_base", "moth_US_birth_base", "mother_s_occu_base", "enroll_hispanic_sub_v2_base", 
+                  "father_s_occupation_base", "postpart_visit_mth3", "feeding_other_type__1_mth3", 
+                  "feeding_other_type__2_mth3", "feeding_other_type__3_mth3", "postpart_visit_mth6", 
+                  "infant_gender_mth6", "feeding_other_type__1_mth6", "feeding_other_type__2_mth6", 
+                  "feeding_other_type__3_mth6", "postpart_visit_bbmr", "infant_gender_bbmr", 
+                  "postpart_weight_bbmr", "infant_discharge_bbmr", "infant_disposition_bbmr",
+                  "urbanicity", "metro_area", "father_s_origin_base", "adh_wk26", "adh_wk36", "adh_mth3", "adh_mth6",
+                  "postpart_bp_mth6",     "postpart_bp_bbmr",     "breastfeeding_amount","breastfeeding_continue",
+                  "breastfeeding_partial_age_bcheck", "covid_sleep_base", "covid_sleep_less_base", "covid_sleep_more_base","covid_wakeup_base",                   
+                  "covid_15_base",  "covid_7_base",   "covid_rested_base", "covid_sleep_wk36", "covid_sleep_less_wk36", "covid_sleep_more_wk36", 
+                  "covid_wakeup_wk36", "covid_15_wk36", "covid_7_wk36", "covid_rested_wk36" ,"covid_sleep_mth6", "covid_sleep_less_mth6", "covid_sleep_more_mth6",                 
+                  "covid_wakeup_mth6", "covid_15_mth6" ,"covid_7_mth6", "covid_rested_mth6", "do_any_of_your_coworkers_s_base")
+
+ID_Updated_Combined_Traits_apo_ana <- ID_Updated_Combined_Traits_apo[, !(names(ID_Updated_Combined_Traits_apo) %in% remove_vars)]
+
+colnames(ID_Updated_Combined_Traits_apo_ana)
+
+# View the updated dataframe
+head(ID_Updated_Combined_Traits_apo_ana)
+
+# Create a new variable for White_vs_nonwhite using case_when
+ID_Updated_Combined_Traits_apo_ana <- ID_Updated_Combined_Traits_apo_ana %>%
+  mutate(
+    White_vs_nonwhite = case_when(
+      race_eth_new == 4 ~ 1,        # If Race is "White", White_vs_nonwhite is 1
+      TRUE ~ 0                    # If Race is anything else, White_vs_nonwhite is 0
+    )
+  )
+
+
+# Create a new variable adverse_pregnancy_outcome using case_when
+ID_Updated_Combined_Traits_apo_ana <- ID_Updated_Combined_Traits_apo_ana %>%
+  mutate(apo_total = case_when(
+    apo == 1 ~ 1,                 # If apo is 1, then adverse_pregnancy_outcome is 1
+    is.na(apo) ~ 0,               # If apo is NA, then adverse_pregnancy_outcome is 0
+    TRUE ~ 0                      # In all other cases, adverse_pregnancy_outcome is 0
+  ))
+#I have realized I dont these other variables, what Sebastian coded for is enough and the WGCNA plot looks ok.
+
+#ID_Updated_Combined_Traits_apo_ana <- ID_Updated_Combined_Traits_apo_ana %>%
+#  mutate(
+#   adverse_pregnancy_outcome_hdp = case_when(
+#    apo_hdp == 1 ~ 1,               # If apo_hdp is 1, then adverse_pregnancy_outcome_hdp is 1
+#   is.na(apo_hdp) ~ 0,             # If apo_hdp is NA, then adverse_pregnancy_outcome_hdp is 0
+#  TRUE ~ 0                        # In all other cases, adverse_pregnancy_outcome_hdp is 0
+#    ),
+#   adverse_pregnancy_outcome_gdm = case_when(
+#    apo_gdm == 1 ~ 1,               # If apo_gdm is 1, then adverse_pregnancy_outcome_gdm is 1
+#   is.na(apo_gdm) ~ 0,             # If apo_gdm is NA, then adverse_pregnancy_outcome_gdm is 0
+#  TRUE ~ 0                        # In all other cases, adverse_pregnancy_outcome_gdm is 0
+#    ),
+#   adverse_pregnancy_outcome_other = case_when(
+#    apo_other == 1 ~ 1,             # If apo_other is 1, then adverse_pregnancy_outcome_other is 1
+#   is.na(apo_other) ~ 0,           # If apo_other is NA, then adverse_pregnancy_outcome_other is 0
+#  TRUE ~ 0                        # In all other cases, adverse_pregnancy_outcome_other is 0
+#    )
+#)
+
+colnames(ID_Updated_Combined_Traits_apo_ana)
+
+# View the updated dataframe
+head(ID_Updated_Combined_Traits_apo_ana)
+
+
+# Function to print the levels of factor variables along with their labels
+print_factor_levels <- function(data) {
+  factor_vars <- names(data)[sapply(data, is.factor)]
+  for (var in factor_vars) {
+    cat("Levels of", var, ":\n")
+    print(levels(data[[var]]))
+    cat("Labels of", var, ":\n")
+    print(names(levels(data[[var]])))
+    cat("\n")
+  }
+}
+
+# Verify the changes by printing factor levels
+print_factor_levels(ID_Updated_Combined_Traits_apo_ana)
+
+
+# Convert factors to numeric 
+ID_Updated_Combined_Traits_apo_ana[] <- lapply(ID_Updated_Combined_Traits_apo_ana, function(x) {
+  if (is.factor(x)) as.numeric(as.character(x)) else x
+})
+
+# Check for any remaining character variables
+character_vars <- names(ID_Updated_Combined_Traits_apo_ana)[sapply(ID_Updated_Combined_Traits_apo_ana, is.character)]
+print(character_vars)  # Should return character(0) if no character variables are left
+
+rownames(ID_Updated_Combined_Traits_apo_ana)
+colnames(ID_Updated_Combined_Traits_apo_ana)
+
+write.csv(ID_Updated_Combined_Traits_apo_ana, "ID_Updated_Combined_Traits.csv", row.names = TRUE)
+
+#remove USER_ID
+ID_Updated_Combined_Traits_apo_analy <- 
+  ID_Updated_Combined_Traits_apo_analy[, !colnames(ID_Updated_Combined_Traits_apo_analy) %in% "User_ID"]
+
+ID_Updated_Combined_Traits_apo_analy <- 
+  ID_Updated_Combined_Traits_apo_analy[, !colnames(ID_Updated_Combined_Traits_apo_analy) %in% "apo"]
+
+
+#rename apo_total to apo 
+
+colnames(ID_Updated_Combined_Traits_apo_analy) <- gsub("^apo_total$", "apo", colnames(ID_Updated_Combined_Traits_apo_analy))
+
+
+colnames(ID_Updated_Combined_Traits_apo_analy)
+
+# Create a new dataframe with reordered columns
+ID_Updated_Combined_Traits_apo_analysis <- ID_Updated_Combined_Traits_apo_analy %>%
+  select(
+    # Group 1: Demographic and Basic Information
+    group, age, gest_age, gest_age_at_birth, preterm, height_base, weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6, bmi, bmi_base, parity_base,gwg, 
+    egwg,ppwr,ppwr_e, apo , apo_hdp, apo_gdm, apo_other,         
+    
+    
+    # Group 2: Parental and Socioeconomic Information
+    race_eth_new, White_vs_nonwhite, total_number_of_pregnancie_30f336_base, total_number_abortions_base, pregtype_conception_base, pregtype_planned_base,
+    other_children_base, moth_marit_stat_base, mother_s_education_base, father_s_age_at_enrollment_base, fathers_country_of_birth_us_base, father_s_race_base,
+    father_s_hispanic_base, father_s_education_base, father_currently_employed_base,low_income, low_access,
+    
+    # Group 3: Smoking and Environmental Exposures
+    second_hand_base, second_hand_days_base, second_hand_rules_base, PM2.5_7Days_base, PM2.5_30Days_base, PM2.5_90Days_base,
+    PM2.5_7Days_wk26, PM2.5_30Days_wk26, PM2.5_90Days_wk26, PM2.5_7Days_wk36, PM2.5_30Days_wk36, PM2.5_90Days_wk36, PM2.5_7Days_mth3,
+    PM2.5_30Days_mth3, PM2.5_90Days_mth3, PM2.5_7Days_mth6, PM2.5_30Days_mth6, PM2.5_90Days_mth6, do_any_close_friends_or_re_base,
+    
+    # Group 4: Dietary Information
+    KCAL_base, HEI2015C9_FATTYACID_base, HEI2015C12_SFAT_base, HEI2015_TOTAL_SCORE_base, KCAL_wk36, HEI2015C9_FATTYACID_wk36, HEI2015C12_SFAT_wk36,
+    HEI2015_TOTAL_SCORE_wk36, KCAL_mth6, HEI2015C9_FATTYACID_mth6, HEI2015C12_SFAT_mth6, HEI2015_TOTAL_SCORE_mth6, reap_base, reap_wk26, reap_wk36, reap_mth3, reap_mth6,
+    
+    # Group 5: Physical Activity
+    ppaq_total_base, ppaq_light_base, ppaq_mod_base, ppaq_house_base, ppaq_total_mth3, ppaq_light_mth3, ppaq_mod_mth3, ppaq_house_mth3,
+    ppaq_total_mth6, ppaq_light_mth6, ppaq_mod_mth6, ppaq_house_mth6,
+    
+    # Group 6: Psychological Measures
+    epds_base, epds_3a_base, epds_mth3, epds_3a_mth3, epds_mth6, epds_3a_mth6,
+    sleep_base, sleep_wk36, sleep_mth6, rhodes_base,rhodes_wk26, rhodes_wk36, 
+    
+    # Group 7: COVID-related Information
+    covid_essential_base, covid_test_yes_base, covid_schedule_base, covid_mask_base, covid_visit_base, covid_wipe_base,
+    covid_essential_wk36, covid_test_yes_wk36, covid_schedule_wk36, covid_mask_wk36, covid_visit_wk36, covid_wipe_wk36,
+    covid_essential_mth6, covid_test_yes_mth6, covid_schedule_mth6,
+    
+    # Group 8: Infant Information
+    infant_gender_mth3, feeding_mth3, ex_feeding_mth3,feeding_mth6, ex_feeding_mth6, infant_weight_bbmr, breastfeeding,
+    
+    # Group 9: Tasks and Goals
+    n_weights_pre, n_weights_post, n_weights_total, tasks_comp_pre, tasks_fail_pre, total_tasks_pre, prop_tasks_pre, tasks_comp_post, tasks_fail_post, total_tasks_post, prop_tasks_post,
+    n_goals_pre, n_achieved_pre, prop_achieved_pre, n_goals_post, n_achieved_post, prop_achieved_post,
+    do_you_prepare_your_own_fo_base, ever_have_trouble_being_ab_base, follow_a_special_diet_eat_base, how_willing_are_you_to_mak_base,
+    do_you_prepare_your_own_fo_wk26, ever_have_trouble_being_ab_wk26, follow_a_special_diet_eat_wk26, how_willing_are_you_to_mak_wk26,
+    do_you_prepare_your_own_fo_wk36, ever_have_trouble_being_ab_wk36, follow_a_special_diet_eat_wk36, how_willing_are_you_to_mak_wk36,
+    do_you_prepare_your_own_fo_mth3, ever_have_trouble_being_ab_mth3, follow_a_special_diet_eat_mth3, how_willing_are_you_to_mak_mth3,
+    do_you_prepare_your_own_fo_mth6, ever_have_trouble_being_ab_mth6, follow_a_special_diet_eat_mth6, how_willing_are_you_to_mak_mth6
+    
+  )
+
+# View the new dataframe
+View(ID_Updated_Combined_Traits_apo_analysis)
+
+#check to see if you have all the variables. 
+# Find variables in ID_Updated_Combined_Traits that are not in ID_Updated_Combined_Traits_apo_analysis
+vars_only_in_original <- setdiff(colnames(ID_Updated_Combined_Traits_apo_analy), colnames(ID_Updated_Combined_Traits_apo_analysis))
+
+# Find variables in ID_Updated_Combined_Traits_apo_analysis that are not in ID_Updated_Combined_Traits
+vars_only_in_reordered <- setdiff(colnames(ID_Updated_Combined_Traits_apo_analysis), colnames(ID_Updated_Combined_Traits_apo_analy))
+
+# Display the results
+cat("Variables only in ID_Updated_Combined_Traits:\n")
+print(vars_only_in_original)
+
+cat("\nVariables only in ID_Updated_Combined_Traits_apo_analysis:\n")
+print(vars_only_in_reordered)
+
+#save your file
+# Sort dataset by row names in ascending order
+ID_Updated_Combined_Traits_apo_analysis <- ID_Updated_Combined_Traits_apo_analysis[order(rownames(ID_Updated_Combined_Traits_apo_analysis)), ]
+
+
+write.csv(ID_Updated_Combined_Traits_apo_analysis, "data_raw/ID_Updated_Combined_Traits_apo_analysis.csv", row.names = TRUE)
+
+traits <- read.csv(
+  "data_raw/ID_Updated_Combined_Traits_apo_analysis.csv",
+  row.names = 1
+)
+
+# This selection mirrors your existing code
+demographic_data <- traits %>%
+  dplyr::select(
+    group, age, gest_age_at_birth, preterm,
+    height_base,
+    weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,
+    bmi, bmi_base, parity_base, gwg, egwg,
+    ppwr, ppwr_e,
+    apo, apo_hdp, apo_gdm, apo_other
+  )
+
+# Your BMI by timepoint logic (same as in PDF)
+demographic_data_bmi <- demographic_data %>%
+  mutate(
+    bmi_wk26 = weight_wk26 / (height_base^2),
+    bmi_wk36 = weight_wk36 / (height_base^2),
+    bmi_mth3 = weight_mth3 / (height_base^2),
+    bmi_mth6 = weight_mth6 / (height_base^2)
+  ) %>%
+  dplyr::select(
+    weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,
+    height_base,
+    bmi, bmi_base, bmi_wk26, bmi_wk36, bmi_mth3, bmi_mth6,
+    gwg, egwg, ppwr, ppwr_e,
+    apo, preterm, apo_hdp, apo_gdm, apo_other
+  )
+
+openxlsx::write.xlsx(
+  demographic_data_bmi,
+  file = "data_processed/demographic_data_bmi.xlsx",
+  rowNames = TRUE
+)
