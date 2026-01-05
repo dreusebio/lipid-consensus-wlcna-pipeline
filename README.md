@@ -36,4 +36,4 @@ project_root/
     tables/
     plots/
 
-For the GROWELL lipidomics paper, please check this folder for the script that was used here: scripts_for_growell_lipidomics_analysis
+For the GROWELL lipidomics paper, please check this folder for the script that was used here **scripts_for_growell_lipidomics_analysis**
