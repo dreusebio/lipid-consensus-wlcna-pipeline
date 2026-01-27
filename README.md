@@ -12,6 +12,7 @@ a simple YAML configuration file.
 
 ```text
 project_root/
+Example/
 R/
     00_setup_packages.R
     01_prepare_traits_demographic_data_bmi.R
@@ -20,19 +21,20 @@ R/
     04_setup_pheno_ID_pre_traits.R
     05_module_trait_correlations_traits.R
     03_utils_module_trait_timepoints_plots.R
+config/
+    trait_config.yml
 scripts/
     06_plot_module_trait_timepoints.R
     run_all.R
-  config/
-    trait_config.yml
-  data_raw/
+scripts_for_growell_lipidomics_analysis/ 
+data_raw/
     ID_Updated_Combined_Traits_apo_analysis.csv
     identified_lipids_baseline_data_normalized.csv
     identified_lipids_TP36_data_normalized.csv
     identified_postpartum_data_normalized.csv
-  data_processed/
+data_processed/
     (generated intermediate files)
-  results/
+results/
     tables/
     plots/
 ```
