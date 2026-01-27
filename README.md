@@ -12,7 +12,7 @@ a simple YAML configuration file.
 
 ```text
 project_root/
-  R/
+R/
     00_setup_packages.R
     01_prepare_traits_demographic_data_bmi.R
     02_prepare_lipid_expression_multiExpr_ID.R
@@ -20,7 +20,7 @@ project_root/
     04_setup_pheno_ID_pre_traits.R
     05_module_trait_correlations_traits.R
     03_utils_module_trait_timepoints_plots.R
-  scripts/
+scripts/
     06_plot_module_trait_timepoints.R
     run_all.R
   config/
