@@ -1,0 +1,18 @@
+R version 4.4.3 (2025-02-28)
+Platform: aarch64-apple-darwin20.0.0
+Running under: macOS Sequoia 15.6.1
+
+Matrix products: default
+BLAS/LAPACK: /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/libopenblas.0.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/Los_Angeles
+tzcode source: system (macOS)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.4.3 tools_4.4.3   

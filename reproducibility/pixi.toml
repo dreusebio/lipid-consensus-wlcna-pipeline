@@ -1,0 +1,58 @@
+[workspace]
+authors = ["dreusebio <83031200+dreusebio@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "lipid-consensus-wlcna-pipeline"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+install-r-pkgs = "Rscript install_r_packages.R"
+run-all = "Rscript ../scripts/run_all.R"
+session-info = "Rscript -e 'sink(\"session_info.txt\"); sessionInfo(); sink()'"
+
+[dependencies]
+r-base = ">=4.4"
+
+# System libraries
+sqlite = "*"
+zlib = "*"
+libxml2 = "*"
+openssl = "*"
+curl = "*"
+pkg-config = "*"
+cairo = "*"
+
+# Core R packages via conda (compiled correctly for arm64)
+r-rcpp = "*"
+r-htmltools = "*"
+r-fastmap = "*"
+r-cachem = "*"
+r-scales = "*"
+r-ggplot2 = "*"
+r-dplyr = "*"
+r-tidyr = "*"
+r-stringr = "*"
+r-tibble = "*"
+r-reshape2 = "*"
+r-plyr = "*"
+r-purrr = "*"
+r-readr = "*"
+r-yaml = "*"
+r-viridis = "*"
+r-pheatmap = "*"
+r-writexl = "*"
+r-igraph = "*"
+r-pROC = "*"
+r-caret = "*"
+r-randomforest = "*"
+r-xgboost = "*"
+r-mixomics = "*"
+r-circlize = "*"
+r-remotes = "*"
+r-devtools = "*"
+r-Cairo = "*"
+r-plotly = "*"
+r-future = "*"
+r-digest = "*"
+r-rsqlite = "*"
+llvm-openmp = ">=22.1.5,<23"
