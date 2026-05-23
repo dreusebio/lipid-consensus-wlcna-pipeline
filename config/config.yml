@@ -1,0 +1,145 @@
+# config/config.yml
+# -------------------------------------------------------
+# Central configuration for the GROWELL lipidomics pipeline
+# Edit paths and parameters here — never in the R scripts
+# -------------------------------------------------------
+
+# ── Data paths ───────────────────────────────────────────
+data:
+  traits:        "data/raw/growell_curated_deid_george.csv"
+  lipid_excel:   "data/raw/mx_769102_LaSalle_lipidomics_human_dried_blood_spots_12-2023_submit.xlsx"
+  timepoint_map: "data/raw/Seed_Sample_Metabolomics_Subaliquots.xlsx"
+
+  lipids_raw:
+    baseline:   "data/raw/lipids_raw/identified_lipids_baseline_raw.csv"
+    wk36:       "data/raw/lipids_raw/identified_lipids_TP36_raw.csv"
+    postpartum: "data/raw/lipids_raw/identified_lipids_postpartum_raw.csv"
+
+  lipids:
+    baseline:   "data/raw/lipids_normalized/identified_lipids_baseline_data_normalized.csv"
+    wk36:       "data/raw/lipids_normalized/identified_lipids_TP36_data_normalized.csv"
+    postpartum: "data/raw/lipids_normalized/identified_lipids_postpartum_data_normalized.csv"
+
+  pubchem:                     "data/raw/Lipid_PubChem_CID_InCHIKey.csv"
+  refmet:                      "data/raw/Ref_Met_Results.csv"
+  lipid_annotations_corrected: "data/raw/Lipid_annotations_module_corrected.csv"
+
+# ── Output folders (one per script) ──────────────────────
+output:
+  processed: "data/processed"
+
+  s00b: "results/00b_data_preparation"   # 00b_prepare_raw_data.R
+  s01:  "results/01_traits"              # 01_prepare_traits.R
+  s02:  "results/02_normalization"       # 02_normalize_lipids.R
+  s02b: "results/02b_lipids"            # 02b_prepare_lipids.R
+  s03:  "results/03_consensus_wgcna"    # 03_run_consensus_wgcna.R
+  s04:  "results/04_module_membership"  # 04_module_membership.R
+  s04b: "results/04b_annotations"       # 04b_annotate_lipids.R
+  s05:  "results/05_module_trait_cor"   # 05_module_trait_correlations.R
+  s06:  "results/06_module_trait_plots" # 06_plot_module_trait_timepoints.R
+  s06b: "results/06b_outcome_plots"     # 06b (future)
+  s07:  "results/07_differential"       # 07_differential_lipids.R
+  s08:  "results/08_lipid_plots"         # 08_lipid_interest_plots.R
+  s09:  "results/09_plsda"             # 09_plsda_permutation.R
+  s10:  "results/10_sensitivity"        # 10_sensitivity_analyses.R
+
+# ── Normalization settings ────────────────────────────────
+normalization:
+  run_from_raw:     true
+  method_sample:    "median"      # MetaboAnalystR: MedianNorm
+  method_transform: "log10"       # MetaboAnalystR: LogNorm
+  method_scaling:   "pareto"      # MetaboAnalystR: ParetoNorm
+
+# ── WGCNA parameters ─────────────────────────────────────
+wgcna:
+  soft_power:       14
+  network_type:     "signed"
+  cor_type:         "bicor"
+  max_block_size:   3000
+  deep_split:       4
+  min_module_size:  5
+  merge_cut_height: 0.10
+  max_p_outliers:   0.10
+  timepoint_labels:
+    - "10-16 weeks"
+    - "36-38 weeks"
+    - "Postpartum"
+
+# ── Module-trait correlation ──────────────────────────────
+# method: "pearson" or "spearman"
+# heatmap_significance: "raw" (p<raw_p_cutoff) or "fdr" (q<fdr_cutoff)
+module_trait:
+  method: "spearman"
+  heatmap_significance: "raw"   # raw or fdr
+  raw_p_cutoff: 0.05
+  fdr_cutoff:   0.10
+  fdr_method:   "BH"
+  fdr_scope:    "family"        # family or global
+
+  # Traits shown in Figure 2 heatmap (primary manuscript figure)
+  primary_figure2_traits:
+    - "apo"
+    - "apo_hdp"
+    - "apo_gdm"
+    - "apo_other"
+    - "ppwr_e"
+    - "ppwr"
+
+  # FDR families for family-wise correction
+  fdr_families:
+    Primary_APO:
+      - "apo"
+      - "apo_hdp"
+      - "apo_gdm"
+      - "apo_other"
+    Primary_PPWR:
+      - "ppwr_e"
+      - "ppwr"
+    Secondary_weight_anthropometry:
+      - "weight_base"
+      - "weight_wk26"
+      - "weight_wk36"
+      - "weight_mth3"
+      - "weight_mth6"
+      - "bmi"
+      - "bmi_base"
+      - "bmi_wk26"
+      - "bmi_wk36"
+      - "bmi_mth3"
+      - "bmi_mth6"
+      - "gwg"
+      - "egwg"
+
+# ── Differential lipid analysis ──────────────────────────
+# Outcomes: only apo and ppwr_e tested
+# apply_fdr: true  → BH correction, threshold = fdr_cutoff
+# apply_fdr: false → raw p-values only, threshold = raw_p_cutoff
+differential:
+  outcomes:
+    - "apo"
+    - "ppwr_e"
+  test:          "wilcoxon"   # wilcoxon or t_test
+  apply_fdr:     true         # true or false
+  fdr_method:    "BH"
+  fdr_cutoff:    0.05         # q-value threshold when apply_fdr: true
+  raw_p_cutoff:  0.05         # p-value threshold when apply_fdr: false
+  top_n_labels:  10           # max lipids labelled on volcano plot
+
+# ── Covariates (for sensitivity analyses) ─────────────────
+covariates:
+  - "age"
+  - "bmi_base"
+  - "race_eth_new"
+  - "group"
+
+# ── FDR (global fallback) ─────────────────────────────────
+fdr:
+  alpha:  0.05
+  method: "BH"
+
+# ── PLS-DA ───────────────────────────────────────────────
+plsda:
+  ncomp:      2
+  folds:      5
+  nrepeat:    100
+  validation: "Mfold"

@@ -1,0 +1,633 @@
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+--- Trying: pcaMethods
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+Installing package(s) 'pcaMethods'
+trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/pcaMethods_1.98.0.tar.gz'
+Content type 'application/gzip' length 1047060 bytes (1022 KB)
+==================================================
+downloaded 1022 KB
+
+* installing *source* package ‘pcaMethods’ ...
+** package ‘pcaMethods’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+using SDK: ‘’
+clang++ -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/include" -DNDEBUG  -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include' -D_FORTIFY_SOURCE=2 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -I/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include    -fPIC  -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:30:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/r/headers.h:67:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/platform/compiler.h:32:2: error: "The C++ compilation standard is too old: use C++11 or newer."
+#error "The C++ compilation standard is too old: use C++11 or newer."
+ ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:75:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat.h:33:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:878:26: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+        template<typename... Args>
+                         ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:882:9: error: expected member name or ';' after declaration specifiers
+        { static_assert(sizeof...(args) == N, "Number of args must be N"); }
+        ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: 'm_formatters' is a private member of 'tinyformat::FormatList'
+            : FormatList(&m_formatterStore[0], N),
+                          ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: use of undeclared identifier 'm_formatterStore'; did you mean 'm_formatters'?
+            : FormatList(&m_formatterStore[0], N),
+                          ^~~~~~~~~~~~~~~~
+                          m_formatters
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:862:34: note: 'm_formatters' declared here
+        const detail::FormatArg* m_formatters;
+                                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:30: error: expected '('
+            m_formatterStore { FormatArg(args)... }
+                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected ';' after expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+                                              ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:32: error: expression contains unexpanded parameter pack 'args'
+            m_formatterStore { FormatArg(args)... }
+                               ^         ~~~~
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:927:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:963:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:971:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:980:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:986:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:131:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:187:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:188:46: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void warning(const char* fmt, Args&&... args ) {
+                                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:192:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:193:49: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void NORET stop(const char* fmt, Args&&... args) {
+                                                ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(not_compatible, "Not compatible" )            // #nocov end
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(index_out_of_bounds, "Index is out of bounds")
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:134:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:10: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+    ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:28: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                       ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:32: error: use of undeclared identifier 'callback'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                               ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:49: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                           ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:67: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                              ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:70: error: expected expression
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                                     ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:46:14: error: use of undeclared identifier 'callback'
+    return (*callback)();
+             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:1: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:13: error: redefinition of 'unwindProtect' as different kind of symbol
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:54:13: note: previous definition is here
+inline SEXP unwindProtect(SEXP (*callback)(void* data), void* data) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:32: error: no member named 'function' in namespace 'std'
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                          ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:50: error: expected '(' for function-style cast or type construction
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                             ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:53: error: use of undeclared identifier 'callback'; did you mean 'calloc'?
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                                    ^~~~~~~~
+                                                    calloc
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:46:7: note: 'calloc' declared here
+void *calloc(size_t __count, size_t __size) __result_use_check __alloc_size(1,2) _MALLOC_TYPED(malloc_type_calloc, 2);
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+15 warnings and 20 errors generated.
+make: *** [/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/etc/Makeconf:204: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘pcaMethods’
+* removing ‘/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/pcaMethods’
+WARNING: simpleWarning in install.packages(...): installation of package ‘pcaMethods’ had non-zero exit status
+
+Installed: FALSE
+--- Trying: fgsea
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+Installing package(s) 'fgsea'
+trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/fgsea_1.32.4.tar.gz'
+Content type 'application/gzip' length 4981571 bytes (4.8 MB)
+==================================================
+downloaded 4.8 MB
+
+* installing *source* package ‘fgsea’ ...
+** package ‘fgsea’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+using SDK: ‘’
+clang++ -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/include" -DNDEBUG  -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include' -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include' -D_FORTIFY_SOURCE=2 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -I/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include    -fPIC  -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from RcppExports.cpp:4:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:30:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/r/headers.h:67:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/platform/compiler.h:32:2: error: "The C++ compilation standard is too old: use C++11 or newer."
+#error "The C++ compilation standard is too old: use C++11 or newer."
+ ^
+In file included from RcppExports.cpp:4:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:75:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat.h:33:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:878:26: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+        template<typename... Args>
+                         ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:882:9: error: expected member name or ';' after declaration specifiers
+        { static_assert(sizeof...(args) == N, "Number of args must be N"); }
+        ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: 'm_formatters' is a private member of 'tinyformat::FormatList'
+            : FormatList(&m_formatterStore[0], N),
+                          ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: use of undeclared identifier 'm_formatterStore'; did you mean 'm_formatters'?
+            : FormatList(&m_formatterStore[0], N),
+                          ^~~~~~~~~~~~~~~~
+                          m_formatters
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:862:34: note: 'm_formatters' declared here
+        const detail::FormatArg* m_formatters;
+                                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:30: error: expected '('
+            m_formatterStore { FormatArg(args)... }
+                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected ';' after expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+                                              ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:32: error: expression contains unexpanded parameter pack 'args'
+            m_formatterStore { FormatArg(args)... }
+                               ^         ~~~~
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:927:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:963:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:971:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:980:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:986:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+In file included from RcppExports.cpp:4:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:131:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:187:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:188:46: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void warning(const char* fmt, Args&&... args ) {
+                                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:192:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:193:49: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void NORET stop(const char* fmt, Args&&... args) {
+                                                ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(not_compatible, "Not compatible" )            // #nocov end
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(index_out_of_bounds, "Index is out of bounds")
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+In file included from RcppExports.cpp:4:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:134:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:10: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+    ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:28: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                       ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:32: error: use of undeclared identifier 'callback'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                               ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:49: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                           ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:67: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                              ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:70: error: expected expression
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                                     ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:46:14: error: use of undeclared identifier 'callback'
+    return (*callback)();
+             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:1: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:13: error: redefinition of 'unwindProtect' as different kind of symbol
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:54:13: note: previous definition is here
+inline SEXP unwindProtect(SEXP (*callback)(void* data), void* data) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:32: error: no member named 'function' in namespace 'std'
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                          ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:50: error: expected '(' for function-style cast or type construction
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                             ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:53: error: use of undeclared identifier 'callback'; did you mean 'calloc'?
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                                    ^~~~~~~~
+                                                    calloc
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:46:7: note: 'calloc' declared here
+void *calloc(size_t __count, size_t __size) __result_use_check __alloc_size(1,2) _MALLOC_TYPED(malloc_type_calloc, 2);
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+15 warnings and 20 errors generated.
+make: *** [/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/etc/Makeconf:204: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘fgsea’
+* removing ‘/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/fgsea’
+WARNING: simpleWarning in install.packages(...): installation of package ‘fgsea’ had non-zero exit status
+
+Installed: FALSE
+--- Trying: RBGL
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+Installing package(s) 'RBGL'
+trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/RBGL_1.82.0.tar.gz'
+Content type 'application/gzip' length 4029367 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+* installing *source* package ‘RBGL’ ...
+** package ‘RBGL’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+using SDK: ‘’
+clang++ -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/include" -DNDEBUG  -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include' -D_FORTIFY_SOURCE=2 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -I/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include    -fPIC  -O2  -c bbc.cpp -o bbc.o
+In file included from bbc.cpp:1:
+In file included from ./RBGL.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/property_map.hpp:598:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/vector_property_map.hpp:14:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/shared_ptr.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:21:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/bad_weak_ptr.hpp:36:18: error: exception specification of overriding function is more lax than base version
+    char const * what() const noexcept override
+                 ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/exception:159:23: note: overridden virtual function is here
+  virtual const char* what() const _NOEXCEPT;
+                      ^
+In file included from bbc.cpp:1:
+In file included from ./RBGL.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/property_map.hpp:598:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/vector_property_map.hpp:14:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/shared_ptr.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:21:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/bad_weak_ptr.hpp:36:30: error: expected ';' at end of declaration list
+    char const * what() const noexcept override
+                             ^
+                             ;
+In file included from bbc.cpp:1:
+In file included from ./RBGL.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/property_map.hpp:598:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/vector_property_map.hpp:14:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/shared_ptr.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:22:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_base.hpp:26:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_base_std_atomic.hpp:36:64: error: expected function body after function declarator
+inline void atomic_increment( std::atomic_int_least32_t * pw ) noexcept
+                                                               ^
+In file included from bbc.cpp:1:
+In file included from ./RBGL.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/property_map.hpp:598:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/vector_property_map.hpp:14:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/shared_ptr.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:23:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:40:53: error: expected ';' at end of declaration
+template<class D> D * get_local_deleter( D * /*p*/ ) noexcept
+                                                    ^
+                                                    ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:40:54: error: a type specifier is required for all declarations
+template<class D> D * get_local_deleter( D * /*p*/ ) noexcept
+                                                     ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:40:62: error: expected ';' after top level declarator
+template<class D> D * get_local_deleter( D * /*p*/ ) noexcept
+                                                             ^
+                                                             ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:49:72: error: expected class name
+template<class X> class BOOST_SYMBOL_VISIBLE sp_counted_impl_p: public sp_counted_base
+                                                                       ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:66:19: error: expected ';' at end of declaration list
+    void dispose() noexcept override
+                  ^
+                  ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:87:82: error: expected class name
+template<class P, class D> class BOOST_SYMBOL_VISIBLE sp_counted_impl_pd: public sp_counted_base
+                                                                                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:111:19: error: expected ';' at end of declaration list
+    void dispose() noexcept override
+                  ^
+                  ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:103:68: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    sp_counted_impl_pd( P p, D & d ): ptr( p ), del( static_cast< D&& >( d ) )
+                                                                   ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:132:92: error: expected class name
+template<class P, class D, class A> class BOOST_SYMBOL_VISIBLE sp_counted_impl_pda: public sp_counted_base
+                                                                                           ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:157:19: error: expected ';' at end of declaration list
+    void dispose() noexcept override
+                  ^
+                  ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/sp_counted_impl.hpp:149:72: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    sp_counted_impl_pda( P p, D & d, A a ): p_( p ), d_( static_cast< D&& >( d ) ), a_( a )
+                                                                       ^
+In file included from bbc.cpp:1:
+In file included from ./RBGL.hpp:17:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/property_map.hpp:598:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/property_map/vector_property_map.hpp:14:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/shared_ptr.hpp:17:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:92:54: error: expected ';' at end of declaration
+template<class T> std::size_t sp_hash_pointer( T* p ) noexcept
+                                                     ^
+                                                     ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:92:55: error: a type specifier is required for all declarations
+template<class T> std::size_t sp_hash_pointer( T* p ) noexcept
+                                                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:92:63: error: expected ';' after top level declarator
+template<class T> std::size_t sp_hash_pointer( T* p ) noexcept
+                                                              ^
+                                                              ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:106:5: error: unknown type name 'sp_counted_base'
+    sp_counted_base * pi_;
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:112:5: error: unknown type name 'constexpr'
+    constexpr shared_count() noexcept: pi_(0)
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:112:15: error: constructor cannot have a return type
+    constexpr shared_count() noexcept: pi_(0)
+              ^~~~~~~~~~~~
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/BH/include/boost/smart_ptr/detail/shared_count.hpp:112:29: error: expected ';' at end of declaration list
+    constexpr shared_count() noexcept: pi_(0)
+                            ^
+                            ;
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+2 warnings and 20 errors generated.
+make: *** [/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/etc/Makeconf:204: bbc.o] Error 1
+ERROR: compilation failed for package ‘RBGL’
+* removing ‘/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/RBGL’
+WARNING: simpleWarning in install.packages(...): installation of package ‘RBGL’ had non-zero exit status
+
+Installed: FALSE
+--- Trying: crmn
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+Installing package(s) 'crmn'
+also installing the dependency ‘pcaMethods’
+
+trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/pcaMethods_1.98.0.tar.gz'
+Content type 'application/gzip' length 1047060 bytes (1022 KB)
+==================================================
+downloaded 1022 KB
+
+trying URL 'https://cloud.r-project.org/src/contrib/crmn_0.0.21.tar.gz'
+Content type 'application/x-gzip' length 236397 bytes (230 KB)
+==================================================
+downloaded 230 KB
+
+* installing *source* package ‘pcaMethods’ ...
+** package ‘pcaMethods’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+using SDK: ‘’
+clang++ -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/include" -DNDEBUG  -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include' -D_FORTIFY_SOURCE=2 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -I/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include    -fPIC  -O2  -c RcppExports.cpp -o RcppExports.o
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:30:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/r/headers.h:67:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/platform/compiler.h:32:2: error: "The C++ compilation standard is too old: use C++11 or newer."
+#error "The C++ compilation standard is too old: use C++11 or newer."
+ ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:75:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat.h:33:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:878:26: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+        template<typename... Args>
+                         ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:882:9: error: expected member name or ';' after declaration specifiers
+        { static_assert(sizeof...(args) == N, "Number of args must be N"); }
+        ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: 'm_formatters' is a private member of 'tinyformat::FormatList'
+            : FormatList(&m_formatterStore[0], N),
+                          ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:880:27: error: use of undeclared identifier 'm_formatterStore'; did you mean 'm_formatters'?
+            : FormatList(&m_formatterStore[0], N),
+                          ^~~~~~~~~~~~~~~~
+                          m_formatters
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:862:34: note: 'm_formatters' declared here
+        const detail::FormatArg* m_formatters;
+                                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:30: error: expected '('
+            m_formatterStore { FormatArg(args)... }
+                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected ';' after expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+                                              ;
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:32: error: expression contains unexpanded parameter pack 'args'
+            m_formatterStore { FormatArg(args)... }
+                               ^         ~~~~
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:881:47: error: expected expression
+            m_formatterStore { FormatArg(args)... }
+                                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:927:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:963:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:971:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:980:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/utils/tinyformat/tinyformat.h:986:18: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+template<typename... Args>
+                 ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:131:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:187:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:188:46: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void warning(const char* fmt, Args&&... args ) {
+                                             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:192:23: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    template <typename... Args>
+                      ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:193:49: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+    inline void NORET stop(const char* fmt, Args&&... args) {
+                                                ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(not_compatible, "Not compatible" )            // #nocov end
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:241:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: variadic templates are a C++11 extension [-Wc++11-extensions]
+    RCPP_ADVANCED_EXCEPTION_CLASS(index_out_of_bounds, "Index is out of bounds")
+    ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:178:31: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            template <typename... Args>                                               \
+                              ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:242:5: warning: rvalue references are a C++11 extension [-Wc++11-extensions]
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/exceptions.h:179:45: note: expanded from macro 'RCPP_ADVANCED_EXCEPTION_CLASS'
+            __CLASS__( const char* fmt, Args&&... args ) throw() :                    \
+                                            ^
+In file included from RcppExports.cpp:1:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp.h:27:
+In file included from /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/RcppCommon.h:134:
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:10: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+    ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:28: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                       ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:32: error: use of undeclared identifier 'callback'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                               ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:49: error: no member named 'function' in namespace 'std'
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                           ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:67: error: expected '(' for function-style cast or type construction
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                              ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:45:70: error: expected expression
+    std::function<SEXP(void)>* callback = (std::function<SEXP(void)>*) data;
+                                                                     ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:46:14: error: use of undeclared identifier 'callback'
+    return (*callback)();
+             ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:1: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:13: error: redefinition of 'unwindProtect' as different kind of symbol
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:54:13: note: previous definition is here
+inline SEXP unwindProtect(SEXP (*callback)(void* data), void* data) {
+            ^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:32: error: no member named 'function' in namespace 'std'
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                          ~~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:50: error: expected '(' for function-style cast or type construction
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                             ~~~~^
+/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include/Rcpp/unwindProtect.h:73:53: error: use of undeclared identifier 'callback'; did you mean 'calloc'?
+inline SEXP unwindProtect(std::function<SEXP(void)> callback) {
+                                                    ^~~~~~~~
+                                                    calloc
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/malloc/_malloc.h:46:7: note: 'calloc' declared here
+void *calloc(size_t __count, size_t __size) __result_use_check __alloc_size(1,2) _MALLOC_TYPED(malloc_type_calloc, 2);
+      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+15 warnings and 20 errors generated.
+make: *** [/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/etc/Makeconf:204: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘pcaMethods’
+* removing ‘/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/pcaMethods’
+WARNING: simpleWarning in install.packages(...): installation of package ‘pcaMethods’ had non-zero exit status
+
+Installed: FALSE

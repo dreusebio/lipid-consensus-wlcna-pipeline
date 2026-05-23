@@ -1,17 +1,24 @@
-# macOS
-.DS_Store
+# Data (patient data — never push)
+data/raw/
+data/processed/
 
-# R / RStudio
-.Rhistory
-.RData
-.Rproj.user/
-
-# Raw and processed data (never commit)
-data_raw/
-data_processed/
+# Results (generated outputs — never push)
 results/
 
-# Logs and temp files
-*.log
-*.tmp
+# MetaboAnalystR intermediate files (generated in working directory)
+*.qs
+raw_dataview.csv
+Rplots.pdf
+data_proc.qs
 
+# WGCNA TOM block files
+consensusTOM-block.*.RData
+
+# R session files
+.RData
+.Rhistory
+.DS_Store
+.Rproj.user/
+
+# pixi environment (auto-generated)
+.pixi/

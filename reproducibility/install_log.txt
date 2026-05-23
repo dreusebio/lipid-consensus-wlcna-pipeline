@@ -1,0 +1,87 @@
+✨ Pixi task (install-r-pkgs): Rscript install_r_packages.R
+Installing into: /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Installing Bioconductor packages individually...
+Already installed: Biobase
+Already installed: impute
+Already installed: pcaMethods
+Already installed: siggenes
+Already installed: fgsea
+Already installed: edgeR
+Already installed: BiocParallel
+Already installed: RBGL
+Already installed: WGCNA
+Already installed: ComplexHeatmap
+Already installed: limma
+Already installed: sva
+Already installed: preprocessCore
+Already installed: globaltest
+Already installed: genefilter
+Already installed: AnnotationDbi
+Already installed: annotate
+Already installed: multtest
+Already installed: Rgraphviz
+Installing crmn...
+trying URL 'https://cloud.r-project.org/src/contrib/crmn_0.0.21.tar.gz'
+Content type 'application/x-gzip' length 236397 bytes (230 KB)
+==================================================
+downloaded 230 KB
+
+* installing *source* package ‘crmn’ ...
+** package ‘crmn’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (crmn)
+
+The downloaded source packages are in
+	‘/private/var/folders/b4/zvj4h4js629cz8rz_1fgyfx80000gn/T/Rtmps87uWQ/downloaded_packages’
+Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+Installing MetaboAnalystR...
+Using GitHub PAT from the git credential store.
+Downloading GitHub repo xia-lab/MetaboAnalystR@HEAD
+
+── R CMD build ─────────────────────────────────────────────────────────────────
+* checking for file ‘/private/var/folders/b4/zvj4h4js629cz8rz_1fgyfx80000gn/T/Rtmps87uWQ/remotesd1dc4b4fb1ed/xia-lab-MetaboAnalystR-d18f5ee/DESCRIPTION’ ... OK
+* preparing ‘MetaboAnalystR’:
+* checking DESCRIPTION meta-information ... OK
+* cleaning src
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+WARNING: Removing directory ‘MetaboAnalystR/Meta’ which should only
+  occur in an installed package
+* building ‘MetaboAnalystR_4.3.0.tar.gz’
+
+* installing *source* package ‘MetaboAnalystR’ ...
+** using staged installation
+** libs
+using C++ compiler: ‘Apple clang version 15.0.0 (clang-1500.0.40.1)’
+using C++11
+using SDK: ‘’
+clang++ -std=c++14 -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/include" -DNDEBUG  -I'/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include' -D_FORTIFY_SOURCE=2 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -I/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include   -fopenmp -I"/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/Rcpp/include" -fPIC  -ftree-vectorize -fPIC -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/include -fdebug-prefix-map=/Users/runner/miniforge3/conda-bld/r-base-split_1773745748441/work=/usr/local/src/conda/r-base-4.4.3 -fdebug-prefix-map=/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default=/usr/local/src/conda-prefix   -c cpp/decorana.cpp -o cpp/decorana.o
+clang: error: unsupported option '-fopenmp'
+make: *** [/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/etc/Makeconf:204: cpp/decorana.o] Error 1
+ERROR: compilation failed for package ‘MetaboAnalystR’
+* removing ‘/Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline/reproducibility/.pixi/envs/default/lib/R/library/MetaboAnalystR’
+Warning message:
+In i.p(...) :
+  installation of package ‘/var/folders/b4/zvj4h4js629cz8rz_1fgyfx80000gn/T//Rtmps87uWQ/filed1dc752c27/MetaboAnalystR_4.3.0.tar.gz’ had non-zero exit status
+All done. Now run: pixi run session-info
