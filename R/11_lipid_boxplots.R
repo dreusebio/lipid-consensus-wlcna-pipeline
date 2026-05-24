@@ -1,4 +1,4 @@
-# R/08_lipid_interest_plots.R
+# R/11_lipid_boxplots.R
 # -------------------------------------------------------
 # Boxplots of individual lipids of interest across 3 timepoints
 # for APO and PPWR_E outcomes
@@ -18,7 +18,7 @@ source("R/00_load_packages.R")
 source("R/00_figure_theme.R")
 cfg <- yaml::read_yaml("config/config.yml")
 
-out <- file.path(cfg$output$s08)
+out <- file.path(cfg$output$s11)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 # ── Layout toggle ─────────────────────────────────────────
@@ -163,6 +163,6 @@ for (outcome in names(lipids_of_interest)) {
   }
 }
 
-message("\nScript 08 complete → ", out)
+message("\nScript 11 complete → ", out)
 message("Layout: ", plot_layout,
         " | To change: set plot_layout <- 'vertical' or 'horizontal'")

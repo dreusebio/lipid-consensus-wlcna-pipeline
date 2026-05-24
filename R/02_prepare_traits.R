@@ -1,11 +1,11 @@
-# R/01_prepare_traits.R
+# R/02_prepare_traits.R
 # -------------------------------------------------------
 # Prepare and clean GROWELL trait data
 # Outputs → results/01_traits/
 # -------------------------------------------------------
 source("R/00_load_packages.R")
 cfg <- yaml::read_yaml("config/config.yml")
-out <- cfg$output$s01
+out <- cfg$output$s02
 dir.create(out,               showWarnings = FALSE, recursive = TRUE)
 dir.create(cfg$output$processed, showWarnings = FALSE, recursive = TRUE)
 
@@ -148,4 +148,4 @@ write.xlsx(demographic_data,
 write.csv(traits_clean,
           file.path(out, "traits_cleaned.csv"), row.names = TRUE)
 
-message("Script 01 complete → ", out)
+message("Script 02 complete → ", out)

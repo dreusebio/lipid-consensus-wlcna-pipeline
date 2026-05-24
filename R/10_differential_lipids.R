@@ -1,4 +1,4 @@
-# R/07_differential_lipids.R
+# R/10_differential_lipids.R
 # -------------------------------------------------------
 # Differential lipid analysis: APO and PPWR_E
 #
@@ -32,7 +32,7 @@ subfolder <- if (apply_fdr) {
 } else {
   paste0("raw_p", gsub("\\.", "", sprintf("%.2f", raw_cutoff)))
 }
-out <- file.path(cfg$output$s07, subfolder)
+out <- file.path(cfg$output$s10, subfolder)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 message("Outcomes: ", paste(outcomes, collapse = ", "))
@@ -239,6 +239,6 @@ summary_rows <- lapply(names(diff_results_all), function(key) {
 write.xlsx(summary_rows, file.path(out, "differential_summary.xlsx"))
 print(summary_rows)
 
-message("\nScript 07 complete → ", out)
+message("\nScript 10 complete → ", out)
 message("Mode: ", subfolder)
 message("To switch: change differential.apply_fdr in config/config.yml")

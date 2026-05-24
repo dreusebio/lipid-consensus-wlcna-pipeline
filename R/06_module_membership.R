@@ -1,4 +1,4 @@
-# R/04_module_membership.R
+# R/06_module_membership.R
 # -------------------------------------------------------
 # kME computation and hub lipid identification
 # Outputs → results/04_module_membership/<run_tag>/
@@ -10,7 +10,7 @@ wgcna_run_tag <- trimws(readLines(
   file.path(cfg$output$processed, "current_wgcna_run_tag.txt")))
 message("WGCNA run: ", wgcna_run_tag)
 
-out <- file.path(cfg$output$s04, wgcna_run_tag)
+out <- file.path(cfg$output$s06, wgcna_run_tag)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 multiExpr_ID     <- readRDS(file.path(cfg$output$processed, "multiExpr_ID.rds"))
@@ -84,4 +84,4 @@ for (tp in tp_labels) {
   plot_hub_lipids(hubs, paste0(title_map[[tp]], " [", wgcna_run_tag, "]"),
                   file.path(out, paste0("hub_lipids_", tp, ".pdf")))
 }
-message("Script 04 complete → ", out)
+message("Script 06 complete → ", out)

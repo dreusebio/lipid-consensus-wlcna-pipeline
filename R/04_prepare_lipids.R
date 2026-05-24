@@ -9,8 +9,8 @@ source("R/00_load_packages.R")
 cfg <- yaml::read_yaml("config/config.yml")
 
 # Use a 02b-specific output folder for transposed lipid files and logs
-out <- if (!is.null(cfg$output$s02b)) {
-  cfg$output$s02b
+out <- if (!is.null(cfg$output$s04)) {
+  cfg$output$s04
 } else {
   file.path(dirname(cfg$output$s02), "02b_lipids")
 }
@@ -262,7 +262,7 @@ saveRDS(
   file.path(cfg$output$processed, "lipid_status_labels.rds")
 )
 
-message("Script 02 complete → ", out)
+message("Script 04 complete → ", out)
 message(
   "  Sets: ", exprSize_ID$nSets,
   " | Samples: ", paste(exprSize_ID$nSamples, collapse = " / "),

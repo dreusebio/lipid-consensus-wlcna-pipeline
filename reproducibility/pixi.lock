@@ -193,6 +193,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-future.apply-1.20.2-r44hc72bb7e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-generics-0.1.4-r44hc72bb7e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/r-gert-2.3.1-r44hc9f24b7_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/r-ggnewscale-0.5.2-r44hc72bb7e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-ggplot2-4.0.3-r44h785f33e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-gh-1.5.0-r44hc72bb7e_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-gitcreds-0.1.2-r44hc72bb7e_4.conda
@@ -2646,6 +2647,16 @@ packages:
   license_family: MIT
   size: 278147
   timestamp: 1768194343876
+- conda: https://conda.anaconda.org/conda-forge/noarch/r-ggnewscale-0.5.2-r44hc72bb7e_1.conda
+  sha256: 12646562447643f88bfe25c78cd9c77654d91c5e2cbd36ab04b9f95d40343843
+  md5: 5fa3627b9f6b88ad10fd3c581f4a9783
+  depends:
+  - r-base >=4.4,<4.5.0a0
+  - r-ggplot2 >=3.0.0
+  license: GPL-3.0-only
+  license_family: GPL3
+  size: 360727
+  timestamp: 1757904120735
 - conda: https://conda.anaconda.org/conda-forge/noarch/r-ggplot2-4.0.3-r44h785f33e_0.conda
   sha256: 56e4cf8d4d759af520c372ce229cc0e732377c641682cb0eaae620e15856116f
   md5: 57e8127cadd9933ddbd38fdf1d9d52e1

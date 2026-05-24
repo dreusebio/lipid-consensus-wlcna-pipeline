@@ -1,4 +1,4 @@
-# R/03_run_consensus_wgcna.R
+# R/05_run_consensus_wgcna.R
 # -------------------------------------------------------
 # Soft power selection and consensus WLCNA
 # Outputs → results/03_consensus_wgcna/
@@ -12,7 +12,7 @@ wgcna_run_tag <- sprintf("power%d_split%d_merge%03d",
   as.integer(cfg$wgcna$merge_cut_height * 100))
 message("WGCNA run tag: ", wgcna_run_tag)
 
-out <- file.path(cfg$output$s03, wgcna_run_tag)
+out <- file.path(cfg$output$s05, wgcna_run_tag)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 dir.create(cfg$output$processed, showWarnings = FALSE, recursive = TRUE)
 
@@ -124,4 +124,4 @@ saveRDS(consensusMEs_ID, file.path(cfg$output$processed,
 writeLines(wgcna_run_tag,
   file.path(cfg$output$processed, "current_wgcna_run_tag.txt"))
 
-message("Script 03 complete → ", out)
+message("Script 05 complete → ", out)

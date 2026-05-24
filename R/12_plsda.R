@@ -1,4 +1,4 @@
-# R/09_plsda_permutation.R
+# R/12_plsda.R
 # -------------------------------------------------------
 # PLS-DA with permutation testing (reviewer request)
 # Outputs → results/09_plsda/
@@ -6,7 +6,7 @@
 source("R/00_load_packages.R")
 source("R/00_figure_theme.R")
 cfg <- yaml::read_yaml("config/config.yml")
-out <- cfg$output$s09
+out <- cfg$output$s12
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 multiExpr_ID  <- readRDS(file.path(cfg$output$processed, "multiExpr_ID.rds"))
@@ -71,4 +71,4 @@ summary_rows <- lapply(names(plsda_results), function(key) {
 }) %>% bind_rows()
 write.xlsx(summary_rows, file.path(out, "plsda_summary.xlsx"))
 print(summary_rows)
-message("Script 09 complete → ", out)
+message("Script 12 complete → ", out)

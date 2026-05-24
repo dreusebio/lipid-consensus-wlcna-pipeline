@@ -60,7 +60,7 @@ suppressMessages(suppressWarnings(library(MetaboAnalystR)))
 .patch_init()
 
 cfg <- yaml::read_yaml("config/config.yml")
-out <- cfg$output$s02
+out <- cfg$output$s03
 dir.create(out,                            showWarnings = FALSE, recursive = TRUE)
 dir.create(cfg$output$processed,           showWarnings = FALSE, recursive = TRUE)
 dir.create("data/raw/lipids_normalized",   showWarnings = FALSE, recursive = TRUE)
@@ -296,4 +296,4 @@ write.xlsx(qc_summary,
 
 message("\nNormalization QC summary:")
 print(qc_summary)
-message("\nScript 02a complete → ", out)
+message("\nScript 03 complete → ", out)

@@ -1,29 +1,72 @@
+#!/bin/bash
+# -------------------------------------------------------
+# run_pipeline.sh
+# Full GROWELL lipidomics pipeline execution
+# Run from repo root:  bash run_pipeline.sh
+# -------------------------------------------------------
+
+set -e  # stop on first error
 cd /Users/gekuodza/Documents/GitHub/lipid-consensus-wlcna-pipeline
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/00_load_packages.R
+PIXI="pixi run --manifest-path reproducibility/pixi.toml Rscript"
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/01_prepare_traits.R
+echo "======================================================"
+echo " GROWELL Lipidomics Pipeline"
+echo "======================================================"
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/00b_prepare_raw_data.R
+# ── Infrastructure (sourced by other scripts, not run directly) ──
+# 00_load_packages.R
+# 00_figure_theme.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/02_normalize_lipids.R
+# ── Data preparation ──────────────────────────────────────
+echo "[01/13] Preparing raw lipidomics data..."
+$PIXI R/01_prepare_raw_data.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/02b_prepare_lipids.R
+echo "[02/13] Preparing trait data..."
+$PIXI R/02_prepare_traits.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/03_run_consensus_wgcna.R
+echo "[03/13] Normalizing lipids (MetaboAnalystR)..."
+$PIXI R/03_normalize_lipids.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/04_module_membership.R
+echo "[04/13] Building multiExpr object for WGCNA..."
+$PIXI R/04_prepare_lipids.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/04b_annotate_lipids.R
+# ── Network analysis ──────────────────────────────────────
+echo "[05/13] Running consensus WLCNA..."
+$PIXI R/05_run_consensus_wgcna.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/05_module_trait_correlations.R
+echo "[06/13] Computing module membership (kME)..."
+$PIXI R/06_module_membership.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/06_plot_module_trait_timepoints.R
+# ── Annotation (must run before 08 to generate module order) ──
+echo "[07/13] Annotating lipids (RefMet/PubChem)..."
+$PIXI R/07_annotate_lipids.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/07_differential_lipids.R
+# ── Statistical analyses ──────────────────────────────────
+echo "[08/13] Module-trait correlations..."
+$PIXI R/08_module_trait_correlations.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/08_fdr_correction.R
+echo "[09/13] Module eigennode plots..."
+$PIXI R/09_module_eigennode_plots.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/09_plsda_permutation.R
+echo "[10/13] Differential lipid analysis (APO + PPWR)..."
+$PIXI R/10_differential_lipids.R
 
-pixi run --manifest-path reproducibility/pixi.toml Rscript R/10_sensitivity_analyses.R
+echo "[11/13] Lipid boxplots (selected lipids of interest)..."
+$PIXI R/11_lipid_boxplots.R
+
+echo "[12/13] PLS-DA permutation testing..."
+$PIXI R/12_plsda.R
+
+echo "[13/13] Sensitivity analyses..."
+$PIXI R/13_sensitivity_analyses.R
+
+# ── Figure assembly ───────────────────────────────────────
+echo "[Final] Assembling publication figures..."
+$PIXI R/99_assemble_figures.R
+
+echo "======================================================"
+echo " Pipeline complete!"
+echo " Results: results/"
+echo " Figures: results/figures/final/"
+echo "======================================================"

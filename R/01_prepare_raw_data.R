@@ -1,4 +1,4 @@
-# R/00b_prepare_raw_data.R
+# R/01_prepare_raw_data.R
 # -------------------------------------------------------
 # Prepare raw lipidomics data from the core facility Excel file
 #
@@ -32,7 +32,7 @@ source("R/00_load_packages.R")
 library(openxlsx)
 
 cfg <- yaml::read_yaml("config/config.yml")
-out <- cfg$output$s00b
+out <- cfg$output$s01
 dir.create(out,                       showWarnings = FALSE, recursive = TRUE)
 dir.create("data/raw/lipids_raw",     showWarnings = FALSE, recursive = TRUE)
 dir.create("data/raw/lipids_normalized", showWarnings = FALSE, recursive = TRUE)
@@ -317,5 +317,5 @@ message("These should match rownames in your trait file.")
 message("Trait file example IDs: 92, 104, 114, 117, 120, 122, 129...")
 message("If they match, cross-referencing between lipid and trait data will work correctly.")
 
-message("\nScript 00b complete → ", out)
+message("\nScript 01 complete → ", out)
 message("Raw CSVs ready in data/raw/lipids_raw/ for 02a_normalize_lipids.R")

@@ -1,4 +1,4 @@
-# R/10_sensitivity_analyses.R
+# R/13_sensitivity_analyses.R
 # -------------------------------------------------------
 # Sensitivity analyses (reviewer request)
 # Outputs → results/10_sensitivity/
@@ -17,7 +17,7 @@ method         <- analysis_parts[2]
 rds_tag        <- paste0(wgcna_run_tag, "_", method)
 message("WGCNA run: ", wgcna_run_tag, " | Method: ", method)
 
-out <- file.path(cfg$output$s10, wgcna_run_tag, method)
+out <- file.path(cfg$output$s13, wgcna_run_tag, method)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 consensusMEs_ID      <- readRDS(file.path(cfg$output$processed, paste0("consensusMEs_ID_", wgcna_run_tag, ".rds")))
@@ -139,4 +139,4 @@ consistency %>%
   theme_bw(base_size=11) + theme(panel.grid=element_blank()) %>% print()
 dev.off()
 
-message("Script 10 complete → ", out)
+message("Script 13 complete → ", out)

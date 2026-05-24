@@ -1,4 +1,4 @@
-# R/06_plot_module_trait_timepoints.R
+# R/09_module_eigennode_plots.R
 # -------------------------------------------------------
 # Module eigennode vs trait plots across 3 timepoints
 # Figure 3 panels A-D → results/figures/panels/fig3/
@@ -23,7 +23,7 @@ method         <- analysis_parts[2]
 rds_tag        <- paste0(wgcna_run_tag, "_", method)
 message("WGCNA run: ", wgcna_run_tag, " | Method: ", method)
 
-out <- file.path(cfg$output$s06, wgcna_run_tag, method)
+out <- file.path(cfg$output$s09, wgcna_run_tag, method)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 # ── Layout toggle ─────────────────────────────────────────
@@ -248,7 +248,7 @@ for (panel_id in names(fig3_panels)) {
           spec$module, " vs ", spec$trait)
 }
 
-message("\nScript 06 complete → ", out)
+message("\nScript 09 complete → ", out)
 message("Layout: ", plot_layout, " | To change: set plot_layout <- 'vertical' or 'horizontal'")
 message("Figure 3 panels saved to results/figures/panels/fig3/")
 message("IMPORTANT: Update fig3_panels in this script with your key modules")
