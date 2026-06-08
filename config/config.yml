@@ -153,9 +153,9 @@ differential:
     - "apo"
     - "ppwr_e"
   test:          "wilcoxon"
-  apply_fdr:     true          # ← true or false
+  apply_fdr:     false          # ← true or false
   fdr_method:    "BH"
-  fdr_cutoff:    0.05
+  fdr_cutoff:    0.1
   raw_p_cutoff:  0.05
   top_n_labels:  10
 
@@ -172,11 +172,39 @@ fdr:
   method: "BH"
 
 # ── PLS-DA ───────────────────────────────────────────────
+
 plsda:
-  ncomp:      2
-  folds:      5
-  nrepeat:    100
-  validation: "Mfold"
+
+  # Components to request from ropls
+  ncomp: 2
+
+  # Outcomes to run — must match column names in lipid_status_labels.rds
+  # Comment out or set to [] to run ALL available outcomes
+  outcomes:
+    - ppwr_status
+    - apo_status
+    # - egwg_status     # uncomment to add back
+
+  # ropls-specific parameters
+  crossI:  7      # cross-validation folds (7 is ropls default; matches MetaboAnalyst)
+  permI:   999    # permutation iterations for pR2Y / pQ2
+
+  # Biplot: number of top-VIP loadings to display as arrows
+  n_top_loadings: 10
+
+  # Optional: custom group colours keyed to factor levels in status_labels
+  # If omitted, a built-in palette is used automatically.
+  # Keys must exactly match the level strings in your outcome columns.
+  # group_colours:
+  #   PPWR_NO:  "#4DAFCA"
+  #   PPWR_YES: "#E94D36"
+  #   APO_NO:   "#4DAF4A"
+  #   APO_YES:  "#E94D36"
+
+  # Legacy mixOmics parameters — kept for reference, no longer used
+  # folds:      5
+  # nrepeat:    100
+  # validation: "Mfold"
 
 # # config/config.yml
 # # -------------------------------------------------------

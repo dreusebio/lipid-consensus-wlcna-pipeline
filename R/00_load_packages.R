@@ -11,7 +11,7 @@ suppressPackageStartupMessages({
   library(grid); library(forcats)
   library(WGCNA); library(ComplexHeatmap); library(circlize)
   library(caret); library(randomForest); library(xgboost)
-  library(mixOmics); library(pROC)
+  library(mixOmics); library(pROC);library(ropls)
 })
 options(stringsAsFactors = FALSE, scipen = 999)
 allowWGCNAThreads(); enableWGCNAThreads()
