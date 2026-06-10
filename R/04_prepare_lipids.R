@@ -1,7 +1,7 @@
-# R/02_prepare_lipids.R
+# R/04_prepare_lipids.R
 # -------------------------------------------------------
 # Load normalized lipidomics, transpose, build multiExpr_ID
-# Outputs → results/02_lipids/
+# Outputs → results/04_lipids/
 # -------------------------------------------------------
 
 source("R/00_load_packages.R")

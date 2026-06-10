@@ -1,4 +1,4 @@
-# R/02a_normalize_lipids.R
+# R/03_normalize_lipids.R
 # -------------------------------------------------------
 # Normalize raw lipidomics using MetaboAnalystR
 # Follows EXACT R commands exported by MetaboAnalyst website:
@@ -15,7 +15,7 @@
 # Input: raw CSVs with samples in COLUMNS (our format from 00b)
 #   → script transposes to samples in ROWS before passing to MetaboAnalystR
 #
-# Outputs → results/02a_normalization/
+# Outputs → results/03_normalization/
 # -------------------------------------------------------
 
 source("R/00_load_packages.R")

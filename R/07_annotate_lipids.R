@@ -505,9 +505,9 @@ make_class_heatmap <- function(mat, title_str, legend_label,
     theme_growell() +
     theme(
       axis.text.x     = element_text(angle = 50, hjust = 1,
-                                     size  = FS_SMALL - 0.5, colour = "black"),
-      axis.text.y     = element_text(size = FS_SMALL, colour = "black"),
-      axis.title.y    = element_text(size = FS_BASE),
+                                     size  = FS_SMALL - 0.5, colour = "black", face  = "bold"),
+      axis.text.y     = element_text(size = FS_SMALL, colour = "black", face  = "bold"),
+      axis.title.y    = element_text(size = FS_BASE, colour = "black", face  = "bold"),
       axis.ticks      = element_blank(),
       legend.position = "right",
       panel.border    = element_blank(),
@@ -524,7 +524,7 @@ make_class_heatmap <- function(mat, title_str, legend_label,
     theme_void() +
     theme(
       axis.text.x  = element_blank(),
-      axis.title.x = element_text(size = FS_BASE, vjust = -0.5),
+      axis.title.x = element_text(size = FS_BASE, vjust = -0.5, face  = "bold"),
       plot.margin  = unit(c(2, 0, 0, 0), "pt")
     )
 
@@ -612,8 +612,14 @@ p_overview <- ggplot(lipid_overview,
        x = "Number of lipids", y = NULL) +
   theme_growell(grid = "y") +
   theme(legend.position = "right",
-        legend.text     = element_text(size = FS_SMALL),
-        axis.text.y     = element_text(size = FS_SMALL))
+      legend.text      = element_text(size = FS_SMALL,
+                                      face = "bold"),   # ADD THIS
+      legend.title     = element_text(size = FS_BASE,
+                                      face = "bold"),   # ADD THIS
+      axis.text.y      = element_text(size = FS_SMALL,
+                                      face = "bold"),   # ADD THIS
+      axis.text.x      = element_text(face = "bold"),   # ADD THIS
+      axis.title.x     = element_text(face = "bold"))   # ADD THIS
 
 # Save PDF (using pdf device with Helvetica — cairo_pdf may not be available)
 pdf(file.path(out, "annotated_lipid_overview.pdf"),

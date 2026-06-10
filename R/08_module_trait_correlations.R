@@ -70,9 +70,9 @@ LIPID_CLASS_COLORS <- c(
   "SM"          = "#2A9D8F",  # sphingomyelins
   "Cer"         = "#E9C46A",  # ceramides
   "FA"          = "#795548",  # fatty acyls
-  "Other"       = "#B56576",  # other lipid class; not grey
-  "Unknown"     = "#FFFFFF",  # unclassified
-  "Grey module" = "#808080"   # WGCNA grey module only
+  "Oth"       = "#FFFFFF",  # other lipid class; not grey
+  "Unknown"     = "#2a756cfb",  # unclassified
+  "Grey module" = "#874788fb"   # WGCNA grey module only
 )
 
 LIPID_CLASS_PRIORITY <- c(
@@ -84,7 +84,7 @@ LIPID_CLASS_PRIORITY <- c(
   "SM",
   "Cer",
   "FA",
-  "Other",
+  "Oth",
   "Unknown",
   "Grey module"
 )
@@ -111,8 +111,8 @@ simplify_lipid_class <- function(x) {
   out[grepl("^SM$|sphingomyelin", x_clean, ignore.case = TRUE)] <- "SM"
   out[grepl("^Cer$|ceramide", x_clean, ignore.case = TRUE)] <- "Cer"
   out[grepl("fatty-acyl|fatty acyl|fatty", x_clean, ignore.case = TRUE)] <- "FA"
-  out[grepl("mixed", x_clean, ignore.case = TRUE)] <- "Other"
-  out[grepl("other", x_clean, ignore.case = TRUE)] <- "Other"
+  out[grepl("mixed", x_clean, ignore.case = TRUE)] <- "Oth"
+  out[grepl("other", x_clean, ignore.case = TRUE)] <- "Oth"
   
   out
 }
@@ -460,6 +460,87 @@ apply_fdr <- function(p_mat, trait_family, method = "BH", scope = "family") {
   q_mat
 }
 
+# ── Module filter for Figure 2 ───────────────────────────
+# Keeps only modules that have at least one significant
+# association (p < cutoff OR q < cutoff) across ANY trait
+# in ANY of the three timepoints.
+# filter_mode: "nominal" | "fdr" | "none"
+
+filter_modules_for_figure2 <- function(module_order,
+                                       moduleTraitPvalue_ID,
+                                       moduleTraitQvalue_ID,
+                                       traits_use,
+                                       filter_mode,
+                                       cutoff_nominal,
+                                       cutoff_fdr) {
+
+  # ── Always remove the WGCNA grey module ──────────────────
+  # Grey = unassigned lipids; not a meaningful biological module
+  grey_idx <- tolower(gsub("^ME", "", module_order)) == "grey"
+  if (any(grey_idx)) {
+    message("  Removing WGCNA grey module from Figure 2 (unassigned lipids)")
+  }
+  module_order <- module_order[!grey_idx]
+
+  if (filter_mode == "none") {
+    message("  Module filter: none — showing all ", length(module_order), " modules (grey excluded)")
+    return(module_order)
+  }
+
+  # Build a single logical matrix: rows = modules, cols = timepoints
+  # TRUE means "this module has at least one significant trait at this timepoint"
+  n_sets <- length(moduleTraitPvalue_ID)
+
+  sig_any <- rep(FALSE, length(module_order))
+  names(sig_any) <- module_order
+
+  for (set in seq_len(n_sets)) {
+
+    if (filter_mode == "nominal") {
+      mat <- moduleTraitPvalue_ID[[set]]
+      cutoff <- cutoff_nominal
+    } else if (filter_mode == "fdr") {
+      mat <- moduleTraitQvalue_ID[[set]]
+      cutoff <- cutoff_fdr
+    } else {
+      stop("Unknown figure2_module_filter value: '", filter_mode,
+           "'. Use 'nominal', 'fdr', or 'none'.")
+    }
+
+    # Restrict to the traits shown in Figure 2
+    traits_in_mat <- intersect(traits_use, colnames(mat))
+    if (length(traits_in_mat) == 0) next
+
+    mat_sub <- mat[, traits_in_mat, drop = FALSE]
+
+    # Normalise row names so they match module_order (ME-prefixed)
+    rownames(mat_sub) <- normalize_module_names(rownames(mat_sub))
+
+    modules_in_mat <- intersect(module_order, rownames(mat_sub))
+    if (length(modules_in_mat) == 0) next
+
+    # Any trait below cutoff for this timepoint?
+    hits <- apply(mat_sub[modules_in_mat, , drop = FALSE], 1,
+                  function(x) any(!is.na(x) & x < cutoff))
+
+    sig_any[modules_in_mat] <- sig_any[modules_in_mat] | hits
+  }
+
+  filtered <- module_order[sig_any]
+
+  message(sprintf(
+    "  Module filter (%s, cutoff = %s): %d / %d modules kept for Figure 2",
+    filter_mode,
+    ifelse(filter_mode == "fdr", cutoff_fdr, cutoff_nominal),
+    length(filtered),
+    length(module_order)
+  ))
+  message("  Removed modules (go to supplementary): ",
+          paste(gsub("^ME", "", setdiff(module_order, filtered)), collapse = ", "))
+
+  filtered
+}
+
 # ── Full all-trait heatmap function ──────────────────────
 # Keeps WGCNA::labeledHeatmap for supplementary/full heatmaps.
 # No lipid-class strip here because labeledHeatmap cannot safely show
@@ -716,6 +797,27 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
   module_order <- c(module_order, missing_modules)
   module_order <- module_order[!duplicated(module_order)]
   
+  # ── Filter modules for Figure 2 ────────────────────────
+  filter_mode      <- tolower(cfg$module_trait$figure2_module_filter %||% "none")
+  cutoff_nominal   <- cfg$module_trait$figure2_module_filter_cutoff_nominal %||% raw_p_cutoff
+  cutoff_fdr_fig   <- cfg$module_trait$figure2_module_filter_cutoff_fdr     %||% fdr_cutoff
+
+  module_order <- filter_modules_for_figure2(
+    module_order            = module_order,
+    moduleTraitPvalue_ID    = moduleTraitPvalue_ID,
+    moduleTraitQvalue_ID    = moduleTraitQvalue_ID,
+    traits_use              = traits_use,
+    filter_mode             = filter_mode,
+    cutoff_nominal          = cutoff_nominal,
+    cutoff_fdr              = cutoff_fdr_fig
+  )
+
+  if (length(module_order) == 0) {
+    warning("No modules passed the Figure 2 filter. Check filter settings in config.yml.")
+    return(invisible(NULL))
+  }
+  # ── End module filter ───────────────────────────────────
+
   make_panel_plot <- function(set_index) {
     
     show_x_axis <- if (isTRUE(shared_x_axis)) {
@@ -812,6 +914,33 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
       ann_ordered$ModuleY[class_blocks$end]
     ) + 0.5
     
+    # Abbreviated names for strip labels
+    abbrev_map <- c(
+        "TG"          = "TG",
+        "DG"          = "DG",
+        "CE"          = "CE",
+        "PC/LPC"      = "PC/LPC",
+        "PE/LPE"      = "PE/LPE",
+        "SM"          = "SM",
+        "Cer"         = "Cer",
+        "FA"          = "FA",
+        "Oth"       = "Oth",
+        "Unknown"     = "",
+        "Grey module" = ""        # grey excluded already but safe fallback
+      )
+
+      class_blocks$ClassAbbrev <- unname(abbrev_map[class_blocks$ClassGroup])
+      class_blocks$ClassAbbrev[is.na(class_blocks$ClassAbbrev)] <- ""
+
+      # White text on dark backgrounds, black text on light backgrounds
+      # Dark classes: TG (red), PC/LPC (dark blue), SM (teal), FA (brown)
+      dark_classes <- c("TG", "PC/LPC", "SM", "FA")
+      class_blocks$TextColor <- ifelse(
+        class_blocks$ClassGroup %in% dark_classes,
+        "white",
+        "black"
+      )
+
     p <- ggplot2::ggplot() +
       
       # Block-style lipid-class strip.
@@ -819,7 +948,7 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
         data = class_blocks,
         ggplot2::aes(
           xmin = 0.10,
-          xmax = 0.34,
+          xmax = 0.52, # widened from 0.34
           ymin = ymin,
           ymax = ymax
         ),
@@ -828,7 +957,25 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
         linewidth = 0.12,
         inherit.aes = FALSE
       ) +
+
+      # Abbreviated lipid class labels inside the strip
+      ggplot2::geom_text(
+        data = class_blocks,
+        ggplot2::aes(
+          x     = 0.31,           # horizontal centre of the strip
+          y     = (ymin + ymax) / 2,
+          label = ClassAbbrev,
+          colour = TextColor
+        ),
+        angle    = 90,
+        size     = 2.3,           # ~6.5pt — fits inside narrow blocks
+        fontface = "bold",
+        family   = "Helvetica",
+        inherit.aes = FALSE
+      ) +
+      ggplot2::scale_colour_identity() +   # tells ggplot colour values are literal
       
+        
       # Correlation heatmap.
       ggplot2::geom_tile(
         data = df,
@@ -839,12 +986,28 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
         height = 0.95
       ) +
       
+      ggplot2::annotate(
+        "text",
+        x      = -6.3,                         # sits left of the heatmap # was -1.2, now further left
+        y      = mean(range(df$ModuleY)),       # vertically centred on heatmap
+        label  = paste0(panel_titles[set_index]),
+        angle  = 90,
+        hjust  = 0.5,
+        vjust  = 1,
+        size   = 5.2,
+        colour   = "black",                          # ~9pt
+        # fontface = "bold",
+        family = "Helvetica"
+      ) +
+
       # Significance stars.
       ggplot2::geom_text(
         data = df[df$Star != "", , drop = FALSE],
         ggplot2::aes(x = TraitX, y = ModuleY, label = Star),
-        size = 2.0,
+        size = 2.8,
         colour = "black",
+        hjust   = 0.5,        # horizontal centre
+        vjust   = 0.5, 
         family = "Helvetica"
       ) +
       
@@ -874,31 +1037,30 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
       ) +
       
       ggplot2::labs(
-        title = paste0(panel_titles[set_index], " — ", toupper(method)),
-        tag = panel_letters[set_index],
-        x = NULL,
-        y = NULL
-      ) +
-      
+        title = NULL,                          # title moved to left margin
+        tag   = panel_letters[set_index],
+        x     = NULL,
+        y     = NULL
+        ) +
+
       ggplot2::theme_minimal(base_family = "Helvetica", base_size = 8) +
+       # Panel title as rotated text in left margin
+  
+
       ggplot2::theme(
-        plot.title = ggplot2::element_text(
-          hjust = 0.5,
-          face = "bold",
-          size = 10,
-          margin = ggplot2::margin(b = 4)
-        ),
-        plot.tag = ggplot2::element_text(
+        plot.title = ggplot2::element_blank(),  # suppressed — using annotate instead
+        plot.tag   = ggplot2::element_text(
           face = "bold",
           size = 13
         ),
-        plot.tag.position = c(-0.085, 1.02),
+        plot.tag.position = c(-0.085, 1.0),    # slightly lower since no title above
         axis.text.x = ggplot2::element_text(
-          angle = 45,
-          hjust = 1,
-          vjust = 1,
-          size = if (show_x_axis) 7 else 0,
-          colour = "black"
+          angle    = 45, # was 45
+          hjust    = 1,
+          vjust    = 1, # change from 1 to 0.5 — centers labels vertically at tick
+          size     = if (show_x_axis) 8 else 0,
+          colour   = "black",
+          face     = "bold"
         ),
         axis.ticks.x = if (show_x_axis) {
           ggplot2::element_line(linewidth = 0.25)
@@ -906,26 +1068,27 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
           ggplot2::element_blank()
         },
         axis.text.y = ggplot2::element_text(
-          size = 6.3,
-          colour = "black"
-        ),
-        panel.grid = ggplot2::element_blank(),
-        panel.border = ggplot2::element_rect(
+          size   = 7, #was 8, reduced to fit longer module labels with class strip
           colour = "black",
-          fill = NA,
+          face   = "bold"
+        ),
+        panel.grid   = ggplot2::element_blank(),
+        panel.border = ggplot2::element_rect(
+          colour    = "black",
+          fill      = NA,
           linewidth = 0.4
         ),
         legend.position = "right",
-        legend.title = ggplot2::element_text(size = 8),
-        legend.text = ggplot2::element_text(size = 7),
-        plot.margin = ggplot2::margin(
-          t = 8,
+        legend.title = ggplot2::element_text(size = 8, face = "bold"),
+        legend.text  = ggplot2::element_text(size = 8, face = "bold"),
+        plot.margin  = ggplot2::margin(
+          t = 4,                               # reduced top — no title above
           r = 14,
           b = if (show_x_axis) 8 else 1,
-          l = 50
+          l = 95                               # increased left: module labels + rotated title # was 72, increased to accommodate title position
         )
       )
-    
+      
     p
   }
   
@@ -949,7 +1112,7 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
       "SM"          = "Sphingomyelins (SM)",
       "Cer"         = "Ceramides (Cer)",
       "FA"          = "Fatty acyls (FA)",
-      "Other"       = "Other class",
+      "Oth"       = "Other class",
       "Unknown"     = "Unclassified",
       "Grey module" = "WGCNA grey module"
     )
@@ -991,15 +1154,17 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
       ggplot2::geom_text(
         ggplot2::aes(x = col + 0.10, y = y, label = Label),
         hjust = 0,
-        size = 2.6,
-        family = "Helvetica"
+        size = 2.8,               # slight bump to ~8pt equivalent
+        family = "Helvetica",
+        fontface = "bold"         # ADD
       ) +
       ggplot2::geom_text(
         data = sig_note_df,
         ggplot2::aes(x = x, y = y, label = label),
         hjust = 0,
-        size = 2.7,
+        size = 2.8,
         family = "Helvetica",
+        fontface = "bold",        # ADD
         inherit.aes = FALSE
       ) +
       ggplot2::xlim(0.7, n_col + 1.7) +
@@ -1013,7 +1178,7 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
   p1 <- make_panel_plot(1)
   p2 <- make_panel_plot(2)
   p3 <- make_panel_plot(3)
-  p_legend <- make_class_legend_plot(module_class_df)
+  # p_legend <- make_class_legend_plot(module_class_df)
   
   message(
     "  Class strip: block colors represent dominant lipid class; ",
@@ -1026,9 +1191,9 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
     grid::pushViewport(
       grid::viewport(
         layout = grid::grid.layout(
-          nrow = 4,
+          nrow = 3, #was 4, now 3 since legend is separate
           ncol = 1,
-          heights = grid::unit(c(1.08, 1.08, 1.18, 0.12), "null")
+          heights = grid::unit(c(1.0, 1.0, 1.1), "null")
         )
       )
     )
@@ -1036,7 +1201,6 @@ make_direct_figure2_heatmaps <- function(moduleTraitCor_ID,
     print(p1, vp = grid::viewport(layout.pos.row = 1, layout.pos.col = 1))
     print(p2, vp = grid::viewport(layout.pos.row = 2, layout.pos.col = 1))
     print(p3, vp = grid::viewport(layout.pos.row = 3, layout.pos.col = 1))
-    print(p_legend, vp = grid::viewport(layout.pos.row = 4, layout.pos.col = 1))
     
     grid::popViewport()
   }
@@ -1188,6 +1352,8 @@ for (set in 1:All_nSets_ID) {
     scope = fdr_scope
   )
   
+
+
   moduleTraitCor_ID[[set]]    <- res$cor
   moduleTraitPvalue_ID[[set]] <- p_mat
   moduleTraitQvalue_ID[[set]] <- q_mat

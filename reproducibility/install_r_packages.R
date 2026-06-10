@@ -37,7 +37,8 @@ bioc_pkgs <- c(
   "annotate",
   "multtest",
   "Rgraphviz",
-  "ropls"
+  "ropls",
+  "pls"
 )
 
 for (pkg in bioc_pkgs) {

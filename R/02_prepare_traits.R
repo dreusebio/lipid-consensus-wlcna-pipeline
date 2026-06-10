@@ -1,7 +1,7 @@
 # R/02_prepare_traits.R
 # -------------------------------------------------------
 # Prepare and clean GROWELL trait data
-# Outputs → results/01_traits/
+# Outputs → results/02_traits/
 # -------------------------------------------------------
 source("R/00_load_packages.R")
 cfg <- yaml::read_yaml("config/config.yml")
@@ -111,7 +111,7 @@ traits_clean <- traits_raw[, !(names(traits_raw) %in% remove_vars)]
 # ── Derived variables ─────────────────────────────────────
 traits_clean <- traits_clean %>%
   mutate(
-    White_vs_nonwhite = case_when(race_eth_new == 4 ~ 1, TRUE ~ 0),
+    race_white = case_when(race_eth_new == 4 ~ 1, TRUE ~ 0),
     apo_total = case_when(apo == 1 ~ 1, is.na(apo) ~ 0, TRUE ~ 0)
   )
 traits_clean <- traits_clean[, !colnames(traits_clean) %in% c("apo","User_ID")]
@@ -123,10 +123,10 @@ traits_clean[] <- lapply(traits_clean, function(x)
 traits_clean <- traits_clean[order(rownames(traits_clean)), ]
 
 # ── Demographic data with BMI by timepoint ───────────────
-#group, age,White_vs_nonwhite, gest_age_at_birth,  parity_base,
+#group, age,race_white, gest_age_at_birth,  parity_base,
 demographic_data <- traits_clean %>%
   dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,
-                bmi, bmi_base, gwg, egwg, ppwr, ppwr_e, 
+                bmi, bmi_base, gwg, egwg, ppwr, ppwr_e, group, age,race_white,
                 apo, preterm, apo_hdp, apo_gdm, apo_other) %>%
   mutate(
     bmi_wk26 = weight_wk26 / (height_base^2),
@@ -136,7 +136,7 @@ demographic_data <- traits_clean %>%
   )
 
 demographic_data <- demographic_data %>%
-  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,
+  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,group, age,race_white,
                 bmi, bmi_base,bmi_wk26,bmi_wk36,bmi_mth3,bmi_mth6, gwg, egwg, ppwr, ppwr_e, 
                 apo, preterm, apo_hdp, apo_gdm, apo_other)
 
