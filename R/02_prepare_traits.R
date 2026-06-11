@@ -125,8 +125,8 @@ traits_clean <- traits_clean[order(rownames(traits_clean)), ]
 # ── Demographic data with BMI by timepoint ───────────────
 #group, age,race_white, gest_age_at_birth,  parity_base,
 demographic_data <- traits_clean %>%
-  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,
-                bmi, bmi_base, gwg, egwg, ppwr, ppwr_e, group, age,race_white,
+  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,reap_base,
+                bmi, bmi_base, gwg, egwg, ppwr, ppwr_e, group, age,race_white,race_eth_new, mother_s_education_base,
                 apo, preterm, apo_hdp, apo_gdm, apo_other) %>%
   mutate(
     bmi_wk26 = weight_wk26 / (height_base^2),
@@ -136,8 +136,8 @@ demographic_data <- traits_clean %>%
   )
 
 demographic_data <- demographic_data %>%
-  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,group, age,race_white,
-                bmi, bmi_base,bmi_wk26,bmi_wk36,bmi_mth3,bmi_mth6, gwg, egwg, ppwr, ppwr_e, 
+  dplyr::select(weight_base, weight_wk26, weight_wk36, weight_mth3, weight_mth6,height_base,group, age,race_white,reap_base,
+                bmi, bmi_base,bmi_wk26,bmi_wk36,bmi_mth3,bmi_mth6, gwg, egwg, ppwr, ppwr_e,race_eth_new, mother_s_education_base,
                 apo, preterm, apo_hdp, apo_gdm, apo_other)
 
 # ── Save outputs ──────────────────────────────────────────

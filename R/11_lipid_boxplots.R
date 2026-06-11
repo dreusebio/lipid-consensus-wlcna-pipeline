@@ -27,7 +27,7 @@ dir.create(out, showWarnings = FALSE, recursive = TRUE)
 plot_layout <- "horizontal"   # ← change to "vertical" if needed
 
 panel_width  <- if (plot_layout == "vertical") FIG_WIDTH_SINGLE else FIG_WIDTH_FULL
-panel_height <- if (plot_layout == "vertical") 150 else 65
+panel_height <- if (plot_layout == "vertical") 150 else 70
 ncols        <- if (plot_layout == "vertical") 1 else 3
 
 # ── Lipids of interest ────────────────────────────────────
@@ -35,7 +35,7 @@ ncols        <- if (plot_layout == "vertical") 1 else 3
 # Check available names: grep('^TG', colnames(multiExpr_ID[[1]]$data), value=TRUE)
 lipids_of_interest <- list(
   apo    = list(
-    C = "TG 50:1",   # Figure 4C
+    C = "TG 48:0",   # Figure 4C
     D = "TG 46:0"    # Figure 4D
   ),
   ppwr_e = list(

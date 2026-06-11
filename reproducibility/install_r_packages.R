@@ -6,6 +6,17 @@
 
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 
+cran_packages <- c(
+  "officer",
+  "flextable"
+)
+
+for (pkg in cran_packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+}
+
 lib <- .libPaths()[1]
 message("Installing into: ", lib)
 

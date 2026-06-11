@@ -39,18 +39,18 @@ echo "======================================================"
 # $PIXI R/06_module_membership.R
 
 # ── Annotation (must run before 08 to generate module order) ──
-echo "[07/13] Annotating lipids (RefMet/PubChem)..."
-$PIXI R/07_annotate_lipids.R
+# echo "[07/13] Annotating lipids (RefMet/PubChem)..."
+# $PIXI R/07_annotate_lipids.R
 
 # ── Statistical analyses ──────────────────────────────────
 # echo "[08/13] Module-trait correlations..."
 # $PIXI R/08_module_trait_correlations.R
 
-echo "[09/13] Module eigennode plots..."
-$PIXI R/09_module_eigennode_plots.R
+# echo "[09/13] Module eigennode plots..."
+# $PIXI R/09_module_eigennode_plots.R
 
-# echo "[10/13] Differential lipid analysis (APO + PPWR)..."
-# $PIXI R/10_differential_lipids.R
+echo "[10/13] Differential lipid analysis (APO + PPWR)..."
+$PIXI R/10_differential_lipids.R
 
 # echo "[11/13] Lipid boxplots (selected lipids of interest)..."
 # $PIXI R/11_lipid_boxplots.R
@@ -63,6 +63,9 @@ $PIXI R/09_module_eigennode_plots.R
 
 # echo "[13/13] Sensitivity analyses..."
 # $PIXI R/13_sensitivity_analyses.R
+
+echo "[15/15] Table 1 analysis..."
+$PIXI R/15_table1.R
 
 # ── Figure assembly ───────────────────────────────────────
 echo "[Final] Assembling publication figures..."

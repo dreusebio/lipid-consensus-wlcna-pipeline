@@ -59,7 +59,8 @@ plot_hub_lipids <- function(hub_df, title_str, save_path) {
   mod_labs    <- distinct(hub_df, Module)
   fill_colors <- setNames(levels(hub_df$Module), levels(hub_df$Module))
   text_colors <- fill_colors
-  light_mods  <- c("lightcyan","green","cyan","lightyellow","yellow",
+  light_mods  <- c("lightcyan","green","cyan","lightyellow","yellow","white",
+                    "turquoise","paleturquoise","skyblue","darkgrey",
                    "grey60","pink","tan","lightgreen","salmon","greenyellow")
   text_colors[intersect(names(text_colors), light_mods)] <- "black"
   p <- ggplot(hub_df, aes(x=Rank, y=Module)) +

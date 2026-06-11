@@ -1,8 +1,6 @@
 # config/config.yml
 # -------------------------------------------------------
 # Central configuration for the GROWELL lipidomics pipeline
-# Edit paths and parameters here — never in the R scripts
-#
 # Pipeline execution order:
 #   00_load_packages.R          — package loading (sourced by all scripts)
 #   00_figure_theme.R           — figure standards (sourced by plotting scripts)
@@ -191,11 +189,11 @@ differential:
     - "apo"
     - "ppwr_e"
   test:          "wilcoxon"
-  apply_fdr:     false          # ← true or false
+  apply_fdr:     true          # ← true or false
   fdr_method:    "BH"
   fdr_cutoff:    0.1
   raw_p_cutoff:  0.05
-  top_n_labels:  10
+  top_n_labels:  12
 
 # ── Covariates (for sensitivity analyses) ─────────────────
 covariates:
@@ -243,3 +241,52 @@ plsda:
   # folds:      5
   # nrepeat:    100
   # validation: "Mfold"
+
+  # ── Table 1 configuration ─────────────────────────────────
+# Add this block to your config/config.yml
+# Variables listed here control what appears in Table 1.
+# To add/remove a variable: edit the lists below.
+# To change a display label: edit var_labels.
+# Column order in the table matches the order of vars below.
+
+table1:
+
+  # Continuous variables — reported as Mean (SD)
+  # Mann-Whitney U test for group comparisons
+  continuous_vars:
+    - age
+    - gwg
+    - ppwr
+    - reap_base
+    - bmi    
+  # Categorical variables — reported as n (%)
+  # Fisher's exact test for group comparisons
+  categorical_vars:
+    - race_eth_new
+    - mother_s_education_base
+    - group
+    - apo
+    - apo_hdp
+    - apo_gdm
+    - preterm
+    - apo_other
+    - ppwr_e
+
+  # Display labels for each variable
+  # Format: variable_name: "Display label"
+  # If a variable is not listed here its column name is used
+  var_labels:
+    age:                     "Age, years"
+    bmi:                     "Pre-pregnancy BMI, kg/m²"
+    gwg:                     "Gestational weight gain, kg"
+    ppwr:                    "Postpartum weight retention, kg"
+    race_eth_new:            "Race/ethnicity"
+    mother_s_education_base: "Highest education level"
+    group:                   "Study arm"
+    apo:                     "Adverse pregnancy outcome (composite)"
+    apo_hdp:                 "Hypertensive disorder of pregnancy"
+    apo_gdm:                 "Gestational diabetes mellitus†"
+    preterm:                 "Preterm/early-term birth (≤37 weeks)"
+    apo_other:               "Other documented complication"
+    ppwr_e:                  "Excessive PPWR (>105% preconception weight)"
+    reap_base:               "Average diet quality score (REAP)"
