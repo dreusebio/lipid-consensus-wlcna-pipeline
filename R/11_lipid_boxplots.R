@@ -36,11 +36,11 @@ ncols        <- if (plot_layout == "vertical") 1 else 3
 lipids_of_interest <- list(
   apo    = list(
     C = "TG 48:0",   # Figure 4C
-    D = "TG 46:0"    # Figure 4D
+    D = "TG 48:1"    # Figure 4D
   ),
   ppwr_e = list(
     C = "TG 58:9",   # Figure 5C
-    D = "TG 58:8"    # Figure 5D
+    D = "TG 60:2"    # Figure 5D
   )
 )
 

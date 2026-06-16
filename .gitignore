@@ -3,7 +3,7 @@ data/raw/
 data/processed/
 
 # Results (generated outputs — never push)
-results/
+results*
 
 # MetaboAnalystR intermediate files (generated in working directory)
 *.qs
@@ -15,7 +15,7 @@ data_proc.qs
 consensusTOM-block.*.RData
 
 # R session files
-.RData
+*.RData
 .Rhistory
 .DS_Store
 .Rproj.user/

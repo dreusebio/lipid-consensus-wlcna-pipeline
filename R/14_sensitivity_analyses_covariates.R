@@ -1,16 +1,16 @@
 # R/13_sensitivity_analyses.R
 # -------------------------------------------------------
-# Sensitivity analysis: Arm-adjusted module-trait correlations
+# Sensitivity analysis: Covariate-adjusted module-trait correlations
 #
 # Reviewer request (R2 comment 4):
 #   The parent trial randomized participants to a digital dietary
 #   intervention. Any lipid-to-APO or lipid-to-PPWR association may
-#   be confounded by intervention assignment. This script:
-#     1. Reports arm distribution across APO and PPWR groups
-#     2. Reruns all module-trait correlations adjusted for arm
-#        (by residualizing MEs and traits on arm before correlating)
-#     3. Compares arm-adjusted vs unadjusted findings
-#     4. Produces a supplementary heatmap figure matching Figure 2 style
+#   be confounded by intervention assignment and participant characteristics. This script:
+#     1. Reports intervention arm/covariate summaries across APO and PPWR groups
+#     2. Reruns all module-trait correlations adjusted for config-defined covariates
+#        (by residualizing MEs and traits on the configured covariates before correlating)
+#     3. Compares covariate-adjusted vs unadjusted findings
+#     4. Produces a supplementary covariate-adjusted heatmap figure matching Figure 2 style
 #
 # Outputs → results/13_sensitivity/<wgcna_run_tag>/<method>/
 # -------------------------------------------------------
@@ -36,9 +36,14 @@ method           <- tolower(analysis_parts[2])
 rds_tag          <- paste0(wgcna_run_tag, "_", method)
 
 message("WGCNA run: ", wgcna_run_tag, " | Method: ", toupper(method))
+cor_method <- if (method %in% c("pearson", "spearman", "kendall")) method else "spearman"
+if (cor_method != method) {
+  message("  Note: adjusted sensitivity uses stats::cor method = ", cor_method,
+          " because method = ", method, " is not supported by stats::cor.")
+}
 
 # ── Output directory ──────────────────────────────────────
-out <- file.path(cfg$output$s13, wgcna_run_tag, method)
+out <- file.path(cfg$output$s14, wgcna_run_tag, method)
 dir.create(out, showWarnings = FALSE, recursive = TRUE)
 
 fig_dir <- file.path("results", "figures", "final")
@@ -190,103 +195,284 @@ simplify_lipid_class <- function(x) {
   out
 }
 
-# ── Check arm variable ────────────────────────────────────
-if (!"group" %in% colnames(demographic_data)) {
-  stop("'group' column not found in demographic_data. Cannot run arm-adjusted sensitivity.")
+# ── Covariate adjustment settings ─────────────────────────
+# Config-driven covariates. Add/remove variables in config/config.yml.
+#
+# Example:
+# sensitivity:
+#   adjust_covariates:
+#     - group
+#     - mom_gw_age
+#     - bmi_mom
+#     - race_ethnicity_binary
+#   factor_covariates:
+#     - group
+#     - race_ethnicity_binary
+#   derived_covariates:
+#     race_ethnicity_binary:
+#       source: race_ethnicity
+#       reference_regex: "White"
+#       reference_label: "White"
+#       other_label: "Non_White"
+#
+# If this block is absent, the script defaults to intervention arm only
+# to preserve the previous behavior.
+adjust_covariates <- cfg$sensitivity$adjust_covariates %||%
+  cfg$module_trait$adjust_covariates %||%
+  c("group")
+
+factor_covariates <- cfg$sensitivity$factor_covariates %||%
+  cfg$module_trait$factor_covariates %||%
+  character(0)
+
+derived_covariates <- cfg$sensitivity$derived_covariates %||% list()
+
+adjust_covariates <- unique(as.character(unlist(adjust_covariates)))
+factor_covariates <- unique(as.character(unlist(factor_covariates)))
+
+if (length(adjust_covariates) == 0) {
+  stop("No covariates specified. Add cfg$sensitivity$adjust_covariates in config/config.yml.")
 }
 
-arm_vec <- setNames(demographic_data$group, rownames(demographic_data))
+# ── Optional derived covariates, useful for sparse race/ethnicity ──
+make_derived_covariates <- function(dat, derived_cfg) {
+  if (length(derived_cfg) == 0) return(dat)
 
-# ── Section 1: Arm distribution table ────────────────────
-message("\n── Section 1: Arm distribution across APO and PPWR groups ──")
+  for (new_var in names(derived_cfg)) {
+    spec <- derived_cfg[[new_var]]
+    src  <- spec$source %||% NA_character_
+    regex <- spec$reference_regex %||% spec$regex %||% NA_character_
+    ref_label <- spec$reference_label %||% "Reference"
+    other_label <- spec$other_label %||% "Other"
+
+    if (is.na(src) || !src %in% colnames(dat)) {
+      warning("Derived covariate '", new_var, "' skipped: source column not found: ", src)
+      next
+    }
+    if (is.na(regex)) {
+      warning("Derived covariate '", new_var, "' skipped: reference_regex not provided.")
+      next
+    }
+
+    x <- as.character(dat[[src]])
+    dat[[new_var]] <- ifelse(
+      is.na(x), NA_character_,
+      ifelse(grepl(regex, x, ignore.case = TRUE), ref_label, other_label)
+    )
+  }
+  dat
+}
+
+demographic_data <- make_derived_covariates(demographic_data, derived_covariates)
+
+missing_covars <- setdiff(adjust_covariates, colnames(demographic_data))
+if (length(missing_covars) > 0) {
+  stop(
+    "The following adjustment covariates are missing from demographic_data: ",
+    paste(missing_covars, collapse = ", "),
+    "\nAvailable columns include:\n",
+    paste(colnames(demographic_data), collapse = ", ")
+  )
+}
+
+# Coerce configured factor covariates
+for (v in intersect(factor_covariates, colnames(demographic_data))) {
+  demographic_data[[v]] <- as.factor(demographic_data[[v]])
+}
+
+# Also treat character covariates as factors
+for (v in adjust_covariates) {
+  if (is.character(demographic_data[[v]])) {
+    demographic_data[[v]] <- as.factor(demographic_data[[v]])
+  }
+}
+
+covar_df <- demographic_data[, adjust_covariates, drop = FALSE]
+covar_complete_ids <- rownames(covar_df)[stats::complete.cases(covar_df)]
+
+adjustment_label <- paste(adjust_covariates, collapse = " + ")
+adjustment_slug  <- paste(gsub("[^A-Za-z0-9]+", "_", adjust_covariates), collapse = "_")
+message("Adjustment covariates: ", adjustment_label)
+message("Complete covariate data available for n = ", length(covar_complete_ids), " samples")
+
+# Do not include adjustment covariates as traits in the adjusted heatmap.
+# Example: if prepregnancy BMI is a covariate, its residual after adjustment
+# for itself is not biologically interpretable.
+traits_use_before_cov_drop <- traits_use
+traits_use <- setdiff(traits_use, adjust_covariates)
+dropped_traits <- setdiff(traits_use_before_cov_drop, traits_use)
+if (length(dropped_traits) > 0) {
+  message("Dropping traits that are also adjustment covariates: ",
+          paste(dropped_traits, collapse = ", "))
+}
+
+# ── Section 1: Intervention arm distribution table, if arm is available ──
+message("\n── Section 1: Covariate summaries across APO and PPWR groups ──")
 
 apo_outcomes  <- c("apo", "apo_hdp", "apo_gdm", "apo_other", "preterm")
 ppwr_outcomes <- c("ppwr_e")
 
-arm_dist_list <- lapply(c(apo_outcomes, ppwr_outcomes), function(tr) {
-  if (!tr %in% colnames(demographic_data)) return(NULL)
-  outcome_vec <- demographic_data[[tr]]
-  arm_col     <- demographic_data$group
-  ids <- !is.na(outcome_vec) & !is.na(arm_col)
-  if (sum(ids) == 0) return(NULL)
-  tbl <- table(
-    Arm     = ifelse(arm_col[ids] == 1, "Intervention", "Control"),
-    Outcome = outcome_vec[ids]
-  )
-  df <- as.data.frame(tbl)
-  df$Trait <- tr
-  df
-})
+wb_cov <- openxlsx::createWorkbook()
 
-arm_dist_df <- do.call(rbind, Filter(Negate(is.null), arm_dist_list))
+if ("group" %in% colnames(demographic_data)) {
+  arm_dist_list <- lapply(c(apo_outcomes, ppwr_outcomes), function(tr) {
+    if (!tr %in% colnames(demographic_data)) return(NULL)
+    outcome_vec <- demographic_data[[tr]]
+    arm_col     <- demographic_data$group
+    ids <- !is.na(outcome_vec) & !is.na(arm_col)
+    if (sum(ids) == 0) return(NULL)
+    tbl <- table(
+      Arm     = ifelse(arm_col[ids] == 1, "Intervention", "Control"),
+      Outcome = outcome_vec[ids]
+    )
+    df <- as.data.frame(tbl)
+    df$Trait <- tr
+    df
+  })
 
-wb_dist <- openxlsx::createWorkbook()
-openxlsx::addWorksheet(wb_dist, "Arm_Distribution")
-openxlsx::writeData(wb_dist, "Arm_Distribution", arm_dist_df)
+  arm_dist_df <- do.call(rbind, Filter(Negate(is.null), arm_dist_list))
+  if (!is.null(arm_dist_df)) {
+    openxlsx::addWorksheet(wb_cov, "Arm_Distribution")
+    openxlsx::writeData(wb_cov, "Arm_Distribution", arm_dist_df)
+    message("  Arm distribution table added.")
+    print(arm_dist_df)
+  }
+}
+
+covar_summary <- do.call(rbind, lapply(adjust_covariates, function(v) {
+  x <- demographic_data[[v]]
+  if (is.numeric(x)) {
+    data.frame(
+      Covariate = v,
+      Type = "numeric",
+      N_nonmissing = sum(!is.na(x)),
+      Summary = sprintf("mean=%.3f; sd=%.3f; median=%.3f; range=%.3f to %.3f",
+                        mean(x, na.rm = TRUE), stats::sd(x, na.rm = TRUE),
+                        stats::median(x, na.rm = TRUE),
+                        min(x, na.rm = TRUE), max(x, na.rm = TRUE)),
+      stringsAsFactors = FALSE
+    )
+  } else {
+    tb <- table(x, useNA = "ifany")
+    data.frame(
+      Covariate = v,
+      Type = "categorical",
+      N_nonmissing = sum(!is.na(x)),
+      Summary = paste(names(tb), as.integer(tb), sep = "=", collapse = "; "),
+      stringsAsFactors = FALSE
+    )
+  }
+}))
+
+openxlsx::addWorksheet(wb_cov, "Covariate_Summary")
+openxlsx::writeData(wb_cov, "Covariate_Summary", covar_summary)
+
 openxlsx::saveWorkbook(
-  wb_dist,
-  file.path(out, "sens_arm_distribution_APO_PPWR.xlsx"),
+  wb_cov,
+  file.path(out, "sens_covariate_summary_APO_PPWR.xlsx"),
   overwrite = TRUE
 )
-message("  Arm distribution table saved.")
-print(arm_dist_df)
+message("  Covariate summary workbook saved.")
 
-# ── Section 2: Residualize on arm ────────────────────────
-residualize_on_arm <- function(mat, arm_vec) {
-  ids <- intersect(rownames(mat), names(arm_vec[!is.na(arm_vec)]))
-  mat_sub <- mat[ids, , drop = FALSE]
-  arm_sub  <- arm_vec[ids]
+# ── Section 2: Residualize on configured covariates ───────
+residualize_on_covariates <- function(mat, covar_df) {
+  ids <- intersect(rownames(mat), rownames(covar_df))
+  mat_sub   <- mat[ids, , drop = FALSE]
+  covar_sub <- covar_df[ids, , drop = FALSE]
+
   resid_mat <- apply(mat_sub, 2, function(x) {
-    complete <- !is.na(x)
+    complete <- !is.na(x) & stats::complete.cases(covar_sub)
     out_vec  <- rep(NA_real_, length(x))
-    if (sum(complete) > 2) {
-      out_vec[complete] <- residuals(lm(x[complete] ~ arm_sub[complete]))
+
+    if (sum(complete) > (ncol(covar_sub) + 2)) {
+      dat <- data.frame(y = x[complete], covar_sub[complete, , drop = FALSE],
+                        check.names = FALSE)
+      fit <- tryCatch(stats::lm(y ~ ., data = dat),
+                      error = function(e) NULL)
+      if (!is.null(fit)) {
+        out_vec[complete] <- stats::residuals(fit)
+      }
     }
     out_vec
   })
+
+  if (is.null(dim(resid_mat))) {
+    resid_mat <- matrix(resid_mat, ncol = 1)
+    colnames(resid_mat) <- colnames(mat_sub)
+  }
+
   rownames(resid_mat) <- ids
+  colnames(resid_mat) <- colnames(mat_sub)
   resid_mat
 }
 
-# ── Section 2: Arm-adjusted correlations ─────────────────
-message("\n── Section 2: Arm-adjusted module-trait correlations ──")
+cor_pvalue_matrix <- function(x, y, method = "spearman") {
+  cor_mat <- stats::cor(x, y, method = method, use = "pairwise.complete.obs")
+  p_mat   <- matrix(NA_real_, nrow = nrow(cor_mat), ncol = ncol(cor_mat),
+                    dimnames = dimnames(cor_mat))
+  n_mat   <- matrix(NA_integer_, nrow = nrow(cor_mat), ncol = ncol(cor_mat),
+                    dimnames = dimnames(cor_mat))
+
+  for (i in seq_len(ncol(x))) {
+    for (j in seq_len(ncol(y))) {
+      ok <- stats::complete.cases(x[, i], y[, j])
+      n_ij <- sum(ok)
+      n_mat[i, j] <- n_ij
+      r <- cor_mat[i, j]
+      if (!is.na(r) && n_ij > 2) {
+        r <- pmin(pmax(r, -0.999999), 0.999999)
+        t_stat <- r * sqrt((n_ij - 2) / (1 - r^2))
+        p_mat[i, j] <- 2 * stats::pt(-abs(t_stat), df = n_ij - 2)
+      }
+    }
+  }
+
+  list(cor = cor_mat, p = p_mat, n = n_mat)
+}
+
+# ── Section 2: Covariate-adjusted correlations ───────────
+message("\n── Section 2: Covariate-adjusted module-trait correlations ──")
 
 pheno_numeric <- demographic_data[,
   sapply(demographic_data, is.numeric), drop = FALSE]
 pheno_numeric <- pheno_numeric[,
-  setdiff(colnames(pheno_numeric), "group"), drop = FALSE]
+  setdiff(colnames(pheno_numeric), adjust_covariates), drop = FALSE]
 
-arm_cor_ID  <- list()
-arm_pval_ID <- list()
-arm_qval_ID <- list()
+adj_cor_ID  <- list()
+adj_pval_ID <- list()
+adj_qval_ID <- list()
+adj_n_ID    <- list()
 
 for (set in seq_len(All_nSets_ID)) {
 
   tp <- tp_labels[set]
   me <- consensusMEs_ID[[set]]$data
 
-  ids <- intersect(rownames(me), rownames(pheno_numeric))
-  ids <- intersect(ids, names(arm_vec[!is.na(arm_vec)]))
+  ids <- Reduce(intersect, list(
+    rownames(me),
+    rownames(pheno_numeric),
+    rownames(covar_df),
+    covar_complete_ids
+  ))
 
-  message(sprintf("  %s: n=%d samples with arm data", tp, length(ids)))
+  message(sprintf("  %s: n=%d samples with complete covariate data", tp, length(ids)))
 
-  me_resid    <- residualize_on_arm(me[ids, , drop = FALSE],            arm_vec)
-  trait_resid <- residualize_on_arm(pheno_numeric[ids, , drop = FALSE], arm_vec)
+  me_resid    <- residualize_on_covariates(me[ids, , drop = FALSE],
+                                           covar_df[ids, , drop = FALSE])
+  trait_resid <- residualize_on_covariates(pheno_numeric[ids, , drop = FALSE],
+                                           covar_df[ids, , drop = FALSE])
 
   traits_in <- intersect(traits_use, colnames(trait_resid))
 
-  cor_mat <- stats::cor(
+  cp <- cor_pvalue_matrix(
     me_resid,
     trait_resid[, traits_in, drop = FALSE],
-    method = "spearman",
-    use    = "pairwise.complete.obs"
+    method = cor_method
   )
 
-  n        <- nrow(me_resid)
-  cor_clip <- pmin(pmax(cor_mat, -0.999999), 0.999999)
-  t_stat   <- cor_clip * sqrt((n - 2) / (1 - cor_clip^2))
-  pval_mat <- 2 * stats::pt(-abs(t_stat), df = n - 2)
-  dimnames(pval_mat) <- dimnames(cor_mat)
+  cor_mat  <- cp$cor
+  pval_mat <- cp$p
+  n_mat    <- cp$n
 
   qval_mat <- apply_fdr_sens(
     p_mat = pval_mat,
@@ -295,35 +481,41 @@ for (set in seq_len(All_nSets_ID)) {
     scope = fdr_scope
   )
 
-  arm_cor_ID[[set]]  <- cor_mat
-  arm_pval_ID[[set]] <- pval_mat
-  arm_qval_ID[[set]] <- qval_mat
+  adj_cor_ID[[set]]  <- cor_mat
+  adj_pval_ID[[set]] <- pval_mat
+  adj_qval_ID[[set]] <- qval_mat
+  adj_n_ID[[set]]    <- n_mat
 
   wb <- openxlsx::createWorkbook()
   openxlsx::addWorksheet(wb, "Correlations")
   openxlsx::addWorksheet(wb, "P_values")
   openxlsx::addWorksheet(wb, "BH_Q_values")
+  openxlsx::addWorksheet(wb, "N_pairwise")
   openxlsx::writeData(wb, "Correlations", round(cor_mat,   3), rowNames = TRUE)
   openxlsx::writeData(wb, "P_values",     signif(pval_mat, 3), rowNames = TRUE)
   openxlsx::writeData(wb, "BH_Q_values",  signif(qval_mat, 3), rowNames = TRUE)
+  openxlsx::writeData(wb, "N_pairwise",   n_mat, rowNames = TRUE)
+
   openxlsx::saveWorkbook(
     wb,
-    file.path(out, paste0("sens_arm_adjusted_", tp, ".xlsx")),
+    file.path(out, paste0("sens_covariate_adjusted_", tp, ".xlsx")),
     overwrite = TRUE
   )
-  message(sprintf("  %s: saved arm-adjusted correlations", tp))
+  message(sprintf("  %s: saved covariate-adjusted correlations", tp))
 }
 
-names(arm_cor_ID)  <- tp_labels
-names(arm_pval_ID) <- tp_labels
-names(arm_qval_ID) <- tp_labels
+names(adj_cor_ID)  <- tp_labels
+names(adj_pval_ID) <- tp_labels
+names(adj_qval_ID) <- tp_labels
+names(adj_n_ID)    <- tp_labels
 
-saveRDS(arm_cor_ID,  file.path(out, "moduleTraitCor_arm_adjusted.rds"))
-saveRDS(arm_pval_ID, file.path(out, "moduleTraitPvalue_arm_adjusted.rds"))
-saveRDS(arm_qval_ID, file.path(out, "moduleTraitQvalue_arm_adjusted.rds"))
+saveRDS(adj_cor_ID,  file.path(out, paste0("moduleTraitCor_covariate_adjusted_", adjustment_slug, ".rds")))
+saveRDS(adj_pval_ID, file.path(out, paste0("moduleTraitPvalue_covariate_adjusted_", adjustment_slug, ".rds")))
+saveRDS(adj_qval_ID, file.path(out, paste0("moduleTraitQvalue_covariate_adjusted_", adjustment_slug, ".rds")))
+saveRDS(adj_n_ID,    file.path(out, paste0("moduleTraitN_covariate_adjusted_", adjustment_slug, ".rds")))
 
-# ── Section 3: Comparison unadjusted vs arm-adjusted ─────
-message("\n── Section 3: Comparing unadjusted vs arm-adjusted findings ──")
+# ── Section 3: Comparison unadjusted vs covariate-adjusted ─
+message("\n── Section 3: Comparing unadjusted vs covariate-adjusted findings ──")
 
 primary_traits <- c("apo","ppwr_e","apo_hdp","apo_gdm","apo_other","preterm")
 
@@ -332,9 +524,9 @@ comparison <- do.call(rbind, lapply(seq_len(All_nSets_ID), function(set) {
   unadj_cor  <- moduleTraitCor_ID[[set]]
   unadj_pval <- moduleTraitPvalue_ID[[set]]
   unadj_qval <- moduleTraitQvalue_ID[[set]]
-  adj_cor    <- arm_cor_ID[[set]]
-  adj_pval   <- arm_pval_ID[[set]]
-  adj_qval   <- arm_qval_ID[[set]]
+  adj_cor    <- adj_cor_ID[[set]]
+  adj_pval   <- adj_pval_ID[[set]]
+  adj_qval   <- adj_qval_ID[[set]]
   traits_check  <- intersect(intersect(primary_traits, colnames(unadj_cor)),
                               colnames(adj_cor))
   modules_check <- intersect(rownames(unadj_cor), rownames(adj_cor))
@@ -355,13 +547,12 @@ comparison <- do.call(rbind, lapply(seq_len(All_nSets_ID), function(set) {
         fdr_unadj    = unadj_qval[me, tr] < fdr_cutoff,
         fdr_adj      = adj_qval[me, tr]   < fdr_cutoff,
         finding_held = (unadj_pval[me, tr] < 0.05) == (adj_pval[me, tr] < 0.05),
+        Adjustment   = adjustment_label,
         stringsAsFactors = FALSE
       )
     }))
   }))
 }))
-
-# ── Define significance categories cleanly ────────────────
 
 # ── Define significance categories cleanly ────────────────
 
@@ -400,55 +591,46 @@ stopifnot(n_adj_sig == n_retained + n_gained)
 
 openxlsx::write.xlsx(
   list(
-    All_primary_traits              = comparison,
-    Significant_unadjusted          = comparison_unadj_sig,
-    Significant_arm_adjusted        = comparison_adj_sig,
-    Retained_after_arm_adjustment   = comparison_retained,
-    Lost_after_arm_adjustment       = comparison_lost,
-    Gained_after_arm_adjustment     = comparison_gained,
-    Significant_in_either_analysis  = comparison_sig_either,
-    FDR_significant_unadjusted      = comparison[comparison$fdr_unadj & !is.na(comparison$fdr_unadj), ],
-    FDR_significant_arm_adjusted    = comparison[comparison$fdr_adj & !is.na(comparison$fdr_adj), ]
+    All_primary_traits                    = comparison,
+    Significant_unadjusted                = comparison_unadj_sig,
+    Significant_covariate_adjusted        = comparison_adj_sig,
+    Retained_after_covariate_adjust   = comparison_retained,
+    Lost_after_covariate_adjustment       = comparison_lost,
+    Gained_after_covariate_adjust     = comparison_gained,
+    Significant_in_either_analysis        = comparison_sig_either,
+    FDR_significant_unadjusted            = comparison[comparison$fdr_unadj & !is.na(comparison$fdr_unadj), ],
+    FDR_sig_covariate_adjusted    = comparison[comparison$fdr_adj & !is.na(comparison$fdr_adj), ]
   ),
-  file.path(out, "sens_arm_adjusted_vs_unadjusted_comparison.xlsx"),
+  file.path(out, "sens_covariate_adjusted_vs_unadjusted_comparison.xlsx"),
   overwrite = TRUE
 )
 
 message(sprintf(
-  "  Nominally significant associations before arm adjustment: %d",
+  "  Nominally significant associations before covariate adjustment: %d",
   n_unadj_sig))
 
 message(sprintf(
-  "  Nominally significant associations after arm adjustment:  %d",
+  "  Nominally significant associations after covariate adjustment:  %d",
   n_adj_sig))
 
 message(sprintf(
-  "  Original associations retained after arm adjustment:      %d / %d (%.0f%%)",
+  "  Original associations retained after covariate adjustment:      %d / %d (%.0f%%)",
   n_retained, n_unadj_sig, pct_retained_of_unadj))
 
 message(sprintf(
-  "  Original associations lost after arm adjustment:          %d / %d (%.0f%%)",
+  "  Original associations lost after covariate adjustment:          %d / %d (%.0f%%)",
   n_lost, n_unadj_sig, pct_lost_of_unadj))
 
 message(sprintf(
-  "  New associations emerging after arm adjustment:           %d",
+  "  New associations emerging after covariate adjustment:           %d",
   n_gained))
 
 message(sprintf(
-  "  Associations significant in either analysis:              %d",
+  "  Associations significant in either analysis:                    %d",
   n_either))
 
-message(sprintf(
-  "  FDR-significant associations before arm adjustment (q < %.2f): %d",
-  fdr_cutoff, sum(comparison$fdr_unadj, na.rm = TRUE)))
-
-message(sprintf(
-  "  FDR-significant associations after arm adjustment (q < %.2f):  %d",
-  fdr_cutoff, sum(comparison$fdr_adj, na.rm = TRUE)))
-
-
 # ── Section 4: Supplementary heatmap ─────────────────────
-message("\n── Section 4: Supplementary heatmap (arm-adjusted, mirrors Figure 2) ──")
+message("\n── Section 4: Supplementary heatmap (covariate-adjusted, mirrors Figure 2) ──")
 
 # ── Helper functions — exact copies from script 08 ───────
 
@@ -562,7 +744,7 @@ make_final_module_order_s13 <- function(current_modules,
 # ── Load module order and class annotation using script 08 logic ──
 # Use the full WGCNA module set (not just arm_cor_ID rows) so that
 # the lipid-class priority sorting is computed on the complete set,
-# then restricted to modules present in the arm-adjusted results.
+# then restricted to modules present in the covariate-adjusted results.
 
 all_wgcna_mods <- normalize_module_names(
   colnames(consensusMEs_ID[[1]]$data)
@@ -594,16 +776,10 @@ module_order    <- module_order[!grey_idx]
 module_class_df <- module_class_df[
   tolower(gsub("^ME", "", module_class_df$Module)) != "grey", , drop = FALSE]
 
-# ── Restrict to modules present in arm-adjusted results ───
-current_mods_s13 <- normalize_module_names(rownames(arm_cor_ID[[1]]))
-
-current_mods_s13 <- current_mods_s13[
-  tolower(gsub("^ME", "", current_mods_s13)) != "grey"
-]
-
-module_order <- module_order[module_order %in% current_mods_s13]
-
-missing_mods <- current_mods_s13[!current_mods_s13 %in% module_order]
+# ── Restrict to modules present in covariate-adjusted results ───
+current_mods_s13 <- normalize_module_names(rownames(adj_cor_ID[[1]]))
+module_order     <- module_order[module_order %in% current_mods_s13]
+missing_mods     <- current_mods_s13[!current_mods_s13 %in% module_order]
 if (length(missing_mods) > 0) {
   message("  Appending modules not in order file: ",
           paste(gsub("^ME", "", missing_mods), collapse = ", "))
@@ -628,9 +804,9 @@ make_sens_panel <- function(set_index) {
     TRUE
   }
 
-  cor_mat  <- arm_cor_ID[[set_index]]
-  pval_mat <- arm_pval_ID[[set_index]]
-  qval_mat <- arm_qval_ID[[set_index]]
+  cor_mat  <- adj_cor_ID[[set_index]]
+  pval_mat <- adj_pval_ID[[set_index]]
+  qval_mat <- adj_qval_ID[[set_index]]
 
   traits_in <- intersect(traits_use, colnames(cor_mat))
   cor_mat   <- cor_mat[,  traits_in, drop = FALSE]
@@ -750,7 +926,7 @@ make_sens_panel <- function(set_index) {
       colors = WGCNA::blueWhiteRed(100),
       limits = c(-1, 1),
       breaks = c(-1, -0.5, 0, 0.5, 1),
-      name   = ifelse(method=="pearson", "Pearson r", "Spearman \u03c1")) +
+      name   = ifelse(cor_method=="pearson", "Pearson r", "Spearman \u03c1")) +
 
     ggplot2::scale_x_continuous(
       breaks = trait_positions,
@@ -822,9 +998,9 @@ draw_supp_figure <- function() {
   grid::popViewport()
 }
 
-fig_pdf  <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.pdf")
-fig_png  <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.png")
-fig_tiff <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.tiff")
+fig_pdf  <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.pdf")
+fig_png  <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.png")
+fig_tiff <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.tiff")
 
 fig_width_mm  <- FIG_WIDTH_FULL
 fig_height_mm <- FIG_HEIGHT_MAX
@@ -859,39 +1035,45 @@ message("  PNG:  ", fig_png)
 
 # ── Summary for point-by-point response ──────────────────
 message("\n── Summary for revision response ──")
+
 message(sprintf(
-  "  Before adjustment for intervention arm, %d primary module-trait associations were nominally significant.",
+  "  Before covariate adjustment, %d primary module-trait associations were nominally significant.",
   n_unadj_sig))
 
 message(sprintf(
-  "  After arm adjustment, %d of these original associations remained nominally significant (%.0f%%), while %d were attenuated below p < 0.05.",
+  "  After covariate adjustment, %d of these original associations remained nominally significant (%.0f%%), while %d were attenuated below p < 0.05.",
   n_retained, pct_retained_of_unadj, n_lost))
 
 if (n_gained > 0) {
   message(sprintf(
-    "  In addition, %d associations that were not significant in the unadjusted analysis became nominally significant after arm adjustment.",
+    "  In addition, %d associations that were not significant in the unadjusted analysis became nominally significant after covariate adjustment.",
     n_gained))
 }
 
 message(sprintf(
-  "  Overall, %d associations were nominally significant after arm adjustment.",
+  "  Overall, %d associations were nominally significant after covariate adjustment.",
   n_adj_sig))
 
+message(sprintf(
+  "  Associations significant in either analysis: %d.",
+  n_either))
 
-#This is without FDR
+message("\nScript 14 complete -> ", out)
+
+#This is without FDR 
 # # R/13_sensitivity_analyses.R
 # # -------------------------------------------------------
-# # Sensitivity analysis: Arm-adjusted module-trait correlations
+# # Sensitivity analysis: Covariate-adjusted module-trait correlations
 # #
 # # Reviewer request (R2 comment 4):
 # #   The parent trial randomized participants to a digital dietary
 # #   intervention. Any lipid-to-APO or lipid-to-PPWR association may
-# #   be confounded by intervention assignment. This script:
-# #     1. Reports arm distribution across APO and PPWR groups
-# #     2. Reruns all module-trait correlations adjusted for arm
-# #        (by residualizing MEs and traits on arm before correlating)
-# #     3. Compares arm-adjusted vs unadjusted findings
-# #     4. Produces a supplementary heatmap figure matching Figure 2 style
+# #   be confounded by intervention assignment and participant characteristics. This script:
+# #     1. Reports intervention arm/covariate summaries across APO and PPWR groups
+# #     2. Reruns all module-trait correlations adjusted for config-defined covariates
+# #        (by residualizing MEs and traits on the configured covariates before correlating)
+# #     3. Compares covariate-adjusted vs unadjusted findings
+# #     4. Produces a supplementary covariate-adjusted heatmap figure matching Figure 2 style
 # #
 # # Outputs → results/13_sensitivity/<wgcna_run_tag>/<method>/
 # # -------------------------------------------------------
@@ -917,6 +1099,11 @@ message(sprintf(
 # rds_tag          <- paste0(wgcna_run_tag, "_", method)
 
 # message("WGCNA run: ", wgcna_run_tag, " | Method: ", toupper(method))
+# cor_method <- if (method %in% c("pearson", "spearman", "kendall")) method else "spearman"
+# if (cor_method != method) {
+#   message("  Note: adjusted sensitivity uses stats::cor method = ", cor_method,
+#           " because method = ", method, " is not supported by stats::cor.")
+# }
 
 # # ── Output directory ──────────────────────────────────────
 # out <- file.path(cfg$output$s13, wgcna_run_tag, method)
@@ -1006,124 +1193,314 @@ message(sprintf(
 #   out
 # }
 
-# # ── Check arm variable ────────────────────────────────────
-# if (!"group" %in% colnames(demographic_data)) {
-#   stop("'group' column not found in demographic_data. Cannot run arm-adjusted sensitivity.")
+# # ── Covariate adjustment settings ─────────────────────────
+# # Config-driven covariates. Add/remove variables in config/config.yml.
+# #
+# # Example:
+# # sensitivity:
+# #   adjust_covariates:
+# #     - group
+# #     - mom_gw_age
+# #     - bmi_mom
+# #     - race_ethnicity_binary
+# #   factor_covariates:
+# #     - group
+# #     - race_ethnicity_binary
+# #   derived_covariates:
+# #     race_ethnicity_binary:
+# #       source: race_ethnicity
+# #       reference_regex: "White"
+# #       reference_label: "White"
+# #       other_label: "Non_White"
+# #
+# # If this block is absent, the script defaults to intervention arm only
+# # to preserve the previous behavior.
+# adjust_covariates <- cfg$sensitivity$adjust_covariates %||%
+#   cfg$module_trait$adjust_covariates %||%
+#   c("group")
+
+# factor_covariates <- cfg$sensitivity$factor_covariates %||%
+#   cfg$module_trait$factor_covariates %||%
+#   character(0)
+
+# derived_covariates <- cfg$sensitivity$derived_covariates %||% list()
+
+# adjust_covariates <- unique(as.character(unlist(adjust_covariates)))
+# factor_covariates <- unique(as.character(unlist(factor_covariates)))
+
+# if (length(adjust_covariates) == 0) {
+#   stop("No covariates specified. Add cfg$sensitivity$adjust_covariates in config/config.yml.")
 # }
 
-# arm_vec <- setNames(demographic_data$group, rownames(demographic_data))
+# # ── Optional derived covariates, useful for sparse race/ethnicity ──
+# make_derived_covariates <- function(dat, derived_cfg) {
+#   if (length(derived_cfg) == 0) return(dat)
 
-# # ── Section 1: Arm distribution table ────────────────────
-# message("\n── Section 1: Arm distribution across APO and PPWR groups ──")
+#   for (new_var in names(derived_cfg)) {
+#     spec <- derived_cfg[[new_var]]
+#     src  <- spec$source %||% NA_character_
+#     regex <- spec$reference_regex %||% spec$regex %||% NA_character_
+#     ref_label <- spec$reference_label %||% "Reference"
+#     other_label <- spec$other_label %||% "Other"
+
+#     if (is.na(src) || !src %in% colnames(dat)) {
+#       warning("Derived covariate '", new_var, "' skipped: source column not found: ", src)
+#       next
+#     }
+#     if (is.na(regex)) {
+#       warning("Derived covariate '", new_var, "' skipped: reference_regex not provided.")
+#       next
+#     }
+
+#     x <- as.character(dat[[src]])
+#     dat[[new_var]] <- ifelse(
+#       is.na(x), NA_character_,
+#       ifelse(grepl(regex, x, ignore.case = TRUE), ref_label, other_label)
+#     )
+#   }
+#   dat
+# }
+
+# demographic_data <- make_derived_covariates(demographic_data, derived_covariates)
+
+# missing_covars <- setdiff(adjust_covariates, colnames(demographic_data))
+# if (length(missing_covars) > 0) {
+#   stop(
+#     "The following adjustment covariates are missing from demographic_data: ",
+#     paste(missing_covars, collapse = ", "),
+#     "\nAvailable columns include:\n",
+#     paste(colnames(demographic_data), collapse = ", ")
+#   )
+# }
+
+# # Coerce configured factor covariates
+# for (v in intersect(factor_covariates, colnames(demographic_data))) {
+#   demographic_data[[v]] <- as.factor(demographic_data[[v]])
+# }
+
+# # Also treat character covariates as factors
+# for (v in adjust_covariates) {
+#   if (is.character(demographic_data[[v]])) {
+#     demographic_data[[v]] <- as.factor(demographic_data[[v]])
+#   }
+# }
+
+# covar_df <- demographic_data[, adjust_covariates, drop = FALSE]
+# covar_complete_ids <- rownames(covar_df)[stats::complete.cases(covar_df)]
+
+# adjustment_label <- paste(adjust_covariates, collapse = " + ")
+# adjustment_slug  <- paste(gsub("[^A-Za-z0-9]+", "_", adjust_covariates), collapse = "_")
+# message("Adjustment covariates: ", adjustment_label)
+# message("Complete covariate data available for n = ", length(covar_complete_ids), " samples")
+
+# # Do not include adjustment covariates as traits in the adjusted heatmap.
+# # Example: if prepregnancy BMI is a covariate, its residual after adjustment
+# # for itself is not biologically interpretable.
+# traits_use_before_cov_drop <- traits_use
+# traits_use <- setdiff(traits_use, adjust_covariates)
+# dropped_traits <- setdiff(traits_use_before_cov_drop, traits_use)
+# if (length(dropped_traits) > 0) {
+#   message("Dropping traits that are also adjustment covariates: ",
+#           paste(dropped_traits, collapse = ", "))
+# }
+
+# # ── Section 1: Intervention arm distribution table, if arm is available ──
+# message("\n── Section 1: Covariate summaries across APO and PPWR groups ──")
 
 # apo_outcomes  <- c("apo", "apo_hdp", "apo_gdm", "apo_other", "preterm")
 # ppwr_outcomes <- c("ppwr_e")
 
-# arm_dist_list <- lapply(c(apo_outcomes, ppwr_outcomes), function(tr) {
-#   if (!tr %in% colnames(demographic_data)) return(NULL)
-#   outcome_vec <- demographic_data[[tr]]
-#   arm_col     <- demographic_data$group
-#   ids <- !is.na(outcome_vec) & !is.na(arm_col)
-#   if (sum(ids) == 0) return(NULL)
-#   tbl <- table(
-#     Arm     = ifelse(arm_col[ids] == 1, "Intervention", "Control"),
-#     Outcome = outcome_vec[ids]
-#   )
-#   df <- as.data.frame(tbl)
-#   df$Trait <- tr
-#   df
-# })
+# wb_cov <- openxlsx::createWorkbook()
 
-# arm_dist_df <- do.call(rbind, Filter(Negate(is.null), arm_dist_list))
+# if ("group" %in% colnames(demographic_data)) {
+#   arm_dist_list <- lapply(c(apo_outcomes, ppwr_outcomes), function(tr) {
+#     if (!tr %in% colnames(demographic_data)) return(NULL)
+#     outcome_vec <- demographic_data[[tr]]
+#     arm_col     <- demographic_data$group
+#     ids <- !is.na(outcome_vec) & !is.na(arm_col)
+#     if (sum(ids) == 0) return(NULL)
+#     tbl <- table(
+#       Arm     = ifelse(arm_col[ids] == 1, "Intervention", "Control"),
+#       Outcome = outcome_vec[ids]
+#     )
+#     df <- as.data.frame(tbl)
+#     df$Trait <- tr
+#     df
+#   })
 
-# wb_dist <- openxlsx::createWorkbook()
-# openxlsx::addWorksheet(wb_dist, "Arm_Distribution")
-# openxlsx::writeData(wb_dist, "Arm_Distribution", arm_dist_df)
+#   arm_dist_df <- do.call(rbind, Filter(Negate(is.null), arm_dist_list))
+#   if (!is.null(arm_dist_df)) {
+#     openxlsx::addWorksheet(wb_cov, "Arm_Distribution")
+#     openxlsx::writeData(wb_cov, "Arm_Distribution", arm_dist_df)
+#     message("  Arm distribution table added.")
+#     print(arm_dist_df)
+#   }
+# }
+
+# covar_summary <- do.call(rbind, lapply(adjust_covariates, function(v) {
+#   x <- demographic_data[[v]]
+#   if (is.numeric(x)) {
+#     data.frame(
+#       Covariate = v,
+#       Type = "numeric",
+#       N_nonmissing = sum(!is.na(x)),
+#       Summary = sprintf("mean=%.3f; sd=%.3f; median=%.3f; range=%.3f to %.3f",
+#                         mean(x, na.rm = TRUE), stats::sd(x, na.rm = TRUE),
+#                         stats::median(x, na.rm = TRUE),
+#                         min(x, na.rm = TRUE), max(x, na.rm = TRUE)),
+#       stringsAsFactors = FALSE
+#     )
+#   } else {
+#     tb <- table(x, useNA = "ifany")
+#     data.frame(
+#       Covariate = v,
+#       Type = "categorical",
+#       N_nonmissing = sum(!is.na(x)),
+#       Summary = paste(names(tb), as.integer(tb), sep = "=", collapse = "; "),
+#       stringsAsFactors = FALSE
+#     )
+#   }
+# }))
+
+# openxlsx::addWorksheet(wb_cov, "Covariate_Summary")
+# openxlsx::writeData(wb_cov, "Covariate_Summary", covar_summary)
+
 # openxlsx::saveWorkbook(
-#   wb_dist,
-#   file.path(out, "sens_arm_distribution_APO_PPWR.xlsx"),
+#   wb_cov,
+#   file.path(out, "sens_covariate_summary_APO_PPWR.xlsx"),
 #   overwrite = TRUE
 # )
-# message("  Arm distribution table saved.")
-# print(arm_dist_df)
+# message("  Covariate summary workbook saved.")
 
-# # ── Section 2: Residualize on arm ────────────────────────
-# residualize_on_arm <- function(mat, arm_vec) {
-#   ids <- intersect(rownames(mat), names(arm_vec[!is.na(arm_vec)]))
-#   mat_sub <- mat[ids, , drop = FALSE]
-#   arm_sub  <- arm_vec[ids]
+# # ── Section 2: Residualize on configured covariates ───────
+# residualize_on_covariates <- function(mat, covar_df) {
+#   ids <- intersect(rownames(mat), rownames(covar_df))
+#   mat_sub   <- mat[ids, , drop = FALSE]
+#   covar_sub <- covar_df[ids, , drop = FALSE]
+
 #   resid_mat <- apply(mat_sub, 2, function(x) {
-#     complete <- !is.na(x)
+#     complete <- !is.na(x) & stats::complete.cases(covar_sub)
 #     out_vec  <- rep(NA_real_, length(x))
-#     if (sum(complete) > 2) {
-#       out_vec[complete] <- residuals(lm(x[complete] ~ arm_sub[complete]))
+
+#     if (sum(complete) > (ncol(covar_sub) + 2)) {
+#       dat <- data.frame(y = x[complete], covar_sub[complete, , drop = FALSE],
+#                         check.names = FALSE)
+#       fit <- tryCatch(stats::lm(y ~ ., data = dat),
+#                       error = function(e) NULL)
+#       if (!is.null(fit)) {
+#         out_vec[complete] <- stats::residuals(fit)
+#       }
 #     }
 #     out_vec
 #   })
+
+#   if (is.null(dim(resid_mat))) {
+#     resid_mat <- matrix(resid_mat, ncol = 1)
+#     colnames(resid_mat) <- colnames(mat_sub)
+#   }
+
 #   rownames(resid_mat) <- ids
+#   colnames(resid_mat) <- colnames(mat_sub)
 #   resid_mat
 # }
 
-# # ── Section 2: Arm-adjusted correlations ─────────────────
-# message("\n── Section 2: Arm-adjusted module-trait correlations ──")
+# cor_pvalue_matrix <- function(x, y, method = "spearman") {
+#   cor_mat <- stats::cor(x, y, method = method, use = "pairwise.complete.obs")
+#   p_mat   <- matrix(NA_real_, nrow = nrow(cor_mat), ncol = ncol(cor_mat),
+#                     dimnames = dimnames(cor_mat))
+#   n_mat   <- matrix(NA_integer_, nrow = nrow(cor_mat), ncol = ncol(cor_mat),
+#                     dimnames = dimnames(cor_mat))
+
+#   for (i in seq_len(ncol(x))) {
+#     for (j in seq_len(ncol(y))) {
+#       ok <- stats::complete.cases(x[, i], y[, j])
+#       n_ij <- sum(ok)
+#       n_mat[i, j] <- n_ij
+#       r <- cor_mat[i, j]
+#       if (!is.na(r) && n_ij > 2) {
+#         r <- pmin(pmax(r, -0.999999), 0.999999)
+#         t_stat <- r * sqrt((n_ij - 2) / (1 - r^2))
+#         p_mat[i, j] <- 2 * stats::pt(-abs(t_stat), df = n_ij - 2)
+#       }
+#     }
+#   }
+
+#   list(cor = cor_mat, p = p_mat, n = n_mat)
+# }
+
+# # ── Section 2: Covariate-adjusted correlations ───────────
+# message("\n── Section 2: Covariate-adjusted module-trait correlations ──")
 
 # pheno_numeric <- demographic_data[,
 #   sapply(demographic_data, is.numeric), drop = FALSE]
 # pheno_numeric <- pheno_numeric[,
-#   setdiff(colnames(pheno_numeric), "group"), drop = FALSE]
+#   setdiff(colnames(pheno_numeric), adjust_covariates), drop = FALSE]
 
-# arm_cor_ID  <- list()
-# arm_pval_ID <- list()
+# adj_cor_ID  <- list()
+# adj_pval_ID <- list()
+# adj_n_ID    <- list()
 
 # for (set in seq_len(All_nSets_ID)) {
 
 #   tp <- tp_labels[set]
 #   me <- consensusMEs_ID[[set]]$data
 
-#   ids <- intersect(rownames(me), rownames(pheno_numeric))
-#   ids <- intersect(ids, names(arm_vec[!is.na(arm_vec)]))
+#   ids <- Reduce(intersect, list(
+#     rownames(me),
+#     rownames(pheno_numeric),
+#     rownames(covar_df),
+#     covar_complete_ids
+#   ))
 
-#   message(sprintf("  %s: n=%d samples with arm data", tp, length(ids)))
+#   message(sprintf("  %s: n=%d samples with complete covariate data", tp, length(ids)))
 
-#   me_resid    <- residualize_on_arm(me[ids, , drop = FALSE],            arm_vec)
-#   trait_resid <- residualize_on_arm(pheno_numeric[ids, , drop = FALSE], arm_vec)
+#   me_resid    <- residualize_on_covariates(me[ids, , drop = FALSE],
+#                                            covar_df[ids, , drop = FALSE])
+#   trait_resid <- residualize_on_covariates(pheno_numeric[ids, , drop = FALSE],
+#                                            covar_df[ids, , drop = FALSE])
 
 #   traits_in <- intersect(traits_use, colnames(trait_resid))
 
-#   cor_mat <- stats::cor(
+#   cp <- cor_pvalue_matrix(
 #     me_resid,
 #     trait_resid[, traits_in, drop = FALSE],
-#     method = "spearman",
-#     use    = "pairwise.complete.obs"
+#     method = cor_method
 #   )
 
-#   n        <- nrow(me_resid)
-#   cor_clip <- pmin(pmax(cor_mat, -0.999999), 0.999999)
-#   t_stat   <- cor_clip * sqrt((n - 2) / (1 - cor_clip^2))
-#   pval_mat <- 2 * stats::pt(-abs(t_stat), df = n - 2)
-#   dimnames(pval_mat) <- dimnames(cor_mat)
+#   cor_mat  <- cp$cor
+#   pval_mat <- cp$p
+#   n_mat    <- cp$n
 
-#   arm_cor_ID[[set]]  <- cor_mat
-#   arm_pval_ID[[set]] <- pval_mat
+#   adj_cor_ID[[set]]  <- cor_mat
+#   adj_pval_ID[[set]] <- pval_mat
+#   adj_n_ID[[set]]    <- n_mat
 
 #   wb <- openxlsx::createWorkbook()
 #   openxlsx::addWorksheet(wb, "Correlations")
 #   openxlsx::addWorksheet(wb, "P_values")
+#   openxlsx::addWorksheet(wb, "N_pairwise")
 #   openxlsx::writeData(wb, "Correlations", round(cor_mat,   3), rowNames = TRUE)
 #   openxlsx::writeData(wb, "P_values",     signif(pval_mat, 3), rowNames = TRUE)
+#   openxlsx::writeData(wb, "N_pairwise",   n_mat, rowNames = TRUE)
+
 #   openxlsx::saveWorkbook(
 #     wb,
-#     file.path(out, paste0("sens_arm_adjusted_", tp, ".xlsx")),
+#     file.path(out, paste0("sens_covariate_adjusted_", tp, ".xlsx")),
 #     overwrite = TRUE
 #   )
-#   message(sprintf("  %s: saved arm-adjusted correlations", tp))
+#   message(sprintf("  %s: saved covariate-adjusted correlations", tp))
 # }
 
-# names(arm_cor_ID)  <- tp_labels
-# names(arm_pval_ID) <- tp_labels
+# names(adj_cor_ID)  <- tp_labels
+# names(adj_pval_ID) <- tp_labels
+# names(adj_n_ID)    <- tp_labels
 
-# # ── Section 3: Comparison unadjusted vs arm-adjusted ─────
-# message("\n── Section 3: Comparing unadjusted vs arm-adjusted findings ──")
+# saveRDS(adj_cor_ID,  file.path(out, paste0("moduleTraitCor_covariate_adjusted_", adjustment_slug, ".rds")))
+# saveRDS(adj_pval_ID, file.path(out, paste0("moduleTraitPvalue_covariate_adjusted_", adjustment_slug, ".rds")))
+# saveRDS(adj_n_ID,    file.path(out, paste0("moduleTraitN_covariate_adjusted_", adjustment_slug, ".rds")))
+
+# # ── Section 3: Comparison unadjusted vs covariate-adjusted ─
+# message("\n── Section 3: Comparing unadjusted vs covariate-adjusted findings ──")
 
 # primary_traits <- c("apo","ppwr_e","apo_hdp","apo_gdm","apo_other","preterm")
 
@@ -1131,8 +1508,8 @@ message(sprintf(
 #   tp <- tp_labels[set]
 #   unadj_cor  <- moduleTraitCor_ID[[set]]
 #   unadj_pval <- moduleTraitPvalue_ID[[set]]
-#   adj_cor    <- arm_cor_ID[[set]]
-#   adj_pval   <- arm_pval_ID[[set]]
+#   adj_cor    <- adj_cor_ID[[set]]
+#   adj_pval   <- adj_pval_ID[[set]]
 #   traits_check  <- intersect(intersect(primary_traits, colnames(unadj_cor)),
 #                               colnames(adj_cor))
 #   modules_check <- intersect(rownames(unadj_cor), rownames(adj_cor))
@@ -1149,13 +1526,12 @@ message(sprintf(
 #         sig_unadj    = unadj_pval[me, tr] < 0.05,
 #         sig_adj      = adj_pval[me, tr]   < 0.05,
 #         finding_held = (unadj_pval[me, tr] < 0.05) == (adj_pval[me, tr] < 0.05),
+#         Adjustment   = adjustment_label,
 #         stringsAsFactors = FALSE
 #       )
 #     }))
 #   }))
 # }))
-
-# # ── Define significance categories cleanly ────────────────
 
 # # ── Define significance categories cleanly ────────────────
 
@@ -1194,44 +1570,44 @@ message(sprintf(
 
 # openxlsx::write.xlsx(
 #   list(
-#     All_primary_traits              = comparison,
-#     Significant_unadjusted          = comparison_unadj_sig,
-#     Significant_arm_adjusted        = comparison_adj_sig,
-#     Retained_after_arm_adjustment   = comparison_retained,
-#     Lost_after_arm_adjustment       = comparison_lost,
-#     Gained_after_arm_adjustment     = comparison_gained,
-#     Significant_in_either_analysis  = comparison_sig_either
+#     All_primary_traits                    = comparison,
+#     Significant_unadjusted                = comparison_unadj_sig,
+#     Significant_covariate_adjusted        = comparison_adj_sig,
+#     Retained_after_covariate_adjust   = comparison_retained,
+#     Lost_after_covariate_adjustment       = comparison_lost,
+#     Gained_after_covariate_adjust     = comparison_gained,
+#     Significant_in_either_analysis        = comparison_sig_either
 #   ),
-#   file.path(out, "sens_arm_adjusted_vs_unadjusted_comparison.xlsx"),
+#   file.path(out, "sens_covariate_adjusted_vs_unadjusted_comparison.xlsx"),
 #   overwrite = TRUE
 # )
 
 # message(sprintf(
-#   "  Nominally significant associations before arm adjustment: %d",
+#   "  Nominally significant associations before covariate adjustment: %d",
 #   n_unadj_sig))
 
 # message(sprintf(
-#   "  Nominally significant associations after arm adjustment:  %d",
+#   "  Nominally significant associations after covariate adjustment:  %d",
 #   n_adj_sig))
 
 # message(sprintf(
-#   "  Original associations retained after arm adjustment:      %d / %d (%.0f%%)",
+#   "  Original associations retained after covariate adjustment:      %d / %d (%.0f%%)",
 #   n_retained, n_unadj_sig, pct_retained_of_unadj))
 
 # message(sprintf(
-#   "  Original associations lost after arm adjustment:          %d / %d (%.0f%%)",
+#   "  Original associations lost after covariate adjustment:          %d / %d (%.0f%%)",
 #   n_lost, n_unadj_sig, pct_lost_of_unadj))
 
 # message(sprintf(
-#   "  New associations emerging after arm adjustment:           %d",
+#   "  New associations emerging after covariate adjustment:           %d",
 #   n_gained))
 
 # message(sprintf(
-#   "  Associations significant in either analysis:              %d",
+#   "  Associations significant in either analysis:                    %d",
 #   n_either))
 
 # # ── Section 4: Supplementary heatmap ─────────────────────
-# message("\n── Section 4: Supplementary heatmap (arm-adjusted, mirrors Figure 2) ──")
+# message("\n── Section 4: Supplementary heatmap (covariate-adjusted, mirrors Figure 2) ──")
 
 # # ── Helper functions — exact copies from script 08 ───────
 
@@ -1345,7 +1721,7 @@ message(sprintf(
 # # ── Load module order and class annotation using script 08 logic ──
 # # Use the full WGCNA module set (not just arm_cor_ID rows) so that
 # # the lipid-class priority sorting is computed on the complete set,
-# # then restricted to modules present in the arm-adjusted results.
+# # then restricted to modules present in the covariate-adjusted results.
 
 # all_wgcna_mods <- normalize_module_names(
 #   colnames(consensusMEs_ID[[1]]$data)
@@ -1377,16 +1753,10 @@ message(sprintf(
 # module_class_df <- module_class_df[
 #   tolower(gsub("^ME", "", module_class_df$Module)) != "grey", , drop = FALSE]
 
-# # ── Restrict to modules present in arm-adjusted results ───
-# current_mods_s13 <- normalize_module_names(rownames(arm_cor_ID[[1]]))
-
-# current_mods_s13 <- current_mods_s13[
-#   tolower(gsub("^ME", "", current_mods_s13)) != "grey"
-# ]
-
-# module_order <- module_order[module_order %in% current_mods_s13]
-
-# missing_mods <- current_mods_s13[!current_mods_s13 %in% module_order]
+# # ── Restrict to modules present in covariate-adjusted results ───
+# current_mods_s13 <- normalize_module_names(rownames(adj_cor_ID[[1]]))
+# module_order     <- module_order[module_order %in% current_mods_s13]
+# missing_mods     <- current_mods_s13[!current_mods_s13 %in% module_order]
 # if (length(missing_mods) > 0) {
 #   message("  Appending modules not in order file: ",
 #           paste(gsub("^ME", "", missing_mods), collapse = ", "))
@@ -1411,8 +1781,8 @@ message(sprintf(
 #     TRUE
 #   }
 
-#   cor_mat  <- arm_cor_ID[[set_index]]
-#   pval_mat <- arm_pval_ID[[set_index]]
+#   cor_mat  <- adj_cor_ID[[set_index]]
+#   pval_mat <- adj_pval_ID[[set_index]]
 
 #   traits_in <- intersect(traits_use, colnames(cor_mat))
 #   cor_mat   <- cor_mat[,  traits_in, drop = FALSE]
@@ -1426,7 +1796,7 @@ message(sprintf(
 #   pval_mat   <- pval_mat[keep_order, , drop = FALSE]
 
 #   if (heatmap_mode == "fdr") {
-#     sig_mat <- pval_mat   # arm_pval is nominal; use as-is for fdr mode fallback
+#     sig_mat <- pval_mat   # adjusted p-values are nominal; use as-is for fdr mode fallback
 #     cutoff  <- fdr_cutoff
 #   } else {
 #     sig_mat <- pval_mat
@@ -1530,7 +1900,7 @@ message(sprintf(
 #       colors = WGCNA::blueWhiteRed(100),
 #       limits = c(-1, 1),
 #       breaks = c(-1, -0.5, 0, 0.5, 1),
-#       name   = ifelse(method=="pearson", "Pearson r", "Spearman \u03c1")) +
+#       name   = ifelse(cor_method=="pearson", "Pearson r", "Spearman \u03c1")) +
 
 #     ggplot2::scale_x_continuous(
 #       breaks = trait_positions,
@@ -1602,9 +1972,9 @@ message(sprintf(
 #   grid::popViewport()
 # }
 
-# fig_pdf  <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.pdf")
-# fig_png  <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.png")
-# fig_tiff <- file.path(fig_dir, "FigureS_arm_adjusted_heatmap.tiff")
+# fig_pdf  <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.pdf")
+# fig_png  <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.png")
+# fig_tiff <- file.path(fig_dir, "FigureS_covariate_adjusted_heatmap.tiff")
 
 # fig_width_mm  <- FIG_WIDTH_FULL
 # fig_height_mm <- FIG_HEIGHT_MAX
@@ -1640,19 +2010,14 @@ message(sprintf(
 # # ── Summary for point-by-point response ──────────────────
 # message("\n── Summary for revision response ──")
 # message(sprintf(
-#   "  Before adjustment for intervention arm, %d primary module-trait associations were nominally significant.",
-#   n_unadj_sig))
-
+#   "  Of %d nominally significant module-trait associations (primary outcomes),",
+#   n_total))
 # message(sprintf(
-#   "  After arm adjustment, %d of these original associations remained nominally significant (%.0f%%), while %d were attenuated below p < 0.05.",
-#   n_retained, pct_retained_of_unadj, n_lost))
+#   "  %d (%.0f%%) remained nominally significant after adjusting for intervention arm.",
+#   n_held, 100 * n_held / max(n_total, 1)))
+# if (n_lost > 0)
+#   message(sprintf("  %d associations lost significance after adjustment.", n_lost))
+# if (n_gained > 0)
+#   message(sprintf("  %d additional associations emerged after adjustment.", n_gained))
 
-# if (n_gained > 0) {
-#   message(sprintf(
-#     "  In addition, %d associations that were not significant in the unadjusted analysis became nominally significant after arm adjustment.",
-#     n_gained))
-# }
-
-# message(sprintf(
-#   "  Overall, %d associations were nominally significant after arm adjustment.",
-#   n_adj_sig))
+# message("\nScript 13 complete → ", out)

@@ -1,3 +1,4 @@
+
 # R/12_plsda_metaboanalyst.R
 # -------------------------------------------------------
 # PLS-DA using MetaboAnalystR — mirrors EXACT MetaboAnalyst
@@ -9,7 +10,7 @@
 #   - Uses PLSR.Anal() which matches the MetaboAnalyst website PLS-DA
 #   - Permutation testing via mSet$analSet$plsr for Q2/R2 reporting
 #   - Model statistics (R2, Q2, perm p) extracted and saved to Excel
-
+#The actual statistics were obtained from website.
 # Outputs → results/12_plsda_metaboanalyst/
 # -------------------------------------------------------
 

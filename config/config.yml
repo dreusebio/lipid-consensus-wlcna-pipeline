@@ -57,6 +57,7 @@ output:
   s11:  "results/11_lipid_boxplots"         # 11_lipid_boxplots.R
   s12:  "results/12_plsda"                  # 12_plsda.R
   s13:  "results/13_sensitivity"            # 13_sensitivity_analyses.R
+  s14:  "results/14_sensitivity_covariates" # 14_sensitivity_analyses_covariates.R
 
 # ── Normalization settings ────────────────────────────────
 normalization:
@@ -193,7 +194,7 @@ differential:
   fdr_method:    "BH"
   fdr_cutoff:    0.1
   raw_p_cutoff:  0.05
-  top_n_labels:  12
+  top_n_labels:  15
 
 # ── Covariates (for sensitivity analyses) ─────────────────
 covariates:
@@ -241,8 +242,18 @@ plsda:
   # folds:      5
   # nrepeat:    100
   # validation: "Mfold"
+# ── Sensitivity analysis configuration ─────────────────────────────────
+sensitivity:
+  adjust_covariates:
+    - age
+    - race_white
+    - bmi
+    - group
 
-  # ── Table 1 configuration ─────────────────────────────────
+  factor_covariates:
+    - race_white
+    - group
+# ── Table 1 configuration ─────────────────────────────────
 # Add this block to your config/config.yml
 # Variables listed here control what appears in Table 1.
 # To add/remove a variable: edit the lists below.
