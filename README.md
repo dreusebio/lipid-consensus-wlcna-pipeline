@@ -63,4 +63,4 @@ lipid-consensus-wlcna-pipeline/
 ├── .gitignore
 └── README.md
 ```
-For the GROWELL lipidomics paper, please check this folder for the script that was used here **scripts_for_growell_lipidomics_analysis**
+
