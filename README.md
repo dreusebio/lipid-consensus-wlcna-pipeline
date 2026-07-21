@@ -3,8 +3,7 @@
 This pipeline builds a **consensus WLCNA network** from lipidomics data across
 multiple timepoints and relates lipid modules to sample-level traits
 (e.g., **weight**, **PPWR**, **APO**).  
-It is designed to be **reusable**: other users can plug in *their own* traits via
-a simple YAML configuration file.
+
 
 ---
 
