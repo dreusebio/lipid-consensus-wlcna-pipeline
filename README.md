@@ -335,9 +335,6 @@ LaSalle Lab, UC Davis
 
 ---
 
-
----
-
 ## License
 
 See `LICENSE`
