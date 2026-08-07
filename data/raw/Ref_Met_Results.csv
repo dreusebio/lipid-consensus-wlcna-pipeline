@@ -1,0 +1,452 @@
+annotation,Standardized name,Formula,Exact mass,Super class,Main class,Sub class,Pubchem CID,CHEBI_ID,HMDB_ID,LM_ID,KEGG_ID,INCHI_KEY, REFMET_ID
+"1,2-Dioleoyl-sn-glycero-3-phospho-(1'-myo-inositol)",-,,,Glycerophospholipids,Glycerophosphoinositols,PI,44251424,-,-,-,-,-,-
+13-HODE,13-HODE,C18H32O3,296.2351,Fatty Acyls,Octadecanoids,HODE,5282948,,,LMFA02000155,,,RM0139907
+"16,16-dimethylprostaglandin A1",-,,,Fatty Acyls,Eicosanoids,Prostaglandins,5271806,-,-,-,-,-,-
+4-HDoHE,4-HDoHE,C22H32O3,344.2351,Fatty Acyls,Docosanoids,Docosanoids,14429109,72624,HMDB0060049,LMFA04000024,,IFRKCNPQVIJFAQ-PQVBWYSWSA-N,RM0153146
+4-methyl-2-oxopentanoic acid,Ketoleucine,C6H10O3,130.063,Organic acids,Keto acids,Short-chain keto acids,70,48430,HMDB0000695,,C00233,BKAJNAXTPSGJCU-UHFFFAOYSA-N,RM0135977
+5-HETE,5-HETE,C20H32O3,320.2351,Fatty Acyls,Eicosanoids,HETE,9862886,60943,HMDB0011134,LMFA03060084,C04805,KGIJOOYOSFUGPC-XTDASVJISA-N,RM0158210
+"8,15-DiHETE","8,15-DiHETE",C20H32O4,336.2301,Fatty Acyls,Eicosanoids,HETE,53480358,88456,HMDB0010219,LMFA03060109,,NNPWRKSGORGTIM-RCDCWWQHSA-N,RM0139563
+C16 Lactosyl Ceramide (d18:1/16:0),-,,,Sphingolipids,Neutral_glycosphingolipids,LacCer,53477895,84758,HMDB0006750,LMSP0501AB03,-,HLIJNIKSBCIDGO-UHFFFAOYSA-N,-
+CE 18:1,CE 18:1,C45H78O2,650.6002,Sterol Lipids,Sterol esters,Chol. esters,,,,,,,RM0138765
+CE 18:2,CE 18:2,C45H76O2,648.5845,Sterol Lipids,Sterol esters,Chol. esters,,,,,,,RM0016397
+CE_13-HODE,-,,,Sterol Lipids,Sterol esters,Chol. esters,-,-,-,-,-,-,-
+Cer 18:0;2O/24:0,Cer 18:0;O2/24:0,C42H85NO3,651.6529,Sphingolipids,Ceramides,DHCer,5283577,52961,HMDB0011768,LMSP02020012,,BPLYVSYSBPLDOA-WVILEFPPSA-N,RM0160764
+Cer 18:0;2O/24:1,Cer 18:0;O2/24:1,C42H83NO3,649.6373,Sphingolipids,Ceramides,DHCer,,,,,,,RM0134164
+Cer 18:0;3O/16:0;(2OH),Cer 18:0;O3/16:0;2OH,C34H69NO5,571.5176,Sphingolipids,Ceramides,PhytoCer,,,,,,,RM0033425
+Cer 18:0;3O/24:0;(2OH),Cer 18:0;O3/24:0;2OH,C42H85NO5,683.6428,Sphingolipids,Ceramides,PhytoCer,,,,,,,RM0048713
+Cer 18:1;2O/24:2,Cer 18:1;O2/24:2,C42H79NO3,645.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0134174
+Cer 18:1;2O/26:0,Cer 18:1;O2/26:0,C44H87NO3,677.6686,Sphingolipids,Ceramides,Cer,5283570,72968,HMDB0004955,LMSP02010011,,CJROVRTUSFQVMR-GVOPMEMSSA-N,RM0138864
+Cer 18:1;2O_26:0;(2OH),Cer 18:1;O2/26:0;2OH,C44H87NO4,693.6635,Sphingolipids,Ceramides,Cer,,,,,,,RM0020101
+Cer 18:2;2O/22:0,Cer 18:2;O2/22:0,C40H77NO3,619.5903,Sphingolipids,Ceramides,Cer,52931123,134550,,LMSP02010029,,HILTUFAERVOALR-MQXYEJFFSA-N,RM0135504
+Cer 18:2;2O/23:0,Cer 18:2;O2/23:0,C41H79NO3,633.606,Sphingolipids,Ceramides,Cer,52931124,134552,HMDB0255029,LMSP02010030,,ZMECGTOWDUDJOX-YOFLLLADSA-N,RM0135505
+Cer 18:2;2O/24:1,Cer 18:2;O2/24:1,C42H79NO3,645.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0134208
+Cer 20:0;2O/24:0,Cer 20:0;O2/24:0,C44H89NO3,679.6842,Sphingolipids,Ceramides,DHCer,70678830,66988,,LMSP02020027,,OEROUXQFUNUVIP-WZYYJWNZSA-N,RM0122192
+Cer 20:0;2O/25:0,Cer 20:0;O2/25:0,C45H91NO3,693.6999,Sphingolipids,Ceramides,DHCer,134783453,,,LMSP02029ASJ,,ZBKDQSOWRSEUMN-JCGOJSMZSA-N,RM0122745
+Cer 20:0;2O/26:0,Cer 20:0;O2/26:0,C46H93NO3,707.7155,Sphingolipids,Ceramides,DHCer,70678875,66994,,LMSP02020028,,VPEAVPNLCFWDRE-YWPUXERESA-N,RM0135522
+Cer 20:0;3O/24:0;(2OH),Cer 20:0;O3/24:0;2OH,C44H89NO5,711.6741,Sphingolipids,Ceramides,PhytoCer,,,,,,,RM0121964
+Cer 22:0;2O/26:0,Cer 22:0;O2/26:0,C48H97NO3,735.7468,Sphingolipids,Ceramides,DHCer,134765426,,,LMSP02029AYD,,RWONAHGWHDKVBG-KBRGEABDSA-N,RM0002766
+Cer 58:11;2O,Cer 58:11;O2*,C58H95NO3,853.7312,Sphingolipids,Ceramides,Cer,-,-,-,-,-,-,-
+Cer d32:1,Cer 32:1;O2,C32H63NO3,509.4808,Sphingolipids,Ceramides,Cer,,,,,,,RM0122205
+Cer d33:1,Cer 33:1;O2,C33H65NO3,523.4964,Sphingolipids,Ceramides,Cer,,,,,,,RM0134201
+Cer d34:0,Cer 34:0;O2,C34H69NO3,539.5277,Sphingolipids,Ceramides,DHCer,,,,,,,RM0134193
+Cer d34:1,Cer 34:1;O2,C34H67NO3,537.5121,Sphingolipids,Ceramides,Cer,,,,,,,RM0134194
+Cer d34:2,Cer 34:2;O2,C34H65NO3,535.4964,Sphingolipids,Ceramides,Cer,,,,,,,RM0134206
+Cer d34:2 Isomer A,Cer 34:2;O2,C34H65NO3,535.4964,Sphingolipids,Ceramides,Cer,,,,,,,RM0134206
+Cer d34:2 Isomer B,Cer 34:2;O2,C34H65NO3,535.4964,Sphingolipids,Ceramides,Cer,,,,,,,RM0134206
+Cer d36:1,Cer 36:1;O2,C36H71NO3,565.5434,Sphingolipids,Ceramides,Cer,,,,,,,RM0029559
+Cer d36:2,Cer 36:2;O2,C36H69NO3,563.5277,Sphingolipids,Ceramides,Cer,,,,,,,RM0048119
+Cer d38:1,Cer 38:1;O2,C38H75NO3,593.5747,Sphingolipids,Ceramides,Cer,,,,,,,RM0134195
+Cer d39:1,Cer 39:1;O2,C39H77NO3,607.5903,Sphingolipids,Ceramides,Cer,,,,,,,RM0134162
+Cer d40:0,Cer 40:0;O2,C40H81NO3,623.6216,Sphingolipids,Ceramides,DHCer,,,,,,,RM0122663
+Cer d40:1,Cer 40:1;O2,C40H79NO3,621.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0134196
+Cer d40:2,Cer 40:2;O2,C40H77NO3,619.5903,Sphingolipids,Ceramides,Cer,,,,,,,RM0035369
+Cer d41:1,Cer 41:1;O2,C41H81NO3,635.6216,Sphingolipids,Ceramides,Cer,,,,,,,RM0134197
+Cer d41:2,Cer 41:2;O2,C41H79NO3,633.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0134204
+Cer d42:0,Cer 42:0;O2,C42H85NO3,651.6529,Sphingolipids,Ceramides,DHCer,,,,,,,RM0134167
+Cer d42:1,Cer 42:1;O2,C42H83NO3,649.6373,Sphingolipids,Ceramides,Cer,,,,,,,RM0138775
+Cer d42:2 Isomer A,Cer 42:2;O2,C42H81NO3,647.6216,Sphingolipids,Ceramides,Cer,,,,,,,RM0134179
+Cer d42:3,Cer 42:3;O2,C42H79NO3,645.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0012730
+Cer d43:1,Cer 43:1;O2,C43H85NO3,663.6529,Sphingolipids,Ceramides,Cer,,,,,,,RM0134198
+Cer d43:2,Cer 43:2;O2,C43H83NO3,661.6373,Sphingolipids,Ceramides,Cer,,,,,,,RM0006220
+Cer d44:1,Cer 44:1;O2,C44H87NO3,677.6686,Sphingolipids,Ceramides,Cer,,,,,,,RM0041474
+Cer d44:2,Cer 44:2;O2,C44H85NO3,675.6529,Sphingolipids,Ceramides,Cer,,,,,,,RM0059133
+Cer d46:1,Cer 46:1;O2,C46H91NO3,705.6999,Sphingolipids,Ceramides,Cer,,,,,,,RM0120313
+Cer d46:2,Cer 46:2;O2,C46H89NO3,703.6842,Sphingolipids,Ceramides,Cer,,,,,,,RM0054152
+Cer-NDS d39:0,Cer 39:0;O2,C39H79NO3,609.606,Sphingolipids,Ceramides,Cer,,,,,,,RM0120037
+Cer-NDS d40:0,Cer 40:0;O2,C40H81NO3,623.6216,Sphingolipids,Ceramides,DHCer,,,,,,,RM0122663
+Cer-NDS d41:0,Cer 41:0;O2,C41H83NO3,637.6373,Sphingolipids,Ceramides,Cer,,,,,,,RM0134166
+Cer-NDS d43:0,Cer 43:0;O2,C43H87NO3,665.6686,Sphingolipids,Ceramides,Cer,,,,,,,RM0121145
+Cer-NP t42:0,Cer 42:0;O3,C42H85NO4,667.6479,Sphingolipids,Ceramides,PhytoCer,,,,,,,RM0134187
+Cholesterol,Cholesterol,C27H46O,386.3549,Sterol Lipids,Sterols,Cholesterols,5997,16113,HMDB0000067,LMST01010001,C00187,HVYWMOMLDIMFJA-DPAQBDIFSA-N,RM0135639
+DG 18:1_18:2,DG 18:1_18:2,C39H70O5,618.5223,Glycerolipids,Diradylglycerols,DAG,,,,,,,RM0034254
+DG 34:1,DG 34:1,C37H70O5,594.5223,Glycerolipids,Diradylglycerols,DAG,,,,,,,RM0138788
+FA 14:0 (myristic acid),Myristic acid,C14H28O2,228.2089,Fatty Acyls,Fatty acids,Saturated FA,11005,28875,HMDB0000806,LMFA01010014,C06424,TUNFSRHWOTWDNC-UHFFFAOYSA-N,RM0153483
+FA 14:1 (physeteric acid),Physeteric acid,C14H26O2,226.1933,Fatty Acyls,Fatty acids,Unsaturated FA,5312400,70716,HMDB0000521,LMFA01030248,,AFGUVBVUFZMJMX-KTKRTIGZSA-N,RM0153634
+FA 15:0 (pentadecylic acid),Pentadecylic acid,C15H30O2,242.2246,Fatty Acyls,Fatty acids,Saturated FA,13849,42504,HMDB0000826,LMFA01010015,C16537,WQEPLUUGTLDZJY-UHFFFAOYSA-N,RM0153573
+FA 15:1,Pentadecenoic acid,C15H28O2,240.2089,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0072422
+FA 16:1 (palmitoleic acid),Palmitoleic acid,C16H30O2,254.2246,Fatty Acyls,Fatty acids,Unsaturated FA,445638,28716,HMDB0003229,LMFA01030056,C08362,SECPZKHBENQXJG-FPLPWBNLSA-N,RM0153617
+FA 17:0 (margaric acid),Margaric acid,C17H34O2,270.2559,Fatty Acyls,Fatty acids,Saturated FA,10465,32365,HMDB0002259,LMFA01010017,,KEMQGTRYUADPNZ-UHFFFAOYSA-N,RM0149933
+FA 18:1 (oleic acid),Oleic acid,C18H34O2,282.2559,Fatty Acyls,Fatty acids,Unsaturated FA,445639,16196,HMDB0000207,LMFA01030002,C00712,ZQPPMHVWECSIRJ-KTKRTIGZSA-N,RM0151650
+FA 18:2 (linoleic acid),Linoleic acid,C18H32O2,280.2402,Fatty Acyls,Fatty acids,Unsaturated FA,5280450,17351,HMDB0000673,LMFA01030120,C01595,OYHQOLUKZRVURQ-HZJYTTRNSA-N,RM0149976
+FA 18:3 (linolenic acid),Octadecatrienoic acid,C18H30O2,278.2246,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0139661
+FA 19:1,Nonadecenoic acid,C19H36O2,296.2715,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0138767
+FA 20:2 (eicosadienoic acid),Eicosadienoic acid,C20H36O2,308.2715,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0149923
+FA 20:3 (homo-gamma-linolenic acid),Dihomo-gamma-linolenic acid,C20H34O2,306.2559,Fatty Acyls,Fatty acids,Unsaturated FA,5280581,53486,HMDB0002925,LMFA01030158,C03242,HOBAELRKJCKHQD-QNEBEIHSSA-N,RM0153916
+FA 20:4 (arachidonic acid),Arachidonic acid,C20H32O2,304.2402,Fatty Acyls,Fatty acids,Unsaturated FA,444899,15843,HMDB0001043,LMFA01030001,C00219,YZXBAPSDXZZRGB-DOFZRALJSA-N,RM0153612
+FA 20:5 (eicosapentaenoic acid),Eicosapentaenoic acid,C20H30O2,302.2246,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0151646
+FA 22:0 (behenic acid),Behenic acid,C22H44O2,340.3341,Fatty Acyls,Fatty acids,Saturated FA,8215,28941,HMDB0000944,LMFA01010022,C08281,UKMSUNONTOPOIO-UHFFFAOYSA-N,RM0153577
+FA 22:1 (erucic acid),cis-Erucic acid,C22H42O2,338.3185,Fatty Acyls,Fatty acids,Unsaturated FA,5281116,28792,HMDB0002068,LMFA01030089,C08316,DPUOLQHDNGRHBS-KTKRTIGZSA-N,RM0153624
+FA 22:2 (docosadienoic acid),Docosadienoic acid,C23H42O2,350.3185,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0149924
+FA 22:4,Docosatetraenoic acid,C22H36O2,332.2715,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0139662
+FA 22:6 (docosahexaenoic acid),Docosahexaenoic acid,C22H32O2,328.2402,Fatty Acyls,Fatty acids,Unsaturated FA,,,,,,,RM0137845
+FA 23:0,Tricosylic acid,C23H46O2,354.3498,Fatty Acyls,Fatty acids,Saturated FA,17085,42394,HMDB0001160,LMFA01010023,,XEZVDURJDFGERA-UHFFFAOYSA-N,RM0153578
+FA 24:1 (nervonic acid),Nervonic acid,C24H46O2,366.3498,Fatty Acyls,Fatty acids,Unsaturated FA,5281120,44247,HMDB0002368,LMFA01030092,C08323,GWHCXVQVJPWHRF-KTKRTIGZSA-N,RM0153255
+FA 28:0 (montanic acid),Montanic acid,C28H56O2,424.428,Fatty Acyls,Fatty acids,Saturated FA,10470,31001,HMDB0002348,LMFA01010028,,UTOPWMOLSKOLTQ-UHFFFAOYSA-N,RM0153582
+FA 30:0,Melissic acid,C30H60O2,452.4593,Fatty Acyls,Fatty acids,Saturated FA,10471,31003,HMDB0030925,LMFA01010030,,VHOCUJPBKOZGJD-UHFFFAOYSA-N,RM0153584
+FA 32:0,Lacceroic acid,C32H64O2,480.4906,Fatty Acyls,Fatty acids,Saturated FA,19255,76215,,LMFA01010032,,ICAIHSUWWZJGHD-UHFFFAOYSA-N,RM0153586
+FAHFA 18:0/20:2,-,,,Fatty Acyls,Fatty esters,FAHFA,-,-,-,-,-,-,-
+FAHFA 38:4,FAHFA 38:4;O,C38H66O4,586.4961,Fatty Acyls,Fatty esters,FAHFA,,,,,,,RM0152767
+GlcCer d34:1,GlcCer 34:1;O2,C40H77NO8,699.5649,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0008613
+GlcCer d40:1,GlcCer 40:1;O2,C46H89NO8,783.6588,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0125759
+GlcCer d41:1,GlcCer 41:1;O2,C47H91NO8,797.6745,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0038137
+GlcCer d42:1,GlcCer 42:1;O2,C48H93NO8,811.6901,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0134085
+GlcCer d42:2,GlcCer 42:2;O2,C48H91NO8,809.6745,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0134086
+GlcCerd14:14E/20:02OH,-,,,Sphingolipids,Glycosphingolipids,HexCer,-,-,-,-,-,-,-
+Hex3Cer 18:1;2O/16:0,Hex3Cer 18:1;O2/16:0,C52H97NO18,1023.6706,Sphingolipids,Glycosphingolipids,Hex3Cer,,,,,,,RM0134087
+HexCer 18:1;2O/24:0,HexCer 18:1;O2/24:0,C48H93NO8,811.6901,Sphingolipids,Glycosphingolipids,HexCer,,,,,,,RM0042554
+LNAPE 18:2/N-20:0,-,,,Glycerophospholipids,Glycerophosphoethanolamines,LPE,-,-,-,-,-,-,-
+LNAPE 18:2_N-19:0,-,,,Glycerophospholipids,Glycerophosphoethanolamines,LPE,-,-,-,-,-,-,-
+LPC 14:0,LPC 14:0,C22H46NO7P,467.3012,Glycerophospholipids,Glycerophosphocholines,LPC,460604,64489,HMDB0010379,LMGP01050012,C04230,VXUOFDJKYGDUJI-OAQYLSRUSA-N,RM0135070
+LPC 15:0,LPC 15:0,C23H48NO7P,481.3168,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0017309
+LPC 16:0,LPC 16:0,C24H50NO7P,495.3325,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0134475
+LPC 16:1,LPC 16:1,C24H48NO7P,493.3168,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0048603
+LPC 17:0,LPC 17:0,C25H52NO7P,509.3481,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0134474
+LPC 18:0,LPC 18:0,C26H54NO7P,523.3638,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0106163
+LPC 18:1,LPC 18:1,C26H52NO7P,521.3481,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0042845
+LPC 18:2,LPC 18:2,C26H50NO7P,519.3325,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0048598
+LPC 20:0,LPC 20:0,C28H58NO7P,551.3951,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0134472
+LPC 20:1,LPC 20:1,C28H56NO7P,549.3794,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0048599
+LPC 20:2,LPC 20:2,C28H54NO7P,547.3638,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0104271
+LPC 20:3,LPC 20:3,C28H52NO7P,545.3481,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0134469
+LPC 20:4,LPC 20:4,C28H50NO7P,543.3325,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0048636
+LPC 20:5,LPC 20:5,C28H48NO7P,541.3168,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0106165
+LPC 22:6,LPC 22:6,C30H50NO7P,567.3325,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0134493
+LPC 32:0,LPC 32:0,C40H82NO7P,719.5829,Glycerophospholipids,Glycerophosphocholines,LPC,,,,,,,RM0007244
+LPC O-16:0,LPC O-16:0,C24H52NO6P,481.3532,Glycerophospholipids,Glycerophosphocholines,O-LPC,162126,64496,,LMGP01060010,C04317,VLBPIWYTPAXCFJ-XMMPIXPASA-N,RM0133233
+LPC O-20:1,LPC O-20:1,C28H58NO6P,535.4002,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0017267
+LPC O-22:0,LPC O-22:0,C30H64NO6P,565.4471,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0097834
+LPC O-24:0,LPC O-24:0,C32H68NO6P,593.4784,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0133232
+LPC O-24:1,LPC O-24:1,C32H66NO6P,591.4628,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0007364
+LPC P-16:0 or LPC O-16:1,LPC P-16:0 or LPC O-16:1,C24H50NO6P,479.3376,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0134476
+LPC P-18:0 or LPC O-18:1,LPC P-18:0 or LPC O-18:1,C26H54NO6P,507.3689,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0021093
+LPC p-18:0,LPC P-18:0,C26H54NO6P,507.3689,Glycerophospholipids,Glycerophosphocholines,O-LPC,,,,,,,RM0133230
+LPE 16:0,LPE 16:0,C21H44NO7P,453.2855,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0134456
+LPE 18:0,LPE 18:0,C23H48NO7P,481.3168,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0017276
+LPE 18:1,LPE 18:1,C23H46NO7P,479.3012,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0104274
+LPE 18:2,LPE 18:2,C23H44NO7P,477.2855,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0048672
+LPE 20:4,LPE 20:4,C25H44NO7P,501.2855,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0097815
+LPE 22:6,LPE 22:6,C27H44NO7P,525.2855,Glycerophospholipids,Glycerophosphoethanolamines,LPE,,,,,,,RM0134455
+LPE O-16:1,LPE O-16:1,C21H44NO6P,437.2906,Glycerophospholipids,Glycerophosphoethanolamines,O-LPE,,,,,,,RM0134468
+LPE O-18:1,LPE O-18:1,C23H48NO6P,465.3219,Glycerophospholipids,Glycerophosphoethanolamines,O-LPE,,,,,,,RM0133223
+LPI 18:0,LPI 18:0,C27H53O12P,600.3275,Glycerophospholipids,Glycerophosphoinositols,LPI,,,,,,,RM0134412
+LPS 18:0,LPS 18:0,C24H48NO9P,525.3067,Glycerophospholipids,Glycerophosphoserines,LPS,,,,,,,RM0007334
+MG 20:4,MG 20:4,C23H38O4,378.277,Glycerolipids,Monoradylglycerols,MAG,,,,,,,RM0134394
+MGDG 16:0_20:5,MGDG 16:0_20:5,C45H76O10,776.5439,Glycerolipids,Glycosyldiradylglycerols,MGDG,,,,,,,RM0074537
+N-docosanoyl-4-sphingenyl-1-O-phosphorylcholine,SM 18:1;O2/22:0,C45H91N2O6P,786.6615,Sphingolipids,Phosphosphingolipids,SM,44260125,74532,HMDB0012103,LMSP03010006,,FJJANLYCZUNFSE-TWKUQIQBSA-N,RM0138870
+OxPC 36:3+1O,PC 36:3,C44H82NO8P,783.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010754
+PA 18:1_18:1,PA 18:1/18:1,C39H73O8P,700.5043,Glycerophospholipids,Glycerophosphates,PA,,,,,,,RM0134597
+PC 14:0_16:1,PC 14:0_16:1,C38H74NO8P,703.5152,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0090012
+PC 16:0/9:0 CHO,-,,,Glycerophospholipids,Glycerophosphocholines,PC,-,-,-,-,-,-,-
+PC 16:0_14:0,PC 14:0_16:0,C38H76NO8P,705.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0098405
+PC 16:0_18:2,PC 16:0_18:2,C42H80NO8P,757.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0104110
+PC 16:0_22:6,PC 16:0_22:6,C46H80NO8P,805.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171056
+PC 16:0_5-oxovaleryl,-,,,Glycerophospholipids,Glycerophosphocholines,PC,-,-,-,-,-,-,-
+PC 16:0_azealic acid (PCPAz-PC),-,,,Glycerophospholipids,Glycerophosphocholines,PC,-,-,-,-,-,-,-
+PC 16:0_glutaric acid,-,,,Glycerophospholipids,Glycerophosphocholines,PC,-,-,-,-,-,-,-
+PC 18:0_18:1,PC 18:0_18:1,C44H86NO8P,787.6091,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171088
+PC 19:1,PC 19:1,C27H52NO8P,549.3431,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134934
+PC 19:2,PC 19:2,C27H50NO8P,547.3274,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0024974
+PC 21:4,PC 21:4,C29H50NO8P,571.3274,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0036602
+PC 24:0,PC 24:0,C32H64NO8P,621.437,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134876
+PC 28:0,PC 28:0,C36H72NO8P,677.4996,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134835
+PC 29:0,PC 29:0,C37H74NO8P,691.5152,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0000646
+PC 30:0,PC 30:0,C38H76NO8P,705.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0025459
+PC 30:6,PC 30:6,C38H64NO8P,693.437,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134836
+PC 31:0,PC 31:0,C39H78NO8P,719.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134906
+PC 31:1,PC 31:1,C39H76NO8P,717.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0090089
+PC 32:0,PC 32:0,C40H80NO8P,733.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134841
+PC 32:1,PC 32:1,C40H78NO8P,731.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0011317
+PC 32:2,PC 32:2,C40H76NO8P,729.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0024988
+PC 33:0,PC 33:0,C41H82NO8P,747.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0011313
+PC 33:1,PC 33:1,C41H80NO8P,745.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134891
+PC 33:2,PC 33:2,C41H78NO8P,743.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0000568
+PC 33:3,PC 33:3,C41H76NO8P,741.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0000871
+PC 34:0,PC 34:0,C42H84NO8P,761.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134843
+PC 34:1,PC 34:1,C42H82NO8P,759.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010728
+PC 34:2,PC 34:2,C42H80NO8P,757.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0025463
+PC 34:3 Isomer B,PC 34:3,C42H78NO8P,755.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134816
+PC 34:4,PC 34:4,C42H76NO8P,753.5309,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0090131
+PC 35:1,PC 35:1,C43H84NO8P,773.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134901
+PC 35:2,PC 35:2,C43H82NO8P,771.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134879
+PC 35:2 Isomer B,PC 35:2,C43H82NO8P,771.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134879
+PC 35:3,PC 35:3,C43H80NO8P,769.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134894
+PC 35:4,PC 35:4,C43H78NO8P,767.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0000877
+PC 36:0,PC 36:0,C44H88NO8P,789.6248,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0025422
+PC 36:1,PC 36:1,C44H86NO8P,787.6091,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0097853
+PC 36:2,PC 36:2,C44H84NO8P,785.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134818
+PC 36:3 Isomer B,PC 36:3,C44H82NO8P,783.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010754
+PC 36:4 Isomer A,PC 36:4,C44H80NO8P,781.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010761
+PC 36:4 Isomer B,PC 36:4,C44H80NO8P,781.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010761
+PC 36:4 Isomer C,PC 36:4,C44H80NO8P,781.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010761
+PC 36:5 Isomer D,PC 36:5,C44H78NO8P,779.5465,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134821
+PC 37:3,PC 37:3,C45H84NO8P,797.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171091
+PC 37:4,PC 37:4,C45H82NO8P,795.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134865
+PC 38:1,PC 38:1,C46H90NO8P,815.6404,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134845
+PC 38:2,PC 38:2,C46H88NO8P,813.6248,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134844
+PC 38:3,PC 38:3,C46H86NO8P,811.6091,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134820
+PC 38:4 Isomer B,PC 38:4,C46H84NO8P,809.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010755
+PC 38:4 Isomer C,PC 38:4,C46H84NO8P,809.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0010755
+PC 38:5 Isomer A,PC 38:5,C46H82NO8P,807.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134823
+PC 38:5 Isomer B,PC 38:5,C46H82NO8P,807.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134823
+PC 38:6 Isomer A,PC 38:6,C46H80NO8P,805.5622,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0097851
+PC 40:1,PC 40:1,C48H94NO8P,843.6717,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171086
+PC 40:4,PC 40:4,C48H88NO8P,837.6248,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134847
+PC 40:5 Isomer A,PC 40:5,C48H86NO8P,835.6091,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134822
+PC 40:5 Isomer B,PC 40:5,C48H86NO8P,835.6091,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134822
+PC 40:6 Isomer B,PC 40:6,C48H84NO8P,833.5935,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0134817
+PC 40:7 Isomer B,PC 40:7,C48H82NO8P,831.5778,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171053
+PC 42:2,PC 42:2,C50H96NO8P,869.6874,Glycerophospholipids,Glycerophosphocholines,PC,,,,,,,RM0171087
+PC O-18:0_16:0,PC O-18:0/16:0,C42H86NO7P,747.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,24779323,75290,,LMGP01020086,,GTFLTTXDLGEBAI-VQJSHJPSSA-N,RM0135061
+PC O-30:0,PC O-30:0,C38H78NO7P,691.5516,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0134877
+PC O-30:1,PC O-30:1,C38H76NO7P,689.5359,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052167
+PC O-31:7,PC O-31:7,C39H66NO7P,691.4577,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0180682
+PC O-32:0,PC O-32:0,C40H82NO7P,719.5829,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0090011
+PC O-32:1,PC O-32:1,C40H80NO7P,717.5672,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052166
+PC O-33:0,PC O-33:0,C41H84NO7P,733.5985,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052450
+PC O-34:0,PC O-34:0,C42H86NO7P,747.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0134858
+PC O-36:1,PC O-36:1,C44H88NO7P,773.6298,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052212
+PC O-37:0,PC O-37:0,C45H92NO7P,789.6611,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0013945
+PC O-40:2 or PC 40:2e,-,,,Glycerophospholipids,Glycerophosphocholines,O-PC,-,-,-,-,-,-,-
+PC O-42:2 or PC 42:2e,-,,,Glycerophospholipids,Glycerophosphocholines,O-PC,-,-,-,-,-,-,-
+PC P-34:0 or PC O-34:1,PC P-34:0 or PC O-34:1,C42H84NO7P,745.5985,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0103506
+PC P-34:1 or PC O-34:2,PC P-34:1 or PC O-34:2,C42H82NO7P,743.5829,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0033106
+PC P-34:1 or PC O-34:2 Isomer A,PC P-34:1 or PC O-34:2,C42H82NO7P,743.5829,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0033106
+PC P-34:2 or PC O-34:3,PC P-34:2 or PC O-34:3,C42H80NO7P,741.5672,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052754
+PC P-36:1 or PC O-36:2 A,PC P-36:1 or PC O-36:2,C44H86NO7P,771.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052630
+PC P-36:1 or PC O-36:2 B,PC P-36:1 or PC O-36:2,C44H86NO7P,771.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052630
+PC P-36:2 or PC O-36:3,PC P-36:2 or PC O-36:3,C44H84NO7P,769.5985,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0051673
+PC P-36:3 or PC O-36:4,PC P-36:3 or PC O-36:4,C44H82NO7P,767.5829,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052322
+PC P-36:4 or PC O-36:5,PC P-36:4 or PC O-36:5,C44H80NO7P,765.5672,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0053383
+PC P-38:3 or PC O-38:4 Isomer B,PC P-38:3 or PC O-38:4,C46H86NO7P,795.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0053637
+PC P-38:4 or PC O-38:5 Isomer A,PC P-38:4 or PC O-38:5,C46H84NO7P,793.5985,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0052755
+PC P-40:4 or PC O-40:5,PC P-40:4 or PC O-40:5,C48H88NO7P,821.6298,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0033149
+PC P-40:5 or PC O-40:6,PC P-40:5 or PC O-40:6,C48H86NO7P,819.6142,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0053516
+PC P-42:2 or PC O-42:3,PC P-42:2 or PC O-42:3,C50H96NO7P,853.6924,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0051524
+PC P-42:4 or PC O-42:5,PC P-42:4 or PC O-42:5,C50H92NO7P,849.6611,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0053636
+PC P-42:5 or PC O-42:6 Isomer A,PC P-42:5 or PC O-42:6,C50H90NO7P,847.6455,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0015910
+PC P-44:4 or PC O-44:5,PC P-44:4 or PC O-44:5,C52H96NO7P,877.6924,Glycerophospholipids,Glycerophosphocholines,O-PC,,,,,,,RM0008358
+PE 16:1_18:1,PE 16:1_18:1,C39H74NO8P,715.5152,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0134804
+PE 34:1,PE 34:1,C39H76NO8P,717.5309,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0134794
+PE 34:2,PE 34:2,C39H74NO8P,715.5152,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0001239
+PE 36:1,PE 36:1,C41H80NO8P,745.5622,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0029366
+PE 36:2,PE 36:2,C41H78NO8P,743.5465,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0134780
+PE 36:3,PE 36:3,C41H76NO8P,741.5309,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0044082
+PE 36:4,PE 36:4,C41H74NO8P,739.5152,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0029374
+PE 38:4,PE 38:4,C43H78NO8P,767.5465,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0134744
+PE 38:5,PE 38:5,C43H76NO8P,765.5309,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0134741
+PE 38:6,PE 38:6,C43H74NO8P,763.5152,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0001619
+PE 38:6 Isomer B,PE 38:6,C43H74NO8P,763.5152,Glycerophospholipids,Glycerophosphoethanolamines,PE,,,,,,,RM0001619
+PE O-16:1_18:1,PE O-16:1/18:1,C39H76NO7P,701.5359,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0134798
+PE O-16:1_18:2,PE O-16:1/18:2,C39H74NO7P,699.5203,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0135962
+PE O-16:1_22:6,PE O-16:1/22:6,C43H74NO7P,747.5203,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0134799
+PE O-18:1_16:0,PE O-18:1/16:0,C39H78NO7P,703.5516,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0008809
+PE O-18:1_22:6,PE O-18:1/22:6,C45H78NO7P,775.5516,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0054678
+PE O-38:6 Isomer A,PE O-38:6,C43H76NO7P,749.5359,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0008899
+PE O-40:4,PE O-40:4,C45H84NO7P,781.5985,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0134715
+PE O-40:5 Isomer B,PE O-40:5,C45H82NO7P,779.5829,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0098699
+PE O-40:6 Isomer B,PE O-40:6,C45H80NO7P,777.5672,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0134795
+PE P-34:1 or PE O-34:2,PE P-34:1 or PE O-34:2,C39H76NO7P,701.5359,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0055691
+PE P-36:1 or PE O-36:2,PE P-36:1 or PE O-36:2,C41H80NO7P,729.5672,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0009118
+PE P-36:2 or PE O-36:3,PE P-36:2 or PE O-36:3,C41H78NO7P,727.5516,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0009566
+PE P-36:4 or PE O-36:5,PE P-36:4 or PE O-36:5,C41H74NO7P,723.5203,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0043212
+PE P-38:4 or PE O-38:5,PE P-38:4 or PE O-38:5,C43H78NO7P,751.5516,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0055835
+PE P-38:5 or PE O-38:6,PE P-38:5 or PE O-38:6,C43H76NO7P,749.5359,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0090073
+PE P-40:4 or PE O-40:5 Isomer A,PE P-40:4 or PE O-40:5,C45H82NO7P,779.5829,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0014717
+PE-O 18:1_22:6,PE O-18:1/22:6,C45H78NO7P,775.5516,Glycerophospholipids,Glycerophosphoethanolamines,O-PE,,,,,,,RM0054678
+PEtOH 16:0_16:0,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 16:0_16:1,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 16:0_18:1,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 16:0_20:4,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 16:1_16:1,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 16:1_18:1,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 18:1_18:1,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 18:1_20:4,-,,,Glycerophospholipids,Glycerophosphatidylethanol,PEth,-,-,-,-,-,-,-
+PEtOH 36:1,PEth 36:1,C41H79O8P,730.5513,Glycerophospholipids,Glycerophosphatidylethanol,PEth,,,,,,,RM0090478
+PFAP-FT_diPAP,-,,,PFAS_related,Perfluoroalkyl_Phosphate_Acid_derivative,PFAP,-,-,-,-,-,-,-
+PGE2,PGE2,C20H32O5,352.225,Fatty Acyls,Eicosanoids,Prostaglandins,5280360,15551,HMDB0001220,LMFA03010003,C00584,XEYBRNLFEZDVAW-ARSRFYASSA-N,RM0153758
+PI 16:0_16:0,PI 16:0/16:0,C41H79O13P,810.5258,Glycerophospholipids,Glycerophosphoinositols,PI,24779556,73229,HMDB0009778,LMGP06010007,C01194,IBUKXRINTKQBRQ-KCKFLZCVSA-N,RM0135113
+PI 18:0_20:4,PI 18:0_20:4,C47H83O13P,886.5571,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0134537
+PI 32:1,PI 32:1,C41H77O13P,808.5102,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0134529
+PI 34:1 Isomer A,PI 34:1,C43H81O13P,836.5415,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0138798
+PI 34:2,PI 34:2,C43H79O13P,834.5258,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0138799
+PI 34:2 Isomer B,PI 34:2,C43H79O13P,834.5258,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0138799
+PI 36:1 Isomer A,PI 36:1,C45H85O13P,864.5728,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0106289
+PI 36:4,PI 36:4,C45H79O13P,858.5258,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0134522
+PI 38:3,PI 38:3,C47H85O13P,888.5728,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0056603
+PI 38:4,PI 38:4,C47H83O13P,886.5571,Glycerophospholipids,Glycerophosphoinositols,PI,,,,,,,RM0134523
+PMeOH 16:0_18:1,-,,,Glycerophospholipids,Glycerophosphoinositols,PMeOH,-,-,-,-,-,-,-
+PS 16:0_22:4,PS 16:0_22:4,C44H78NO10P,811.5363,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0057914
+PS 18:0_22:6,PS 18:0_22:6,C46H78NO10P,835.5363,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0105646
+PS 36:1,PS 36:1,C42H80NO10P,789.552,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0057743
+PS 36:2,PS 36:2,C42H78NO10P,787.5363,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0134623
+PS 38:3,PS 38:3,C44H80NO10P,813.552,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0057509
+PS 40:4,PS 40:4,C46H82NO10P,839.5676,Glycerophospholipids,Glycerophosphoserines,PS,,,,,,,RM0134670
+Phosphatidylethanolamine alkenyl 16:0-20:4,-,,,Glycerophospholipids,Glycerophosphoethanolamines,PE,-,-,-,-,-,-,-
+Phosphatidylethanolamine alkenyl 18:0-18:2,-,,,Glycerophospholipids,Glycerophosphoethanolamines,PE,-,-,-,-,-,-,-
+SHexCer 34:1;3O,SHexCer 34:1;O3,C40H77NO12S,795.5167,Sphingolipids,Glycosphingolipids,SHexCer,,,,,,,RM0026430
+SHexCer d34:1,SHexCer 34:1;O2,C40H77NO11S,779.5217,Sphingolipids,Glycosphingolipids,SHexCer,,,,,,,RM0119002
+SM 12:1;2O/32:8,SM 12:1;O2/32:8*,C49H83N2O6P,826.5989,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM 16:1;2O/16:0,SM 16:1;O2/16:0,C37H75N2O6P,674.5363,Sphingolipids,Phosphosphingolipids,SM,52931133,133171,HMDB0240616,LMSP03010035,,RPTUKVYGSPDHGQ-PSALXKTOSA-N,RM0059186
+SM 18:0;2O/21:0,SM 18:0;O2/21:0,C44H91N2O6P,774.6615,Sphingolipids,Phosphosphingolipids,SM,90659854,85016,,LMSP03019BUZ,,RKFZWGKFJRROLE-WZYYJWNZSA-N,RM0138663
+SM 20:0;2O/22:3,SM 20:0;O2/22:3,C47H91N2O6P,810.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0186258
+SM 20:3;2O/24:0,SM 20:3;O2/24:0*,C49H95N2O6P,838.6928,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM 22:1;2O/12:0,SM 22:1;O2/12:0,C39H79N2O6P,702.5676,Sphingolipids,Phosphosphingolipids,SM,145720458,,,LMSP03019C9B,,OAUYZGOKCOOZQY-GWQJGLRPSA-N,RM0059240
+SM 24:1,SM 18:1;O2/24:1,C47H93N2O6P,812.6771,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134116
+SM 25:2;2O/15:1,SM 25:2;O2/15:1*,C45H87N2O6P,782.6302,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM 26:0;2O/18:1,SM 26:0;O2/18:1*,C49H99N2O6P,842.7241,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM 30:2;2O (FA 14:0),-,,,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM 32:0;3O,SM 32:0;O3,C37H77N2O7P,692.5468,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0060322
+SM 34:0;3O,SM 34:0;O3,C39H81N2O7P,720.5781,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0028516
+SM 34:2;3O,SM 34:2;O3,C39H77N2O7P,716.5468,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0008931
+SM 35:1;2O,SM 35:1;O2,C40H81N2O6P,716.5832,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0059990
+SM 38:4;3O,SM 38:4;O3,C43H81N2O7P,768.5781,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0120310
+SM 42:0;3O,SM 42:0;O3,C47H97N2O7P,832.7033,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122809
+SM 42:1;3O,SM 42:1;O3,C47H95N2O7P,830.6877,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134138
+SM 42:2;3O,SM 42:2;O3,C47H93N2O7P,828.672,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0120596
+SM 42:5;3O,SM 42:5;O3,C47H87N2O7P,822.6251,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0060324
+SM 42:7;3O,SM 42:7;O3,C47H83N2O7P,818.5938,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0186419
+SM 44:1;2O,SM 44:1;O2,C49H99N2O6P,842.7241,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134159
+SM 46:5;3O,SM 46:5;O3,C51H95N2O7P,878.6877,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0186447
+SM d30:1,SM 30:1;O2,C35H71N2O6P,646.505,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134090
+SM d31:1,SM 31:1;O2,C36H73N2O6P,660.5206,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0120507
+SM d32:1,SM 32:1;O2,C37H75N2O6P,674.5363,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134150
+SM d32:2,SM 32:2;O2,C37H73N2O6P,672.5206,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134093
+SM d33:1,SM 33:1;O2,C38H77N2O6P,688.5519,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134154
+SM d34:0,SM 34:0;O2,C39H81N2O6P,704.5832,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134096
+SM d34:1,SM 34:1;O2,C39H79N2O6P,702.5676,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134153
+SM d34:2,SM 34:2;O2,C39H77N2O6P,700.5519,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134151
+SM d35:1,SM 35:1;O2,C40H81N2O6P,716.5832,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0059990
+SM d35:2,SM 35:2;O2,C40H79N2O6P,714.5676,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0163288
+SM d36:0 Isomer A,SM 36:0;O2,C41H85N2O6P,732.6145,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134098
+SM d36:0 Isomer B,SM 36:0;O2,C41H85N2O6P,732.6145,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134098
+SM d36:1,SM 36:1;O2,C41H83N2O6P,730.5989,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134099
+SM d36:2,SM 36:2;O2,C41H81N2O6P,728.5832,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134100
+SM d37:1 Isomer B,SM 37:1;O2,C42H85N2O6P,744.6145,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0138770
+SM d38:0 Isomer A,SM 38:0;O2,C43H89N2O6P,760.6458,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134102
+SM d38:0 Isomer B,SM 38:0;O2,C43H89N2O6P,760.6458,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134102
+SM d38:1,SM 38:1;O2,C43H87N2O6P,758.6302,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134157
+SM d38:2,SM 38:2;O2,C43H85N2O6P,756.6145,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0059717
+SM d38:3,SM 38:3;O2,C43H83N2O6P,754.5989,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134103
+SM d39:1,SM 39:1;O2,C44H89N2O6P,772.6458,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0120989
+SM d39:2 Isomer B,SM 39:2;O2,C44H87N2O6P,770.6302,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0060121
+SM d40:0 Isomer A,SM 40:0;O2,C45H93N2O6P,788.6771,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134105
+SM d40:0 Isomer B,SM 40:0;O2,C45H93N2O6P,788.6771,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134105
+SM d40:1,SM 40:1;O2,C45H91N2O6P,786.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134155
+SM d40:1 Isomer B,SM 40:1;O2,C45H91N2O6P,786.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134155
+SM d40:2 Isomer B,SM 40:2;O2,C45H89N2O6P,784.6458,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122299
+SM d40:4,SM 40:4;O2,C45H85N2O6P,780.6145,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134107
+SM d41:0,SM 41:0;O2,C46H95N2O6P,802.6928,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0059465
+SM d41:1,SM 41:1;O2,C46H93N2O6P,800.6771,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0120987
+SM d41:2 Isomer A,SM 41:2;O2,C46H91N2O6P,798.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134158
+SM d41:2 Isomer B,SM 41:2;O2,C46H91N2O6P,798.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134158
+SM d42:0,SM 42:0;O2,C47H97N2O6P,816.7084,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134108
+SM d42:1,SM 42:1;O2,C47H95N2O6P,814.6928,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134156
+SM d42:2 Isomer B,SM 42:2;O2,C47H93N2O6P,812.6771,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122625
+SM d42:3,SM 42:3;O2,C47H91N2O6P,810.6615,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134109
+SM d43:1,SM 43:1;O2,C48H97N2O6P,828.7084,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122662
+SM d43:1 Isomer B,SM 43:1;O2,C48H97N2O6P,828.7084,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122662
+SM d44:1,SM 44:1;O2,C49H99N2O6P,842.7241,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134159
+SM d44:2,SM 44:2;O2,C49H97N2O6P,840.7084,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0122300
+SM d44:2 isomer A,-,,,Sphingolipids,Phosphosphingolipids,SM,-,-,-,-,-,-,-
+SM d44:3,SM 44:3;O2,C49H95N2O6P,838.6928,Sphingolipids,Phosphosphingolipids,SM,,,,,,,RM0134112
+SPB 25:0;2O,SPB 25:0;O2*,C25H53NO2,399.4076,Sphingolipids,Sphingoid bases,SPB,-,-,-,-,-,-,-
+SPB 26:0;2O,SPB 26:0;O2,C26H55NO2,413.4233,Sphingolipids,Sphingoid bases,Sphinganines,,,,,,,RM0186542
+TG 10:0_12:0_18:2,TG 10:0_12:0_18:2,C43H78O6,690.5798,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0068962
+TG 14:0_16:0_17:1,TG 14:0_16:0_17:1,C50H94O6,790.705,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0063305
+TG 16:0_18:1_20:0,TG 16:0_18:1_20:0,C57H108O6,888.8146,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0114407
+TG 22:0,TG 22:0*,C25H46O6,442.3294,Glycerolipids,Triradylglycerols,TAG,-,-,-,-,-,-,-
+TG 28:0,TG 28:0,C31H58O6,526.4233,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0015615
+TG 34:0,TG 34:0,C37H70O6,610.5172,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0068835
+TG 36:0,TG 36:0,C39H74O6,638.5485,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134264
+TG 38:0,TG 38:0,C41H78O6,666.5798,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0065685
+TG 40:0,TG 40:0,C43H82O6,694.6111,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0028305
+TG 40:1,TG 40:1,C43H80O6,692.5955,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134327
+TG 42:0,TG 42:0,C45H86O6,722.6424,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0061037
+TG 42:1,TG 42:1,C45H84O6,720.6268,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134265
+TG 42:2,TG 42:2,C45H82O6,718.6111,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0062059
+TG 43:0,TG 43:0,C46H88O6,736.6581,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0069016
+TG 44:0,TG 44:0,C47H90O6,750.6737,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134266
+TG 44:1,TG 44:1,C47H88O6,748.6581,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0112605
+TG 44:2,TG 44:2,C47H86O6,746.6424,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0089970
+TG 45:0,TG 45:0,C48H92O6,764.6894,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0065683
+TG 45:1,TG 45:1,C48H90O6,762.6737,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0062066
+TG 46:0,TG 46:0,C49H94O6,778.705,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134258
+TG 46:1,TG 46:1,C49H92O6,776.6894,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0111561
+TG 46:2,TG 46:2,C49H90O6,774.6737,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134217
+TG 47:0|TG 14:0_16:0_17:0,TG 14:0_16:0_17:0,C50H96O6,792.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0077336
+TG 47:2,TG 47:2,C50H92O6,788.6894,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0065684
+TG 47:3 Isomer B,TG 47:3,C50H90O6,786.6737,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0015232
+TG 48:0,TG 48:0,C51H98O6,806.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134259
+TG 48:1,TG 48:1,C51H96O6,804.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134225
+TG 48:2,TG 48:2,C51H94O6,802.705,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134224
+TG 48:3,TG 48:3,C51H92O6,800.6894,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0065682
+TG 49:0,TG 49:0,C52H100O6,820.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0065681
+TG 49:1,TG 49:1,C52H98O6,818.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134226
+TG 49:2,TG 49:2,C52H96O6,816.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0087383
+TG 49:3,TG 49:3,C52H94O6,814.705,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134254
+TG 50:0,TG 50:0,C53H102O6,834.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134260
+TG 50:1,TG 50:1,C53H100O6,832.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134221
+TG 50:2,TG 50:2,C53H98O6,830.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0138778
+TG 50:3 Isomer A,TG 50:3,C53H96O6,828.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134227
+TG 50:4,TG 50:4,C53H94O6,826.705,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134255
+TG 51:0,TG 51:0,C54H104O6,848.7833,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0114330
+TG 51:1 Isomer B,TG 51:1,C54H102O6,846.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134230
+TG 51:2 Isomer A,TG 51:2,C54H100O6,844.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134229
+TG 51:3,TG 51:3,C54H98O6,842.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134228
+TG 51:4,TG 51:4,C54H96O6,840.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0116156
+TG 52:0,TG 52:0,C55H106O6,862.7989,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134311
+TG 52:1,TG 52:1,C55H104O6,860.7833,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0062103
+TG 52:2,TG 52:2,C55H102O6,858.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134232
+TG 52:3,TG 52:3,C55H100O6,856.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134220
+TG 52:4,TG 52:4,C55H98O6,854.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134219
+TG 52:4;O2|TG 16:0_18:1_18:3;O2,-,,,Glycerolipids,Triradylglycerols,TAG,-,-,-,-,-,-,-
+TG 52:5,TG 52:5,C55H96O6,852.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134231
+TG 53:2,TG 53:2,C56H104O6,872.7833,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0025657
+TG 53:3,TG 53:3,C56H102O6,870.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0067080
+TG 53:4,TG 53:4,C56H100O6,868.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134233
+TG 54:0,TG 54:0,C57H110O6,890.8302,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0064164
+TG 54:1,TG 54:1,C57H108O6,888.8146,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0138781
+TG 54:2,TG 54:2,C57H106O6,886.7989,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0116159
+TG 54:3,TG 54:3,C57H104O6,884.7833,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134218
+TG 54:4,TG 54:4,C57H102O6,882.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134236
+TG 54:5 Isomer A,TG 54:5,C57H100O6,880.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134235
+TG 54:6 Isomer A,TG 54:6,C57H98O6,878.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0062063
+TG 54:6 Isomer B,TG 54:6,C57H98O6,878.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0062063
+TG 54:7 Isomer A,TG 54:7,C57H96O6,876.7207,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134234
+TG 55:3,TG 55:3,C58H106O6,898.7989,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134273
+TG 55:4,TG 55:4,C58H104O6,896.7833,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0110474
+TG 56:1,TG 56:1,C59H112O6,916.8459,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0116158
+TG 56:2 Isomer B,TG 56:2,C59H110O6,914.8302,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134274
+TG 56:3,TG 56:3,C59H108O6,912.8146,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0116157
+TG 56:4,TG 56:4,C59H106O6,910.7989,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0110468
+TG 56:6,TG 56:6,C59H102O6,906.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0110466
+TG 56:7 Isomer A,TG 56:7,C59H100O6,904.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134241
+TG 56:7 Isomer B,TG 56:7,C59H100O6,904.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134241
+TG 56:8 Isomer A,TG 56:8,C59H98O6,902.7363,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134240
+TG 58:2,TG 58:2,C61H114O6,942.8615,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0086945
+TG 58:3,TG 58:3,C61H112O6,940.8459,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134275
+TG 58:4,TG 58:4,C61H110O6,938.8302,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0115133
+TG 58:8,TG 58:8,C61H102O6,930.7676,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134244
+TG 58:9,TG 58:9,C61H100O6,928.752,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134243
+TG 60:1,TG 60:1,C63H120O6,972.9085,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134304
+TG 60:2,TG 60:2,C63H118O6,970.8928,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134277
+TG 60:3,TG 60:3,C63H116O6,968.8772,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0134278
+TG 64:2,TG 64:2,C67H126O6,1026.9554,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0109856
+TG 64:3,TG 64:3,C67H124O6,1024.9398,Glycerolipids,Triradylglycerols,TAG,,,,,,,RM0114577
+acylcarnitine 08:0,CAR 08:0*,C15H29NO4,287.2097,Fatty Acyls,Fatty esters,Acyl carnitines,-,-,-,-,-,-,-
+acylcarnitine 08:1,CAR 08:1*,C15H27NO4,285.194,Fatty Acyls,Fatty esters,Acyl carnitines,-,-,-,-,-,-,-
+acylcarnitine 10:0,CAR 10:0,C17H33NO4,315.241,Fatty Acyls,Fatty esters,Acyl carnitines,11953821,28717,HMDB0000651,LMFA07070006,C03299,LZOSYCMHQXPBFU-OAHLLOKOSA-N,RM0153849
+acylcarnitine 10:1,CAR 10:1,C17H31NO4,313.2253,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0154082
+acylcarnitine 12:1,CAR 12:1,C19H35NO4,341.2566,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0154155
+acylcarnitine 14:1,CAR 14:1,C21H39NO4,369.2879,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0154190
+acylcarnitine 16:0,CAR 16:0,C23H45NO4,399.3349,Fatty Acyls,Fatty esters,Acyl carnitines,11953816,17490,HMDB0000222,LMFA07070004,C02990,XOMRRQXKHMYMOC-OAQYLSRUSA-N,RM0153848
+acylcarnitine 18:0 Isomer A,CAR 18:0,C25H49NO4,427.3662,Fatty Acyls,Fatty esters,Acyl carnitines,52922056,84644,HMDB0000848,LMFA07070008,,FNPHNLNTJNMAEE-HSZRJFAPSA-N,RM0153850
+acylcarnitine 18:1,CAR 18:1,C25H47NO4,425.3505,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0153915
+acylcarnitine 18:2 Isomer A,CAR 18:2,C25H45NO4,423.3349,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0154158
+acylcarnitine 20:1,CAR 20:1,C27H51NO4,453.3818,Fatty Acyls,Fatty esters,Acyl carnitines,,,,,,,RM0154154
+cholesterol 3-sulfate,Cholesterol sulfate,C27H46O4S,466.3117,Sterol Lipids,Sterols,Cholesterols,65076,41321,HMDB0000653,LMST05020016,C18043,BHYOQNUELFTYRT-DPAQBDIFSA-N,RM0135845
+cis-13-docosenoic acid,cis-Erucic acid,C22H42O2,338.3185,Fatty Acyls,Fatty acids,Unsaturated FA,5281116,28792,HMDB0002068,LMFA01030089,C08316,DPUOLQHDNGRHBS-KTKRTIGZSA-N,RM0153624
+docosanamide,Docosanamide,C22H45NO,339.3501,Fatty Acyls,Fatty amides,Primary amides,76468,165591,HMDB0000583,LMFA08010020,,ORAWFNKFUWGRJG-UHFFFAOYSA-N,RM0152269
+lactosylceramide d18:1/24:1 15Z,-,,,Sphingolipids,Neutral_glycosphingolipids,LacCer,-,-,-,-,-,-,-
+palmitoyl ethanolamide,Palmitoyl-EA,C18H37NO2,299.2824,Fatty Acyls,Fatty amides,NAE,4671,71464,HMDB0002100,LMFA08040013,C16512,HXYVTAGFYLMHSO-UHFFFAOYSA-N,RM0153080
+trihydroxyoctadec-15-enoic acid,-,,,Fatty Acyls,Octadecanoids,Tri-HODE,-,-,-,-,-,-,-

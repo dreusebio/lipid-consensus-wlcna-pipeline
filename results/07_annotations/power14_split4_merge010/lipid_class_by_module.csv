@@ -1,0 +1,72 @@
+"Module","Main.class","n"
+"black","Ceramides",7
+"black","Glycerophosphoethanolamines",6
+"black","Glycerophosphatidylethanol",2
+"black","Fatty amides",1
+"blue","Phosphosphingolipids",23
+"blue","Glycerophosphocholines",1
+"blue","Glycosphingolipids",1
+"brown","Glycerophosphocholines",18
+"brown","Glycerophosphoinositols",3
+"brown","Phosphosphingolipids",1
+"cyan","Glycerophosphocholines",6
+"cyan","Neutral_glycosphingolipids",2
+"cyan","Glycosphingolipids",1
+"cyan","Phosphosphingolipids",1
+"darkgreen","Glycerophosphocholines",5
+"darkgreen","Phosphosphingolipids",2
+"darkgreen","Glycerophosphoinositols",1
+"darkgrey","Phosphosphingolipids",7
+"darkmagenta","Fatty esters",5
+"darkolivegreen","Ceramides",5
+"darkorange","Triradylglycerols",10
+"darkred","Glycerophosphocholines",6
+"darkred","Glycerophosphoinositols",1
+"darkred","Glycerophosphoserines",1
+"darkturquoise","Glycerophosphatidylethanol",7
+"darkturquoise","Eicosanoids",1
+"green","Phosphosphingolipids",17
+"greenyellow","Ceramides",14
+"grey60","Triradylglycerols",9
+"lightcyan","Triradylglycerols",8
+"lightcyan","Diradylglycerols",1
+"lightgreen","Triradylglycerols",9
+"lightyellow","Glycerophosphocholines",10
+"magenta","Fatty acids",9
+"magenta","Eicosanoids",2
+"magenta","Docosanoids",1
+"magenta","Fatty esters",1
+"magenta","Octadecanoids",1
+"midnightblue","Glycerophosphocholines",10
+"orange","Glycerophosphocholines",8
+"paleturquoise","Glycerophosphocholines",5
+"pink","Glycerophosphoethanolamines",14
+"pink","Glycerophosphoserines",3
+"purple","Triradylglycerols",14
+"red","Ceramides",8
+"red","Fatty acids",7
+"royalblue","Triradylglycerols",8
+"saddlebrown","Phosphosphingolipids",3
+"saddlebrown","Glycerophosphocholines",1
+"saddlebrown","Glycosphingolipids",1
+"saddlebrown","Glycosyldiradylglycerols",1
+"salmon","Glycerophosphocholines",9
+"salmon","Glycerophosphoinositols",1
+"sienna3","Glycerophosphocholines",5
+"skyblue","Glycerophosphoethanolamines",5
+"skyblue","Glycerophosphoserines",2
+"steelblue","Ceramides",6
+"tan","Glycerophosphocholines",8
+"tan","Phosphosphingolipids",3
+"turquoise","Triradylglycerols",21
+"turquoise","Ceramides",2
+"turquoise","Diradylglycerols",1
+"violet","Glycerophosphocholines",5
+"white","Fatty acids",5
+"white","Keto acids",1
+"yellow","Glycerophosphoethanolamines",18
+"yellow","Glycerophosphoserines",1
+"yellow","Monoradylglycerols",1
+"yellowgreen","Sterol esters",3
+"yellowgreen","Ceramides",1
+"yellowgreen","Triradylglycerols",1

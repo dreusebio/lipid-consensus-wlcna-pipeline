@@ -1,0 +1,4 @@
+"Timepoint","N_features","N_samples","Norm_min","Norm_max"
+"Baseline",451,49,-4.151,2.465
+"Wk36_38",451,49,-5.624,2.383
+"Postpartum",451,49,-3.659,2.622

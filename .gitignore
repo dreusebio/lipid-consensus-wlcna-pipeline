@@ -1,9 +1,3 @@
-# Data (patient data — never push)
-data/raw/
-data/processed/
-
-# Results (generated outputs — never push)
-results*
 
 # MetaboAnalystR intermediate files (generated in working directory)
 *.qs
@@ -19,6 +13,6 @@ consensusTOM-block.*.RData
 .Rhistory
 .DS_Store
 .Rproj.user/
-
+scripts_for_growell_lipidomics_analysis/
 # pixi environment (auto-generated)
 .pixi/

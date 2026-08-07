@@ -1,0 +1,1198 @@
+.
+├── config
+│   └── config.yml
+├── consensusTOM-block.1.RData
+├── data
+│   ├── processed
+│   │   ├── Baseline_complete_norm.qs
+│   │   ├── Baseline_data_orig_0.qs
+│   │   ├── Baseline_data_orig.qs
+│   │   ├── Baseline_data_proc.qs
+│   │   ├── Baseline_prenorm.qs
+│   │   ├── Baseline_preproc.orig.qs
+│   │   ├── Baseline_preproc.qs
+│   │   ├── Baseline_raw_dataview.csv
+│   │   ├── Baseline_row_norm.qs
+│   │   ├── consensusMEs_ID_power14_split4_merge010.rds
+│   │   ├── consensusMEs_ID_power24_split4_merge010.rds
+│   │   ├── consensusMEs_ID.rds
+│   │   ├── consensusMods_ID_power14_split4_merge010.rds
+│   │   ├── consensusMods_ID_power24_split4_merge010.rds
+│   │   ├── consensusMods_ID.rds
+│   │   ├── consensusTOM_power14_split4_merge010-block.1.RData
+│   │   ├── consensusTOM_power24_split4_merge010-block.1.RData
+│   │   ├── consensusTOM-block.1.RData
+│   │   ├── current_analysis_tag.txt
+│   │   ├── current_wgcna_run_tag.txt
+│   │   ├── demographic_data_bmi.rds
+│   │   ├── differential_lipids_all_BH.rds
+│   │   ├── differential_lipids_all.rds
+│   │   ├── differential_lipids_fdr_BH_q005.rds
+│   │   ├── differential_lipids_fdr_BH_q010.rds
+│   │   ├── differential_lipids_raw_p005.rds
+│   │   ├── exprSize_ID.rds
+│   │   ├── lipid_annotations_power14_split4_merge010.rds
+│   │   ├── lipid_annotations_power24_split4_merge010.rds
+│   │   ├── lipid_status_labels.rds
+│   │   ├── module_membership_power14_split4_merge010.rds
+│   │   ├── module_membership_power24_split4_merge010.rds
+│   │   ├── module_membership.rds
+│   │   ├── module_order_by_hub_lipid_class_power14_split4_merge010.rds
+│   │   ├── moduleTraitCor_adj_ID_spearman.rds
+│   │   ├── moduleTraitCor_ID_power14_split4_merge010_pearson.rds
+│   │   ├── moduleTraitCor_ID_power14_split4_merge010_spearman.rds
+│   │   ├── moduleTraitCor_ID_power24_split4_merge010_pearson.rds
+│   │   ├── moduleTraitCor_ID_power24_split4_merge010_spearman.rds
+│   │   ├── moduleTraitCor_ID_spearman.rds
+│   │   ├── moduleTraitFamily_ID_power14_split4_merge010_spearman_family.rds
+│   │   ├── moduleTraitFamily_ID_power14_split4_merge010_spearman.rds
+│   │   ├── moduleTraitPvalue_adj_ID_spearman.rds
+│   │   ├── moduleTraitPvalue_ID_power14_split4_merge010_pearson.rds
+│   │   ├── moduleTraitPvalue_ID_power14_split4_merge010_spearman.rds
+│   │   ├── moduleTraitPvalue_ID_power24_split4_merge010_pearson.rds
+│   │   ├── moduleTraitPvalue_ID_power24_split4_merge010_spearman.rds
+│   │   ├── moduleTraitPvalue_ID_spearman.rds
+│   │   ├── moduleTraitQvalue_ID_power14_split4_merge010_spearman_family_BH.rds
+│   │   ├── moduleTraitQvalue_ID_power14_split4_merge010_spearman.rds
+│   │   ├── moduleTraitQvalueFamily_ID_power14_split4_merge010_spearman.rds
+│   │   ├── multiExpr_ID.rds
+│   │   ├── plsda_results.rds
+│   │   ├── Postpartum_complete_norm.qs
+│   │   ├── Postpartum_data_orig_0.qs
+│   │   ├── Postpartum_data_orig.qs
+│   │   ├── Postpartum_prenorm.qs
+│   │   ├── Postpartum_preproc.orig.qs
+│   │   ├── Postpartum_preproc.qs
+│   │   ├── Postpartum_raw_dataview.csv
+│   │   ├── Postpartum_row_norm.qs
+│   │   ├── traits_cleaned.rds
+│   │   ├── Wk36_38_complete_norm.qs
+│   │   ├── Wk36_38_data_orig_0.qs
+│   │   ├── Wk36_38_data_orig.qs
+│   │   ├── Wk36_38_prenorm.qs
+│   │   ├── Wk36_38_preproc.orig.qs
+│   │   ├── Wk36_38_preproc.qs
+│   │   ├── Wk36_38_raw_dataview.csv
+│   │   └── Wk36_38_row_norm.qs
+│   └── raw
+│       ├── growell_curated_deid_george_48.csv
+│       ├── growell_curated_deid_george.csv
+│       ├── Lipid_PubChem_CID_InCHIKey.csv
+│       ├── lipids_normalized
+│       │   ├── identified_lipids_baseline_data_normalized.csv
+│       │   ├── identified_lipids_postpartum_data_normalized.csv
+│       │   └── identified_lipids_TP36_data_normalized.csv
+│       ├── lipids_raw
+│       │   ├── 48_sample
+│       │   │   ├── identified_lipids_baseline_raw.csv
+│       │   │   ├── identified_lipids_postpartum_raw.csv
+│       │   │   ├── identified_lipids_TP36_raw.csv
+│       │   │   ├── unidentified_lipids_baseline_raw.csv
+│       │   │   ├── unidentified_lipids_postpartum_raw.csv
+│       │   │   └── unidentified_lipids_TP36_raw.csv
+│       │   ├── Full_Dataset
+│       │   │   ├── identified_lipids_baseline_raw.csv
+│       │   │   ├── identified_lipids_postpartum_raw.csv
+│       │   │   ├── identified_lipids_TP36_raw.csv
+│       │   │   ├── unidentified_lipids_baseline_raw.csv
+│       │   │   ├── unidentified_lipids_postpartum_raw.csv
+│       │   │   └── unidentified_lipids_TP36_raw.csv
+│       │   ├── identified_lipids_baseline_raw.csv
+│       │   ├── identified_lipids_postpartum_raw.csv
+│       │   ├── identified_lipids_TP36_raw.csv
+│       │   ├── unidentified_lipids_baseline_raw.csv
+│       │   ├── unidentified_lipids_postpartum_raw.csv
+│       │   └── unidentified_lipids_TP36_raw.csv
+│       ├── mx_769102_LaSalle_lipidomics_human_dried_blood_spots_12-2023_submit.xlsx
+│       ├── README_data_raw.md
+│       ├── Ref_Met_Results.csv
+│       └── Seed_Sample_Metabolomics_Subaliquots.xlsx
+├── LICENSE
+├── lipid-consensus-wlcna-pipeline.Rproj
+├── permutedStats-actualModules.RData
+├── R
+│   ├── 00_figure_theme.R
+│   ├── 00_load_packages.R
+│   ├── 01_prepare_raw_data.R
+│   ├── 02_prepare_traits.R
+│   ├── 03_normalize_lipids.R
+│   ├── 04_prepare_lipids.R
+│   ├── 05_run_consensus_wgcna.R
+│   ├── 05b_module_preservation.R
+│   ├── 06_module_membership.R
+│   ├── 07_annotate_lipids.R
+│   ├── 08_module_trait_correlations.R
+│   ├── 09_module_eigennode_plots.R
+│   ├── 10_differential_lipids.R
+│   ├── 11_lipid_boxplots.R
+│   ├── 12_plsda_metaboanalyst.R
+│   ├── 12_plsda.R
+│   ├── 13_sensitivity_analyses.R
+│   ├── 14_sensitivity_analyses_covariates.R
+│   ├── 15_table1.R
+│   ├── 99_assemble_figures.R
+│   └── diagnose_mp.R
+├── README.md
+├── reproducibility
+│   ├── install_log.txt
+│   ├── install_r_packages.R
+│   ├── metabo_install.txt
+│   ├── pixi.lock
+│   ├── pixi.toml
+│   ├── pkg_debug.txt
+│   ├── README.md
+│   └── session_info.txt
+├── results
+│   ├── 01_raw_data
+│   │   ├── annotated_lipid_class_distribution.pdf
+│   │   ├── annotated_lipid_classes.csv
+│   │   ├── annotated_lipids_metadata.csv
+│   │   ├── annotation_summary.csv
+│   │   ├── esi_mode_counts.csv
+│   │   ├── sample_timepoint_mapping.csv
+│   │   └── timepoint_summary.csv
+│   ├── 02_traits
+│   │   ├── demographic_data_bmi.xlsx
+│   │   └── traits_cleaned.csv
+│   ├── 03_normalization
+│   │   ├── Baseline_01_sample_normalization.pdf
+│   │   ├── Baseline_02_density_plot.pdf
+│   │   ├── Baseline_03_pca_scores.pdf
+│   │   ├── lipids_baseline_transposed.csv
+│   │   ├── lipids_postpartum_transposed.csv
+│   │   ├── lipids_wk36_transposed.csv
+│   │   ├── normalization_qc_summary.csv
+│   │   ├── normalization_qc_summary.xlsx
+│   │   ├── Postpartum_01_sample_normalization.pdf
+│   │   ├── Postpartum_02_density_plot.pdf
+│   │   ├── Postpartum_03_pca_scores.pdf
+│   │   ├── Wk36_38_01_sample_normalization.pdf
+│   │   ├── Wk36_38_02_density_plot.pdf
+│   │   └── Wk36_38_03_pca_scores.pdf
+│   ├── 04_lipids
+│   │   ├── lipids_baseline_transposed.csv
+│   │   ├── lipids_postpartum_transposed.csv
+│   │   └── lipids_wk36_transposed.csv
+│   ├── 05_consensus_wgcna
+│   │   └── power14_split4_merge010
+│   │       ├── cluster_dendrogram.pdf
+│   │       ├── eigennode_dendrogram_Baseline.pdf
+│   │       ├── eigennode_dendrogram_Postpartum.pdf
+│   │       ├── eigennode_dendrogram_Wk36_38.pdf
+│   │       ├── eigennode_network.pdf
+│   │       ├── FigureS6_module_preservation_a_Zsummary.pdf
+│   │       ├── FigureS6_module_preservation_a_Zsummary.tiff
+│   │       ├── FigureS6_module_preservation_b_MedianRank.pdf
+│   │       ├── FigureS6_module_preservation_b_MedianRank.tiff
+│   │       ├── FigureS6_module_preservation.pdf
+│   │       ├── FigureS6_module_preservation.tiff
+│   │       ├── module_distribution.csv
+│   │       ├── module_preservation_Baseline_vs_Postpartum.pdf
+│   │       ├── module_preservation_Baseline_vs_Wk36_38.pdf
+│   │       ├── module_preservation_summary.xlsx
+│   │       ├── module_preservation_Wk36_38_vs_Postpartum.pdf
+│   │       ├── mp_Baseline_vs_Postpartum.rds
+│   │       ├── mp_Baseline_vs_Wk36_38_DIAG.rds
+│   │       ├── mp_Baseline_vs_Wk36_38.rds
+│   │       ├── mp_Wk36_38_vs_Postpartum.rds
+│   │       └── scaleFreeAnalysis.pdf
+│   ├── 06_module_membership
+│   │   └── power14_split4_merge010
+│   │       ├── hub_lipids_Baseline.pdf
+│   │       ├── hub_lipids_Postpartum.pdf
+│   │       ├── hub_lipids_top10_Baseline.csv
+│   │       ├── hub_lipids_top10_Postpartum.csv
+│   │       ├── hub_lipids_top10_Wk36_38.csv
+│   │       ├── hub_lipids_Wk36_38.pdf
+│   │       ├── module_membership_Baseline.txt
+│   │       ├── module_membership_Baseline.xlsx
+│   │       ├── module_membership_Postpartum.txt
+│   │       ├── module_membership_Postpartum.xlsx
+│   │       ├── module_membership_Wk36_38.txt
+│   │       └── module_membership_Wk36_38.xlsx
+│   ├── 07_annotations
+│   │   └── power14_split4_merge010
+│   │       ├── annotated_lipid_overview.pdf
+│   │       ├── annotated_lipid_overview.png
+│   │       ├── cid_disagreements.csv
+│   │       ├── esi_mode_by_module.csv
+│   │       ├── heatmap_lipid_class_module_count.pdf
+│   │       ├── heatmap_lipid_class_module_count.png
+│   │       ├── heatmap_lipid_class_module_percent.pdf
+│   │       ├── heatmap_lipid_class_module_percent.png
+│   │       ├── lipid_annotations_full.csv
+│   │       ├── lipid_annotations_full.xlsx
+│   │       ├── lipid_class_by_module.csv
+│   │       └── module_order_by_hub_lipid_class.csv
+│   ├── 08_module_trait_cor
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── heatmaps_family_BH_q01
+│   │           │   ├── heatmap_Baseline.pdf
+│   │           │   ├── heatmap_Baseline.png
+│   │           │   ├── heatmap_Postpartum.pdf
+│   │           │   ├── heatmap_Postpartum.png
+│   │           │   ├── heatmap_Wk36_38.pdf
+│   │           │   └── heatmap_Wk36_38.png
+│   │           ├── heatmaps_raw_p005
+│   │           │   ├── heatmap_Baseline.pdf
+│   │           │   ├── heatmap_Baseline.png
+│   │           │   ├── heatmap_Postpartum.pdf
+│   │           │   ├── heatmap_Postpartum.png
+│   │           │   ├── heatmap_Wk36_38.pdf
+│   │           │   └── heatmap_Wk36_38.png
+│   │           ├── module_class_order_used_in_heatmaps.csv
+│   │           ├── ModuleTraitCor_Baseline.xlsx
+│   │           ├── ModuleTraitCor_Postpartum.xlsx
+│   │           └── ModuleTraitCor_Wk36_38.xlsx
+│   ├── 09_module_eigennode_plots
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── darkorange_vs_apo_3TP.pdf
+│   │           ├── darkorange_vs_apo_3TP.tiff
+│   │           ├── darkorange_vs_ppwr_3TP.pdf
+│   │           ├── darkorange_vs_ppwr_3TP.tiff
+│   │           ├── darkorange_vs_ppwr_e_3TP.pdf
+│   │           ├── darkorange_vs_ppwr_e_3TP.tiff
+│   │           ├── grey60_vs_apo_3TP.pdf
+│   │           ├── grey60_vs_apo_3TP.tiff
+│   │           ├── grey60_vs_ppwr_3TP.pdf
+│   │           ├── grey60_vs_ppwr_3TP.tiff
+│   │           ├── grey60_vs_ppwr_e_3TP.pdf
+│   │           ├── grey60_vs_ppwr_e_3TP.tiff
+│   │           ├── lightcyan_vs_apo_3TP.pdf
+│   │           ├── lightcyan_vs_apo_3TP.tiff
+│   │           ├── lightcyan_vs_ppwr_3TP.pdf
+│   │           ├── lightcyan_vs_ppwr_3TP.tiff
+│   │           ├── lightcyan_vs_ppwr_e_3TP.pdf
+│   │           ├── lightcyan_vs_ppwr_e_3TP.tiff
+│   │           ├── purple_vs_apo_3TP.pdf
+│   │           ├── purple_vs_apo_3TP.tiff
+│   │           ├── purple_vs_ppwr_3TP.pdf
+│   │           ├── purple_vs_ppwr_3TP.tiff
+│   │           ├── purple_vs_ppwr_e_3TP.pdf
+│   │           ├── purple_vs_ppwr_e_3TP.tiff
+│   │           ├── turquoise_vs_apo_3TP.pdf
+│   │           ├── turquoise_vs_apo_3TP.tiff
+│   │           ├── turquoise_vs_ppwr_3TP.pdf
+│   │           ├── turquoise_vs_ppwr_3TP.tiff
+│   │           ├── turquoise_vs_ppwr_e_3TP.pdf
+│   │           └── turquoise_vs_ppwr_e_3TP.tiff
+│   ├── 10_differential
+│   │   └── fdr_BH_q010
+│   │       ├── ~$differential_Baseline_apo.xlsx
+│   │       ├── differential_Baseline_apo.xlsx
+│   │       ├── differential_Baseline_ppwr_e.xlsx
+│   │       ├── differential_Postpartum_apo.xlsx
+│   │       ├── differential_Postpartum_ppwr_e.xlsx
+│   │       ├── differential_summary.xlsx
+│   │       ├── differential_Wk36_38_apo.xlsx
+│   │       ├── differential_Wk36_38_ppwr_e.xlsx
+│   │       ├── volcano_apo.pdf
+│   │       ├── volcano_apo.png
+│   │       ├── volcano_ppwr_e.pdf
+│   │       └── volcano_ppwr_e.png
+│   ├── 11_lipid_boxplots
+│   │   ├── fig4_C_TG_48_0_horizontal.pdf
+│   │   ├── fig4_C_TG_50_1_horizontal.pdf
+│   │   ├── fig4_D_TG_46_0_horizontal.pdf
+│   │   ├── fig4_D_TG_48_1_horizontal.pdf
+│   │   ├── fig5_C_TG_56_6_horizontal.pdf
+│   │   ├── fig5_C_TG_58_9_horizontal.pdf
+│   │   ├── fig5_D_TG_58_8_horizontal.pdf
+│   │   └── fig5_D_TG_60_2_horizontal.pdf
+│   ├── 12_plsda
+│   │   ├── plsda_Baseline_apo_status_biplot.pdf
+│   │   ├── plsda_Baseline_apo_status_biplot.tiff
+│   │   ├── plsda_Baseline_apo_status_permutation.pdf
+│   │   ├── plsda_Baseline_apo_status_scores.pdf
+│   │   ├── plsda_Baseline_apo_status.xlsx
+│   │   ├── plsda_Baseline_ppwr_status_biplot.pdf
+│   │   ├── plsda_Baseline_ppwr_status_biplot.tiff
+│   │   ├── plsda_Baseline_ppwr_status_permutation.pdf
+│   │   ├── plsda_Baseline_ppwr_status_scores.pdf
+│   │   ├── plsda_Baseline_ppwr_status.xlsx
+│   │   ├── plsda_Postpartum_apo_status_biplot.pdf
+│   │   ├── plsda_Postpartum_apo_status_biplot.tiff
+│   │   ├── plsda_Postpartum_apo_status_permutation.pdf
+│   │   ├── plsda_Postpartum_apo_status_scores.pdf
+│   │   ├── plsda_Postpartum_apo_status.xlsx
+│   │   ├── plsda_Postpartum_ppwr_status_biplot.pdf
+│   │   ├── plsda_Postpartum_ppwr_status_biplot.tiff
+│   │   ├── plsda_Postpartum_ppwr_status_permutation.pdf
+│   │   ├── plsda_Postpartum_ppwr_status_scores.pdf
+│   │   ├── plsda_Postpartum_ppwr_status.xlsx
+│   │   ├── plsda_summary_all.xlsx
+│   │   ├── plsda_Wk36_38_apo_status_biplot.pdf
+│   │   ├── plsda_Wk36_38_apo_status_biplot.tiff
+│   │   ├── plsda_Wk36_38_apo_status_permutation.pdf
+│   │   ├── plsda_Wk36_38_apo_status_scores.pdf
+│   │   ├── plsda_Wk36_38_apo_status.xlsx
+│   │   ├── plsda_Wk36_38_ppwr_status_biplot.pdf
+│   │   ├── plsda_Wk36_38_ppwr_status_biplot.tiff
+│   │   ├── plsda_Wk36_38_ppwr_status_permutation.pdf
+│   │   ├── plsda_Wk36_38_ppwr_status_scores.pdf
+│   │   └── plsda_Wk36_38_ppwr_status.xlsx
+│   ├── 12_plsda_metaboanalyst
+│   │   ├── plsda_MA_summary_all.xlsx
+│   │   ├── tmp_Baseline_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_1_.pdf
+│   │   │   ├── pls_biplot_1_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_perm_1_.pdf
+│   │   │   ├── pls_perm_1_dpi72.pdf
+│   │   │   ├── pls_perm_accu_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Baseline_ppwr_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_1_.pdf
+│   │   │   ├── pls_biplot_1_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_perm_1_.pdf
+│   │   │   ├── pls_perm_1_dpi72.pdf
+│   │   │   ├── pls_perm_accu_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Postpartum_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_1_.pdf
+│   │   │   ├── pls_biplot_1_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_perm_1_.pdf
+│   │   │   ├── pls_perm_1_dpi72.pdf
+│   │   │   ├── pls_perm_accu_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Postpartum_ppwr_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_1_.pdf
+│   │   │   ├── pls_biplot_1_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_perm_1_.pdf
+│   │   │   ├── pls_perm_1_dpi72.pdf
+│   │   │   ├── pls_perm_accu_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Wk36_38_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_1_.pdf
+│   │   │   ├── pls_biplot_1_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_perm_1_.pdf
+│   │   │   ├── pls_perm_1_dpi72.pdf
+│   │   │   ├── pls_perm_accu_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   └── tmp_Wk36_38_ppwr_status
+│   │       ├── complete_norm.qs
+│   │       ├── data_orig_0.qs
+│   │       ├── data_orig.qs
+│   │       ├── pls_biplot_0_.pdf
+│   │       ├── pls_biplot_0_dpi72.pdf
+│   │       ├── pls_biplot_1_.pdf
+│   │       ├── pls_biplot_1_dpi72.pdf
+│   │       ├── pls_biplot_dpi72.pdf
+│   │       ├── pls_imp_0_.pdf
+│   │       ├── pls_imp_0_dpi72.pdf
+│   │       ├── pls_imp_dpi72.pdf
+│   │       ├── pls_loading_0_.pdf
+│   │       ├── pls_loading_0_dpi72.pdf
+│   │       ├── pls_loading_dpi72.pdf
+│   │       ├── pls_pair_0_.pdf
+│   │       ├── pls_pair_0_dpi72.pdf
+│   │       ├── pls_pair_1_.pdf
+│   │       ├── pls_pair_1_dpi72.pdf
+│   │       ├── pls_pair_dpi72.pdf
+│   │       ├── pls_perm_0_.pdf
+│   │       ├── pls_perm_0_dpi72.pdf
+│   │       ├── pls_perm_1_.pdf
+│   │       ├── pls_perm_1_dpi72.pdf
+│   │       ├── pls_perm_accu_dpi72.pdf
+│   │       ├── pls_score2d_0_.pdf
+│   │       ├── pls_score2d_0_dpi72.pdf
+│   │       ├── pls_score2d_dpi72.pdf
+│   │       ├── plsda_loadings.csv
+│   │       ├── plsda_score.csv
+│   │       ├── plsda_vip.csv
+│   │       ├── prenorm.qs
+│   │       ├── preproc.orig.qs
+│   │       ├── preproc.qs
+│   │       ├── raw_dataview.csv
+│   │       └── row_norm.qs
+│   ├── 13_sensitivity
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── moduleTraitCor_arm_adjusted.rds
+│   │           ├── moduleTraitPvalue_arm_adjusted.rds
+│   │           ├── moduleTraitQvalue_arm_adjusted.rds
+│   │           ├── sens_arm_adjusted_Baseline.xlsx
+│   │           ├── sens_arm_adjusted_Postpartum.xlsx
+│   │           ├── sens_arm_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── sens_arm_adjusted_Wk36_38.xlsx
+│   │           └── sens_arm_distribution_APO_PPWR.xlsx
+│   ├── 14_sensitivity_covariates
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── moduleTraitCor_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitN_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitPvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitQvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── sens_covariate_adjusted_Baseline.xlsx
+│   │           ├── sens_covariate_adjusted_Postpartum.xlsx
+│   │           ├── sens_covariate_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── sens_covariate_adjusted_Wk36_38.xlsx
+│   │           └── sens_covariate_summary_APO_PPWR.xlsx
+│   ├── 15_table1
+│   │   ├── Table1.docx
+│   │   └── Table1.xlsx
+│   └── figures
+│       ├── final
+│       │   ├── Figure1.pdf
+│       │   ├── Figure1.png
+│       │   ├── Figure2_direct_primary_fdr.pdf
+│       │   ├── Figure2_direct_primary_fdr.png
+│       │   ├── Figure2_direct_primary_fdr.tiff
+│       │   ├── Figure2_direct_primary_raw.pdf
+│       │   ├── Figure2_direct_primary_raw.png
+│       │   ├── Figure2_direct_primary_raw.tiff
+│       │   ├── Figure2_heatmaps_raw_p005.pdf
+│       │   ├── Figure2_heatmaps_raw_p005.png
+│       │   ├── Figure2_heatmaps_raw_p005.tiff
+│       │   ├── Figure2_illustrator.pdf
+│       │   ├── Figure3_illustrator_raw.pdf
+│       │   ├── Figure3_illustrator.pdf
+│       │   ├── Figure3.pdf
+│       │   ├── Figure3.png
+│       │   ├── Figure4_illustrator.pdf
+│       │   ├── Figure4.pdf
+│       │   ├── Figure4.png
+│       │   ├── Figure5_illustrator_raw.pdf
+│       │   ├── Figure5.pdf
+│       │   ├── Figure5.png
+│       │   ├── FIgure6_illustrator.pdf
+│       │   ├── Figure7_preservation_illustrator.pdf
+│       │   ├── FigureS_arm_adjusted_heatmap.pdf
+│       │   ├── FigureS_arm_adjusted_heatmap.png
+│       │   ├── FigureS_arm_adjusted_heatmap.tiff
+│       │   ├── FigureS_cov_adj_illustrator.pdf
+│       │   ├── FigureS_covariate_adjusted_heatmap.pdf
+│       │   ├── FigureS_covariate_adjusted_heatmap.png
+│       │   └── FigureS_covariate_adjusted_heatmap.tiff
+│       ├── panels
+│       │   ├── fig2
+│       │   │   ├── fig2_A.pdf
+│       │   │   ├── fig2_A.png
+│       │   │   ├── fig2_D.pdf
+│       │   │   ├── fig2_D.png
+│       │   │   ├── fig2_E.pdf
+│       │   │   ├── fig2_E.png
+│       │   │   ├── heatmaps_family_BH_q01
+│       │   │   │   ├── fig2_A.pdf
+│       │   │   │   ├── fig2_A.png
+│       │   │   │   ├── fig2_B.pdf
+│       │   │   │   ├── fig2_B.png
+│       │   │   │   ├── fig2_C.pdf
+│       │   │   │   └── fig2_C.png
+│       │   │   └── heatmaps_raw_p005
+│       │   │       ├── fig2_A.pdf
+│       │   │       ├── fig2_A.png
+│       │   │       ├── fig2_B.pdf
+│       │   │       ├── fig2_B.png
+│       │   │       ├── fig2_C.pdf
+│       │   │       └── fig2_C.png
+│       │   ├── fig3
+│       │   │   ├── fig3_A.pdf
+│       │   │   ├── fig3_A.png
+│       │   │   ├── fig3_a.tiff
+│       │   │   ├── fig3_B.pdf
+│       │   │   ├── fig3_B.png
+│       │   │   ├── fig3_b.tiff
+│       │   │   ├── fig3_C.pdf
+│       │   │   ├── fig3_C.png
+│       │   │   ├── fig3_c.tiff
+│       │   │   ├── fig3_D.pdf
+│       │   │   ├── fig3_D.png
+│       │   │   └── fig3_d.tiff
+│       │   ├── fig4
+│       │   │   ├── fig4_A.pdf
+│       │   │   ├── fig4_A.png
+│       │   │   ├── fig4_C.pdf
+│       │   │   ├── fig4_C.png
+│       │   │   ├── fig4_D.pdf
+│       │   │   └── fig4_D.png
+│       │   └── fig5
+│       │       ├── fig5_A.pdf
+│       │       ├── fig5_A.png
+│       │       ├── fig5_C.pdf
+│       │       ├── fig5_C.png
+│       │       ├── fig5_D.pdf
+│       │       └── fig5_D.png
+│       └── supplement
+│           ├── Figure4 (6).pdf
+│           ├── Figure5 (3).pdf
+│           ├── FigureS_APO_plsda.pdf
+│           ├── FigureS_PPWR_PLSDA.pdf
+│           └── Top HUb Lipids.pdf
+├── results_48_sample
+│   ├── 01_raw_data
+│   │   ├── annotated_lipid_class_distribution.pdf
+│   │   ├── annotated_lipid_classes.csv
+│   │   ├── annotated_lipids_metadata.csv
+│   │   ├── annotation_summary.csv
+│   │   ├── esi_mode_counts.csv
+│   │   ├── sample_timepoint_mapping.csv
+│   │   └── timepoint_summary.csv
+│   ├── 02_traits
+│   │   ├── demographic_data_bmi.xlsx
+│   │   └── traits_cleaned.csv
+│   ├── 03_normalization
+│   │   ├── Baseline_01_sample_normalization.pdf
+│   │   ├── Baseline_02_density_plot.pdf
+│   │   ├── Baseline_03_pca_scores.pdf
+│   │   ├── lipids_baseline_transposed.csv
+│   │   ├── lipids_postpartum_transposed.csv
+│   │   ├── lipids_wk36_transposed.csv
+│   │   ├── normalization_qc_summary.csv
+│   │   ├── normalization_qc_summary.xlsx
+│   │   ├── Postpartum_01_sample_normalization.pdf
+│   │   ├── Postpartum_02_density_plot.pdf
+│   │   ├── Postpartum_03_pca_scores.pdf
+│   │   ├── Wk36_38_01_sample_normalization.pdf
+│   │   ├── Wk36_38_02_density_plot.pdf
+│   │   └── Wk36_38_03_pca_scores.pdf
+│   ├── 04_lipids
+│   │   ├── lipids_baseline_transposed.csv
+│   │   ├── lipids_postpartum_transposed.csv
+│   │   └── lipids_wk36_transposed.csv
+│   ├── 05_consensus_wgcna
+│   │   └── power14_split4_merge010
+│   │       ├── ~$module_preservation_summary.xlsx
+│   │       ├── cluster_dendrogram.pdf
+│   │       ├── eigennode_dendrogram_Baseline.pdf
+│   │       ├── eigennode_dendrogram_Postpartum.pdf
+│   │       ├── eigennode_dendrogram_Wk36_38.pdf
+│   │       ├── eigennode_network.pdf
+│   │       ├── FigureS6_module_preservation_a_Zsummary.pdf
+│   │       ├── FigureS6_module_preservation_a_Zsummary.tiff
+│   │       ├── FigureS6_module_preservation_b_MedianRank.pdf
+│   │       ├── FigureS6_module_preservation_b_MedianRank.tiff
+│   │       ├── FigureS6_module_preservation.pdf
+│   │       ├── FigureS6_module_preservation.tiff
+│   │       ├── module_distribution.csv
+│   │       ├── module_preservation_Baseline_vs_Postpartum.pdf
+│   │       ├── module_preservation_Baseline_vs_Wk36_38.pdf
+│   │       ├── module_preservation_summary.xlsx
+│   │       ├── module_preservation_Wk36_38_vs_Postpartum.pdf
+│   │       ├── mp_Baseline_vs_Postpartum.rds
+│   │       ├── mp_Baseline_vs_Wk36_38_DIAG.rds
+│   │       ├── mp_Baseline_vs_Wk36_38.rds
+│   │       ├── mp_Wk36_38_vs_Postpartum.rds
+│   │       └── scaleFreeAnalysis.pdf
+│   ├── 06_module_membership
+│   │   └── power14_split4_merge010
+│   │       ├── hub_lipids_Baseline.pdf
+│   │       ├── hub_lipids_Postpartum.pdf
+│   │       ├── hub_lipids_top10_Baseline.csv
+│   │       ├── hub_lipids_top10_Postpartum.csv
+│   │       ├── hub_lipids_top10_Wk36_38.csv
+│   │       ├── hub_lipids_Wk36_38.pdf
+│   │       ├── module_membership_Baseline.txt
+│   │       ├── module_membership_Baseline.xlsx
+│   │       ├── module_membership_Postpartum.txt
+│   │       ├── module_membership_Postpartum.xlsx
+│   │       ├── module_membership_Wk36_38.txt
+│   │       └── module_membership_Wk36_38.xlsx
+│   ├── 07_annotations
+│   │   └── power14_split4_merge010
+│   │       ├── annotated_lipid_overview.pdf
+│   │       ├── annotated_lipid_overview.png
+│   │       ├── cid_disagreements.csv
+│   │       ├── esi_mode_by_module.csv
+│   │       ├── heatmap_lipid_class_module_count.pdf
+│   │       ├── heatmap_lipid_class_module_count.png
+│   │       ├── heatmap_lipid_class_module_percent.pdf
+│   │       ├── heatmap_lipid_class_module_percent.png
+│   │       ├── lipid_annotations_full.csv
+│   │       ├── lipid_annotations_full.xlsx
+│   │       ├── lipid_class_by_module.csv
+│   │       └── module_order_by_hub_lipid_class.csv
+│   ├── 08_module_trait_cor
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── heatmaps_family_BH_q01
+│   │           │   ├── heatmap_Baseline.pdf
+│   │           │   ├── heatmap_Baseline.png
+│   │           │   ├── heatmap_Postpartum.pdf
+│   │           │   ├── heatmap_Postpartum.png
+│   │           │   ├── heatmap_Wk36_38.pdf
+│   │           │   └── heatmap_Wk36_38.png
+│   │           ├── heatmaps_raw_p005
+│   │           │   ├── heatmap_Baseline.pdf
+│   │           │   ├── heatmap_Baseline.png
+│   │           │   ├── heatmap_Postpartum.pdf
+│   │           │   ├── heatmap_Postpartum.png
+│   │           │   ├── heatmap_Wk36_38.pdf
+│   │           │   └── heatmap_Wk36_38.png
+│   │           ├── module_class_order_used_in_heatmaps.csv
+│   │           ├── ModuleTraitCor_Baseline.xlsx
+│   │           ├── ModuleTraitCor_Postpartum.xlsx
+│   │           └── ModuleTraitCor_Wk36_38.xlsx
+│   ├── 09_module_eigennode_plots
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── blue_vs_apo_3TP.pdf
+│   │           ├── blue_vs_apo_3TP.tiff
+│   │           ├── blue_vs_ppwr_3TP.pdf
+│   │           ├── blue_vs_ppwr_3TP.tiff
+│   │           ├── blue_vs_ppwr_e_3TP.pdf
+│   │           ├── blue_vs_ppwr_e_3TP.tiff
+│   │           ├── darkorange_vs_apo_3TP.pdf
+│   │           ├── darkorange_vs_apo_3TP.tiff
+│   │           ├── darkorange_vs_ppwr_3TP.pdf
+│   │           ├── darkorange_vs_ppwr_3TP.tiff
+│   │           ├── darkorange_vs_ppwr_e_3TP.pdf
+│   │           ├── darkorange_vs_ppwr_e_3TP.tiff
+│   │           ├── darkturquoise_vs_apo_3TP.pdf
+│   │           ├── darkturquoise_vs_apo_3TP.tiff
+│   │           ├── darkturquoise_vs_ppwr_3TP.pdf
+│   │           ├── darkturquoise_vs_ppwr_3TP.tiff
+│   │           ├── darkturquoise_vs_ppwr_e_3TP.pdf
+│   │           ├── darkturquoise_vs_ppwr_e_3TP.tiff
+│   │           ├── grey60_vs_apo_3TP.pdf
+│   │           ├── grey60_vs_apo_3TP.tiff
+│   │           ├── grey60_vs_ppwr_3TP.pdf
+│   │           ├── grey60_vs_ppwr_3TP.tiff
+│   │           ├── grey60_vs_ppwr_e_3TP.pdf
+│   │           ├── grey60_vs_ppwr_e_3TP.tiff
+│   │           ├── lightcyan_vs_apo_3TP.pdf
+│   │           ├── lightcyan_vs_apo_3TP.tiff
+│   │           ├── lightcyan_vs_ppwr_3TP.pdf
+│   │           ├── lightcyan_vs_ppwr_3TP.tiff
+│   │           ├── lightcyan_vs_ppwr_e_3TP.pdf
+│   │           ├── lightcyan_vs_ppwr_e_3TP.tiff
+│   │           ├── magenta_vs_apo_3TP.pdf
+│   │           ├── magenta_vs_apo_3TP.tiff
+│   │           ├── magenta_vs_ppwr_3TP.pdf
+│   │           ├── magenta_vs_ppwr_3TP.tiff
+│   │           ├── magenta_vs_ppwr_e_3TP.pdf
+│   │           ├── magenta_vs_ppwr_e_3TP.tiff
+│   │           ├── purple_vs_apo_3TP.pdf
+│   │           ├── purple_vs_apo_3TP.tiff
+│   │           ├── purple_vs_ppwr_3TP.pdf
+│   │           ├── purple_vs_ppwr_3TP.tiff
+│   │           ├── purple_vs_ppwr_e_3TP.pdf
+│   │           ├── purple_vs_ppwr_e_3TP.tiff
+│   │           ├── turquoise_vs_apo_3TP.pdf
+│   │           ├── turquoise_vs_apo_3TP.tiff
+│   │           ├── turquoise_vs_ppwr_3TP.pdf
+│   │           ├── turquoise_vs_ppwr_3TP.tiff
+│   │           ├── turquoise_vs_ppwr_e_3TP.pdf
+│   │           └── turquoise_vs_ppwr_e_3TP.tiff
+│   ├── 10_differential
+│   │   └── fdr_BH_q010
+│   │       ├── ~$differential_Baseline_ppwr_e.xlsx
+│   │       ├── ~$differential_Postpartum_ppwr_e.xlsx
+│   │       ├── ~$differential_Wk36_38_ppwr_e.xlsx
+│   │       ├── differential_Baseline_apo.xlsx
+│   │       ├── differential_Baseline_ppwr_e.xlsx
+│   │       ├── differential_Postpartum_apo.xlsx
+│   │       ├── differential_Postpartum_ppwr_e.xlsx
+│   │       ├── differential_summary.xlsx
+│   │       ├── differential_Wk36_38_apo.xlsx
+│   │       ├── differential_Wk36_38_ppwr_e.xlsx
+│   │       ├── volcano_apo.pdf
+│   │       ├── volcano_apo.png
+│   │       ├── volcano_ppwr_e.pdf
+│   │       └── volcano_ppwr_e.png
+│   ├── 11_lipid_boxplots
+│   │   ├── fig4_C_TG_48_0_horizontal.pdf
+│   │   ├── fig4_C_TG_50_1_horizontal.pdf
+│   │   ├── fig4_D_TG_46_0_horizontal.pdf
+│   │   ├── fig4_D_TG_48_1_horizontal.pdf
+│   │   ├── fig5_C_TG_56_6_horizontal.pdf
+│   │   ├── fig5_C_TG_58_9_horizontal.pdf
+│   │   ├── fig5_D_TG_58_8_horizontal.pdf
+│   │   └── fig5_D_TG_60_2_horizontal.pdf
+│   ├── 12_plsda
+│   │   ├── plsda_Baseline_apo_status_biplot.pdf
+│   │   ├── plsda_Baseline_apo_status_biplot.tiff
+│   │   ├── plsda_Baseline_apo_status_permutation.pdf
+│   │   ├── plsda_Baseline_apo_status_scores.pdf
+│   │   ├── plsda_Baseline_apo_status.xlsx
+│   │   ├── plsda_Baseline_ppwr_status_biplot.pdf
+│   │   ├── plsda_Baseline_ppwr_status_biplot.tiff
+│   │   ├── plsda_Baseline_ppwr_status_permutation.pdf
+│   │   ├── plsda_Baseline_ppwr_status_scores.pdf
+│   │   ├── plsda_Baseline_ppwr_status.xlsx
+│   │   ├── plsda_Postpartum_apo_status_biplot.pdf
+│   │   ├── plsda_Postpartum_apo_status_biplot.tiff
+│   │   ├── plsda_Postpartum_apo_status_permutation.pdf
+│   │   ├── plsda_Postpartum_apo_status_scores.pdf
+│   │   ├── plsda_Postpartum_apo_status.xlsx
+│   │   ├── plsda_Postpartum_ppwr_status_biplot.pdf
+│   │   ├── plsda_Postpartum_ppwr_status_biplot.tiff
+│   │   ├── plsda_Postpartum_ppwr_status_permutation.pdf
+│   │   ├── plsda_Postpartum_ppwr_status_scores.pdf
+│   │   ├── plsda_Postpartum_ppwr_status.xlsx
+│   │   ├── plsda_summary_all.xlsx
+│   │   ├── plsda_Wk36_38_apo_status_biplot.pdf
+│   │   ├── plsda_Wk36_38_apo_status_biplot.tiff
+│   │   ├── plsda_Wk36_38_apo_status_permutation.pdf
+│   │   ├── plsda_Wk36_38_apo_status_scores.pdf
+│   │   ├── plsda_Wk36_38_apo_status.xlsx
+│   │   ├── plsda_Wk36_38_ppwr_status_biplot.pdf
+│   │   ├── plsda_Wk36_38_ppwr_status_biplot.tiff
+│   │   ├── plsda_Wk36_38_ppwr_status_permutation.pdf
+│   │   ├── plsda_Wk36_38_ppwr_status_scores.pdf
+│   │   └── plsda_Wk36_38_ppwr_status.xlsx
+│   ├── 12_plsda_metaboanalyst
+│   │   ├── plsda_MA_summary_all.xlsx
+│   │   ├── tmp_Baseline_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Baseline_ppwr_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Postpartum_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Postpartum_ppwr_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   ├── tmp_Wk36_38_apo_status
+│   │   │   ├── complete_norm.qs
+│   │   │   ├── data_orig_0.qs
+│   │   │   ├── data_orig.qs
+│   │   │   ├── pls_biplot_0_.pdf
+│   │   │   ├── pls_biplot_0_dpi72.pdf
+│   │   │   ├── pls_biplot_dpi72.pdf
+│   │   │   ├── pls_imp_0_.pdf
+│   │   │   ├── pls_imp_0_dpi72.pdf
+│   │   │   ├── pls_imp_dpi72.pdf
+│   │   │   ├── pls_loading_0_.pdf
+│   │   │   ├── pls_loading_0_dpi72.pdf
+│   │   │   ├── pls_loading_dpi72.pdf
+│   │   │   ├── pls_pair_0_.pdf
+│   │   │   ├── pls_pair_0_dpi72.pdf
+│   │   │   ├── pls_pair_1_.pdf
+│   │   │   ├── pls_pair_1_dpi72.pdf
+│   │   │   ├── pls_pair_dpi72.pdf
+│   │   │   ├── pls_perm_0_.pdf
+│   │   │   ├── pls_perm_0_dpi72.pdf
+│   │   │   ├── pls_score2d_0_.pdf
+│   │   │   ├── pls_score2d_0_dpi72.pdf
+│   │   │   ├── pls_score2d_dpi72.pdf
+│   │   │   ├── plsda_loadings.csv
+│   │   │   ├── plsda_score.csv
+│   │   │   ├── plsda_vip.csv
+│   │   │   ├── prenorm.qs
+│   │   │   ├── preproc.orig.qs
+│   │   │   ├── preproc.qs
+│   │   │   ├── raw_dataview.csv
+│   │   │   └── row_norm.qs
+│   │   └── tmp_Wk36_38_ppwr_status
+│   │       ├── complete_norm.qs
+│   │       ├── data_orig_0.qs
+│   │       ├── data_orig.qs
+│   │       ├── pls_biplot_0_.pdf
+│   │       ├── pls_biplot_0_dpi72.pdf
+│   │       ├── pls_biplot_dpi72.pdf
+│   │       ├── pls_imp_0_.pdf
+│   │       ├── pls_imp_0_dpi72.pdf
+│   │       ├── pls_imp_dpi72.pdf
+│   │       ├── pls_loading_0_.pdf
+│   │       ├── pls_loading_0_dpi72.pdf
+│   │       ├── pls_loading_dpi72.pdf
+│   │       ├── pls_pair_0_.pdf
+│   │       ├── pls_pair_0_dpi72.pdf
+│   │       ├── pls_pair_1_.pdf
+│   │       ├── pls_pair_1_dpi72.pdf
+│   │       ├── pls_pair_dpi72.pdf
+│   │       ├── pls_perm_0_.pdf
+│   │       ├── pls_perm_0_dpi72.pdf
+│   │       ├── pls_score2d_0_.pdf
+│   │       ├── pls_score2d_0_dpi72.pdf
+│   │       ├── pls_score2d_dpi72.pdf
+│   │       ├── plsda_loadings.csv
+│   │       ├── plsda_score.csv
+│   │       ├── plsda_vip.csv
+│   │       ├── prenorm.qs
+│   │       ├── preproc.orig.qs
+│   │       ├── preproc.qs
+│   │       ├── raw_dataview.csv
+│   │       └── row_norm.qs
+│   ├── 13_sensitivity
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── ~$sens_arm_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── ~$sens_covariate_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── moduleTraitCor_arm_adjusted.rds
+│   │           ├── moduleTraitCor_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitN_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitPvalue_arm_adjusted.rds
+│   │           ├── moduleTraitPvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitQvalue_arm_adjusted.rds
+│   │           ├── moduleTraitQvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── sens_arm_adjusted_Baseline.xlsx
+│   │           ├── sens_arm_adjusted_Postpartum.xlsx
+│   │           ├── sens_arm_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── sens_arm_adjusted_Wk36_38.xlsx
+│   │           ├── sens_arm_distribution_APO_PPWR.xlsx
+│   │           ├── sens_covariate_adjusted_Baseline.xlsx
+│   │           ├── sens_covariate_adjusted_Postpartum.xlsx
+│   │           ├── sens_covariate_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── sens_covariate_adjusted_Wk36_38.xlsx
+│   │           └── sens_covariate_summary_APO_PPWR.xlsx
+│   ├── 14_sensitivity_covariates
+│   │   └── power14_split4_merge010
+│   │       └── spearman
+│   │           ├── moduleTraitCor_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitN_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitPvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── moduleTraitQvalue_covariate_adjusted_age_race_white_bmi_group.rds
+│   │           ├── sens_covariate_adjusted_Baseline.xlsx
+│   │           ├── sens_covariate_adjusted_Postpartum.xlsx
+│   │           ├── sens_covariate_adjusted_vs_unadjusted_comparison.xlsx
+│   │           ├── sens_covariate_adjusted_Wk36_38.xlsx
+│   │           └── sens_covariate_summary_APO_PPWR.xlsx
+│   ├── 15_table1
+│   │   ├── Table1.docx
+│   │   └── Table1.xlsx
+│   └── figures
+│       ├── final
+│       │   ├── Figure1.pdf
+│       │   ├── Figure1.png
+│       │   ├── Figure2_direct_primary_fdr.pdf
+│       │   ├── Figure2_direct_primary_fdr.png
+│       │   ├── Figure2_direct_primary_fdr.tiff
+│       │   ├── Figure2_direct_primary_raw.pdf
+│       │   ├── Figure2_direct_primary_raw.png
+│       │   ├── Figure2_direct_primary_raw.tiff
+│       │   ├── Figure2_heatmaps_raw_p005.pdf
+│       │   ├── Figure2_heatmaps_raw_p005.png
+│       │   ├── Figure2_heatmaps_raw_p005.tiff
+│       │   ├── Figure2_illustrator.pdf
+│       │   ├── Figure3_illustrator_raw.pdf
+│       │   ├── Figure3_illustrator.pdf
+│       │   ├── Figure3.pdf
+│       │   ├── Figure3.png
+│       │   ├── Figure4_illustrator.pdf
+│       │   ├── Figure4.pdf
+│       │   ├── Figure4.png
+│       │   ├── Figure5_illustrator_raw.pdf
+│       │   ├── Figure5.pdf
+│       │   ├── Figure5.png
+│       │   ├── FIgure6_illustrator.pdf
+│       │   ├── FigureS_arm_adjusted_heatmap.pdf
+│       │   ├── FigureS_arm_adjusted_heatmap.png
+│       │   ├── FigureS_arm_adjusted_heatmap.tiff
+│       │   ├── FigureS_covariate_adjusted_heatmap.pdf
+│       │   ├── FigureS_covariate_adjusted_heatmap.png
+│       │   ├── FigureS_covariate_adjusted_heatmap.tiff
+│       │   └── Supplementary Figures.pdf
+│       ├── panels
+│       │   ├── fig2
+│       │   │   ├── fig2_A.pdf
+│       │   │   ├── fig2_A.png
+│       │   │   ├── fig2_D.pdf
+│       │   │   ├── fig2_D.png
+│       │   │   ├── fig2_E.pdf
+│       │   │   ├── fig2_E.png
+│       │   │   ├── heatmaps_family_BH_q01
+│       │   │   │   ├── fig2_A.pdf
+│       │   │   │   ├── fig2_A.png
+│       │   │   │   ├── fig2_B.pdf
+│       │   │   │   ├── fig2_B.png
+│       │   │   │   ├── fig2_C.pdf
+│       │   │   │   └── fig2_C.png
+│       │   │   └── heatmaps_raw_p005
+│       │   │       ├── fig2_A.pdf
+│       │   │       ├── fig2_A.png
+│       │   │       ├── fig2_B.pdf
+│       │   │       ├── fig2_B.png
+│       │   │       ├── fig2_C.pdf
+│       │   │       └── fig2_C.png
+│       │   ├── fig3
+│       │   │   ├── fig3_A.pdf
+│       │   │   ├── fig3_A.png
+│       │   │   ├── fig3_a.tiff
+│       │   │   ├── fig3_B.pdf
+│       │   │   ├── fig3_B.png
+│       │   │   ├── fig3_b.tiff
+│       │   │   ├── fig3_C.pdf
+│       │   │   ├── fig3_C.png
+│       │   │   ├── fig3_c.tiff
+│       │   │   ├── fig3_D.pdf
+│       │   │   ├── fig3_D.png
+│       │   │   └── fig3_d.tiff
+│       │   ├── fig4
+│       │   │   ├── fig4_A.pdf
+│       │   │   ├── fig4_A.png
+│       │   │   ├── fig4_C.pdf
+│       │   │   ├── fig4_C.png
+│       │   │   ├── fig4_D.pdf
+│       │   │   └── fig4_D.png
+│       │   └── fig5
+│       │       ├── fig5_A.pdf
+│       │       ├── fig5_A.png
+│       │       ├── fig5_C.pdf
+│       │       ├── fig5_C.png
+│       │       ├── fig5_D.pdf
+│       │       └── fig5_D.png
+│       └── supplement
+│           ├── Figure4 (6).pdf
+│           ├── Figure5 (3).pdf
+│           └── Top HUb Lipids.pdf
+├── Rplots.pdf
+├── scripts
+│   ├── run_all.R
+│   └── run_all.sh
+├── scripts_for_growell_lipidomics_analysis
+│   └── Traits_Updated_031925.R
+└── tree.txt
+
+107 directories, 1089 files
