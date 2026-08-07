@@ -579,7 +579,6 @@
 │   │   └── Table1.xlsx
 │   └── figures
 │       ├── final
-│       │   ├── Figure1.pdf
 │       │   ├── Figure1.png
 │       │   ├── Figure2_direct_primary_fdr.pdf
 │       │   ├── Figure2_direct_primary_fdr.png
@@ -610,6 +609,14 @@
 │       │   ├── FigureS_covariate_adjusted_heatmap.pdf
 │       │   ├── FigureS_covariate_adjusted_heatmap.png
 │       │   └── FigureS_covariate_adjusted_heatmap.tiff
+│       ├── Main_Figures_and_Tables
+│       │   ├── Figure1.pdf
+│       │   ├── Figure2.pdf
+│       │   ├── Figure3.pdf
+│       │   ├── Figure4.pdf
+│       │   ├── Figure5.pdf
+│       │   ├── Table1.docx
+│       │   └── Table1.xlsx
 │       ├── panels
 │       │   ├── fig2
 │       │   │   ├── fig2_A.pdf
@@ -659,12 +666,9 @@
 │       │       ├── fig5_C.png
 │       │       ├── fig5_D.pdf
 │       │       └── fig5_D.png
-│       └── supplement
-│           ├── Figure4 (6).pdf
-│           ├── Figure5 (3).pdf
-│           ├── FigureS_APO_plsda.pdf
-│           ├── FigureS_PPWR_PLSDA.pdf
-│           └── Top HUb Lipids.pdf
+│       └── Supplement
+│           ├── Supplementary Data 1.xlsx
+│           └── Supplementary Figures.docx
 ├── results_48_sample
 │   ├── 01_raw_data
 │   │   ├── annotated_lipid_class_distribution.pdf
@@ -1187,7 +1191,6 @@
 │           ├── Figure4 (6).pdf
 │           ├── Figure5 (3).pdf
 │           └── Top HUb Lipids.pdf
-├── Rplots.pdf
 ├── scripts
 │   ├── run_all.R
 │   └── run_all.sh
@@ -1195,4 +1198,4 @@
 │   └── Traits_Updated_031925.R
 └── tree.txt
 
-107 directories, 1089 files
+108 directories, 1091 files
