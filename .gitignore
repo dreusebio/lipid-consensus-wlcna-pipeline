@@ -15,4 +15,4 @@ consensusTOM-block.*.RData
 .Rproj.user/
 scripts_for_growell_lipidomics_analysis/
 # pixi environment (auto-generated)
-.pixi/
+.pixi/**/~$*
